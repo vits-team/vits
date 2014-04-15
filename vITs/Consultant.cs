@@ -23,12 +23,127 @@ namespace vITs
             
             hideAllPanels();
             panel_home.Visible = true;
+            lbl_myName.Text = DataAccess.requestFullName(id); 
 
         }
 
+        private void btn_trip_addReciept_Click(object sender, EventArgs e)
+        {
+            string date = txt_trip_reciptDate.Text;
+            string type = txt_trip_recieptType.Text;
+            string number = txt_trip_recieptNumber.Text;
+            int sum = Convert.ToInt32(txt_trip_recieptAmount.Text);
+            string currency = cb_trip_currency.SelectedItem.ToString();
+
+            int doesRecieptExist = 0;
+            string recieptExists;
+
+            if (check_receipts.Checked == true)
+            {
+                doesRecieptExist = 1;
+            }
+            else
+            {
+                doesRecieptExist = 2;
+            }
+
+
+            Receipt newRec = new Receipt(date, type, number, sum, currency, doesRecieptExist);
+            receiptList.Add(newRec);
+
+            lb_trip_reciepts.Items.Clear();
+
+            foreach (Receipt re in receiptList)
+            {
+                if (re.recieptExist == 1)
+                {
+                    recieptExists = "Kvitto finns ej";
+                }
+                else
+                {
+                    recieptExists = "Kvitto finns";
+                }
+
+
+                lb_trip_reciepts.Items.Add(re.date + "\t" + re.type + "\t" + re.number + "\t\t" + re.sum + " " + re.currency + "\t\t" + recieptExists);
+
+            }
 
 
 
+
+        }
+
+        private void cb_trip_currency_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cb_trip_currency.SelectedItem.Equals("SEK"))
+            {
+                txt_trip_recieptRate.Text = "1 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("EUR"))
+            {
+                txt_trip_recieptRate.Text = "9.00 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("USD"))
+            {
+                txt_trip_recieptRate.Text = "6.50 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("GBP"))
+            {
+                txt_trip_recieptRate.Text = "10.90 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("NOK"))
+            {
+                txt_trip_recieptRate.Text = "1.10 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("DKK"))
+            {
+                txt_trip_recieptRate.Text = "1.20 SEK";
+
+            }
+            else if (cb_trip_currency.SelectedItem.Equals("- Ange valuta -"))
+            {
+                txt_trip_recieptRate.Text = "";
+
+            }
+        }
+
+        private void btn_trip_removeReciept_Click(object sender, EventArgs e)
+        {
+            int obj = lb_trip_reciepts.SelectedIndex;
+
+            receiptList.RemoveAt(obj);
+            string recieptExists;
+
+            lb_trip_reciepts.Items.Clear();
+
+            foreach (Receipt re in receiptList)
+            {
+                if (re.recieptExist == 1)
+                {
+                    recieptExists = "Kvitto finns ej";
+                }
+                else
+                {
+                    recieptExists = "Kvitto finns";
+                }
+
+
+                lb_trip_reciepts.Items.Add(re.date + "\t" + re.type + "\t" + re.number + "\t\t" + re.sum + " " + re.currency + "\t\t" + recieptExists);
+
+            }
+        }
+
+        private void btn_trip_confirm_Click(object sender, EventArgs e)
+        {
+
+            DataAccess.addReceipt(receiptList, 2);
+        }
 
 
         /* ------------------------------ -------------------------------------------
@@ -197,134 +312,6 @@ namespace vITs
                 nav_prepayment.BackgroundImage = Image.FromFile(path);
             }
         }
-
-        private void btn_trip_addReciept_Click(object sender, EventArgs e)
-        {
-            string date = txt_trip_reciptDate.Text;
-            string type = txt_trip_recieptType.Text;
-            string number = txt_trip_recieptNumber.Text;
-            int sum = Convert.ToInt32(txt_trip_recieptAmount.Text);
-            string currency = cb_trip_currency.SelectedItem.ToString();
-            
-            int doesRecieptExist = 0;
-            string recieptExists; 
-
-            if (check_receipts.Checked == true)
-            {
-                doesRecieptExist = 1;
-            }
-            else
-            {
-                doesRecieptExist = 2;   
-            }
-            
-
-            Receipt newRec = new Receipt(date, type, number, sum, currency, doesRecieptExist);
-            receiptList.Add(newRec);
-
-            lb_trip_reciepts.Items.Clear();
-
-            foreach(Receipt re in receiptList)
-            {
-                if (re.recieptExist == 1)
-                {
-                    recieptExists = "Kvitto finns ej";
-                }
-                else
-                {
-                    recieptExists = "Kvitto finns"; 
-                }
-               
-               
-                lb_trip_reciepts.Items.Add(re.date + "\t" + re.type + "\t" + re.number + "\t\t" + re.sum + " " + re.currency + "\t\t" + recieptExists); 
-                     
-            }
-            
-            
-            
-            
-        }
-
-        private void cb_trip_currency_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cb_trip_currency.SelectedItem.Equals("SEK"))
-            {
-                txt_trip_recieptRate.Text = "1 SEK"; 
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("EUR"))
-            {
-                txt_trip_recieptRate.Text = "9.00 SEK";
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("USD"))
-            {
-                txt_trip_recieptRate.Text = "6.50 SEK";
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("GBP"))
-            {
-                txt_trip_recieptRate.Text = "10.90 SEK";
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("NOK"))
-            {
-                txt_trip_recieptRate.Text = "1.10 SEK";
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("DKK"))
-            {
-                txt_trip_recieptRate.Text = "1.20 SEK";
-
-            }
-            else if (cb_trip_currency.SelectedItem.Equals("- Ange valuta -"))
-            {
-                txt_trip_recieptRate.Text = "";
-
-            }
-        }
-
-        private void btn_trip_removeReciept_Click(object sender, EventArgs e)
-        {
-            int obj = lb_trip_reciepts.SelectedIndex;
-
-            receiptList.RemoveAt(obj);
-            string recieptExists;
-
-            lb_trip_reciepts.Items.Clear();
-
-            foreach (Receipt re in receiptList)
-            {
-                if (re.recieptExist == 1)
-                {
-                    recieptExists = "Kvitto finns ej";
-                }
-                else
-                {
-                    recieptExists = "Kvitto finns";
-                }
-
-
-                lb_trip_reciepts.Items.Add(re.date + "\t" + re.type + "\t" + re.number + "\t\t" + re.sum + " " + re.currency + "\t\t" + recieptExists);
-
-            }
-        }
-
-        private void btn_trip_confirm_Click(object sender, EventArgs e)
-        {
-           
-            DataAccess.addReceipt(receiptList, 2);  
-        }
-
-
-
-    
-
-        
-
-       
-
-        
 
       
     }

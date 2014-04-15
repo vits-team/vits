@@ -15,7 +15,7 @@ namespace vITs
         private static SqlConnection con = new SqlConnection(connString); 
         private static SqlCommand cmd;
         private static string query;
-      
+
 
 
         /* Skicka tillbaka ID:t för senast tillagda resan. */
@@ -71,6 +71,34 @@ namespace vITs
             }
 
 
+
+        }
+
+        
+
+
+        public static string requestFullName(int userID)
+        {
+            string returnValue = null; 
+            query = "SELECT FirstName +' '+ LastName as Name FROM Staff where ID ="+ userID +""; 
+            
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+                returnValue = cmd.ExecuteScalar().ToString(); 
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message); 
+            }
+            finally
+            {
+                con.Close(); 
+            }
+
+            return returnValue; 
 
         }
 
