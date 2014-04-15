@@ -8,7 +8,6 @@ namespace vITs
 {
     class Validation
     {
-        // VALLE, NILS!
-        // VALLE, LENA!
+        
     }
 }
