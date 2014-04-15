@@ -23,7 +23,8 @@ namespace vITs
             
             hideAllPanels();
             panel_home.Visible = true;
-            lbl_myName.Text = DataAccess.requestFullName(id); 
+            lbl_myName.Text = DataAccess.requestFullName(id);
+            cb_trip_land.DataSource = vITs.DataAccess.FillCountryList();
 
         }
 
