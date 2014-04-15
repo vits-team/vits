@@ -158,6 +158,8 @@ namespace vITs
 
         }
 
+        /* Returnerar en lista med alla icke-godkända resor */
+
         public static List<string> requestUnApprovedTrips()
         {
             List<string> returnValue = new List<string>();
@@ -188,6 +190,31 @@ namespace vITs
             }
 
             return returnValue;
+        }
+
+
+        /* Godkänner en icke-godkänd resa. Tar trip-id som parameter. */
+
+        public static void approveOfTrip(string tripId)
+        {
+            try
+            {
+                con.Open();
+
+                query = "update Trip set Approved = 1 where ID = " + tripId;
+                cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
+
+            }
         }
 
 
