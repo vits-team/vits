@@ -158,6 +158,38 @@ namespace vITs
 
         }
 
+        public static List<string> requestUnApprovedTrips()
+        {
+            List<string> returnValue = new List<string>();
+            query = "select ID from Trip where Approved = 0";
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        returnValue.Add(reader[0].ToString());
+                    }
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
 
 
     }
