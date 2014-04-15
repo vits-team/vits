@@ -1,4 +1,4 @@
 vits
 ====
 
-Utvecklingsprojekt i grupp
+Utvecklingsprojekt i grupp - Scrum och XP
