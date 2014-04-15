@@ -61,37 +61,48 @@ namespace vITs
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            /* Fixa metod för att kontrollera vilken användartyp man är, samt dess ID ifrån databasen. */
+            
 
+            int userIdentity = Convert.ToInt32(txt_userName.Text);
+            string password = txt_password.Text; 
 
-            if (txt_password.Text == "1")
+            if (DataAccess.validateUserLogIn(userIdentity, password) == 1)
             {
-                this.Hide();
-                Admin z = new Admin();
-                z.ShowDialog();
+
+                int StaffLevel = DataAccess.requestStaffLevel(userIdentity);
+
+                switch (StaffLevel)
+                {
+                    case 1: 
+                        this.Hide();
+                        Consultant c = new Consultant();
+                        c.ShowDialog();
+                        break; 
+                    
+                    case 2: 
+                        this.Hide();
+                        Manager m = new Manager();
+                        m.ShowDialog();
+                        break; 
+                    
+                    case 3: 
+                        this.Hide();
+                        Economy ec = new Economy();
+                        ec.ShowDialog();
+                        break; 
+                    
+                    case 4:
+                        this.Hide();
+                        Admin a = new Admin();
+                        a.ShowDialog();
+                        break;
+                }
 
             }
-            else if (txt_password.Text == "2")
-            {
-                this.Hide();
-                Economy x = new Economy();
-                x.ShowDialog();
-            }
-            else if (txt_password.Text == "3")
-            {
-                this.Hide();
-                Manager x = new Manager();
-                x.ShowDialog();
-            }
-
             else
             {
-                this.Hide();
-                Consultant x = new Consultant();
-                x.ShowDialog();
-
+                MessageBox.Show("Felaktiga användaruppgifter!"); 
             }
-            
 
         }
 

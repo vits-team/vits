@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data; 
 using System.Windows.Forms; 
 
 namespace vITs
@@ -14,7 +15,7 @@ namespace vITs
         private static SqlConnection con = new SqlConnection(connString); 
         private static SqlCommand cmd;
         private static string query;
-
+      
 
 
         /* Skicka tillbaka ID:t för senast tillagda resan. */
@@ -70,6 +71,62 @@ namespace vITs
             }
 
 
+
+        }
+
+        public static int requestStaffLevel(int userID)
+        {
+            int returnValue = 999; 
+            query = @"SELECT Level from Staff WHERE ID = "+ userID +""; 
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+                returnValue = (int)cmd.ExecuteScalar(); 
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message.ToString()); 
+            }
+            finally
+            {
+                con.Close(); 
+            }
+
+            return returnValue; 
+
+        }
+
+        public static int validateUserLogIn(int userID, string password)
+        {
+            int returnValue = 999;
+            cmd = new SqlCommand("ValidateUser", con); 
+
+            try
+            {
+                con.Open();
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddRange(new[] 
+                {
+                    new SqlParameter("@ID", userID),
+                    new SqlParameter("@Password", password) 
+                });
+
+                returnValue = (int)cmd.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue; 
 
         }
 

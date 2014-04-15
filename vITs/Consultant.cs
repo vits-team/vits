@@ -312,7 +312,7 @@ namespace vITs
 
         private void btn_trip_confirm_Click(object sender, EventArgs e)
         {
-
+           
             DataAccess.addReceipt(receiptList, 2);  
         }
 
