@@ -37,3 +37,6 @@ C:\Users\Marcus\Documents\vITs\vITs2.0\vITs\vITs\obj\Debug\vITs.Properties.Resou
 C:\Users\Marcus\Documents\vITs\vITs2.0\vITs\vITs\obj\Debug\vITs.csproj.GenerateResource.Cache
 C:\Users\Marcus\Documents\vITs\vITs2.0\vITs\vITs\bin\Debug\vITs.exe
 C:\Users\Marcus\Documents\vITs\vITs2.0\vITs\vITs\bin\Debug\vITs.pdb
+\\vmware-host\Shared Folders\Desktop\vITs\vITs\bin\Debug\vITs.exe.config
+\\vmware-host\Shared Folders\Desktop\vITs\vITs\obj\Debug\vITs.exe
+\\vmware-host\Shared Folders\Desktop\vITs\vITs\obj\Debug\vITs.pdb
