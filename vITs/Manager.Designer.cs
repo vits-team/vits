@@ -1379,6 +1379,7 @@
             this.btn_toDo_approve.TabIndex = 21;
             this.btn_toDo_approve.Text = "Godkänn";
             this.btn_toDo_approve.UseVisualStyleBackColor = true;
+            this.btn_toDo_approve.Click += new System.EventHandler(this.btn_toDo_approve_Click);
             // 
             // txt_toDo_description
             // 
@@ -1477,8 +1478,8 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_toDo);
+            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_reports);
             this.Controls.Add(this.panel_mySettings);

@@ -20,6 +20,8 @@ namespace vITs
             id = Login.passThisUser();
             hideAllPanels();
             panel_home.Visible = true;
+
+            initializeBoxes();
         }
 
         private void hideAllPanels()
@@ -248,9 +250,35 @@ namespace vITs
             }
         }
 
-       
 
 
+        /* Initialisera alla boxar vid laddning */
+
+        private void initializeBoxes()
+        {
+            lb_toDo_employee.DataSource = null;
+
+            /* Fyller listboxen med förskottsbetalningar att godkänna */
+            lb_toDo_employee.DataSource = vITs.DataAccess.requestUnApprovedPrePays();
+            lb_toDo_employee.DisplayMember = "ID";
+            lb_toDo_employee.ValueMember = "ID"; //TripID
+
+            //Dictionary<string, string> diction = DataAccess.getTripData(1004);
+
+        }
+
+
+        /* Godkänn-knappen. När den trycks så ändras Approved-värdet på vald förskottsbetalning. */
+
+        private void btn_toDo_approve_Click(object sender, EventArgs e)
+        {
+            vITs.DataAccess.approveOfPrePay(lb_toDo_employee.SelectedItem.ToString());
+
+            MessageBox.Show("Förskottsbetalningen godkändes.");
+
+            lb_toDo_employee.DataSource = null;
+            lb_toDo_employee.DataSource = vITs.DataAccess.requestUnApprovedPrePays();
+        }
     
 
         
