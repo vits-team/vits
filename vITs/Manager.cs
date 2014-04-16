@@ -13,6 +13,7 @@ namespace vITs
     public partial class Manager : Form
     {
         private int id;
+        private List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
         
         public Manager()
         {
@@ -256,15 +257,13 @@ namespace vITs
 
         private void initializeBoxes()
         {
-            lb_toDo_employee.DataSource = null;
+            List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
+            
 
             /* Fyller listboxen med förskottsbetalningar att godkänna */
-            lb_toDo_employee.DataSource = vITs.DataAccess.requestUnApprovedPrePays();
-            lb_toDo_employee.DisplayMember = "ID";
-            lb_toDo_employee.ValueMember = "ID"; //TripID
-
-            //Dictionary<string, string> diction = DataAccess.getTripData(1004);
-
+            lb_toDo_employee.DataSource = unapprovedPrePays.Select(x => new { TripID = x[0], Advance = x[1], Description = x[2], MissionName = x[3] }).ToList();
+            lb_toDo_employee.DisplayMember = "TripID";
+            lb_toDo_employee.ValueMember = "TripID";
         }
 
 
@@ -272,12 +271,24 @@ namespace vITs
 
         private void btn_toDo_approve_Click(object sender, EventArgs e)
         {
-            vITs.DataAccess.approveOfPrePay(lb_toDo_employee.SelectedItem.ToString());
+            DataAccess.approveOfPrePay(unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(0).ToString());
 
             MessageBox.Show("Förskottsbetalningen godkändes.");
 
-            lb_toDo_employee.DataSource = null;
-            lb_toDo_employee.DataSource = vITs.DataAccess.requestUnApprovedPrePays();
+            initializeBoxes();
+        }
+
+
+        /* Vid klick i listan, ändra värdet i boxarna */
+
+        private void lb_toDo_employee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Advance
+            txt_toDo_amount.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(1).ToString();
+            // Description
+            txt_toDo_description.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(2).ToString();
+            // MissionName
+            txt_toDo_assignment.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(3).ToString();
         }
     
 

@@ -1413,6 +1413,7 @@
             this.lb_toDo_employee.Name = "lb_toDo_employee";
             this.lb_toDo_employee.Size = new System.Drawing.Size(238, 173);
             this.lb_toDo_employee.TabIndex = 3;
+            this.lb_toDo_employee.SelectedIndexChanged += new System.EventHandler(this.lb_toDo_employee_SelectedIndexChanged);
             // 
             // label21
             // 
