@@ -217,7 +217,134 @@ namespace vITs
             }
         }
 
+        /*Fyll länderlista*/
+        public static List<string> FillCountryList()
+        {
+            List<string> countryList = new List<string>();
 
+            try
+            {
+                con.Open();
+
+                query = "SELECT Country FROM Destinations";
+                cmd = new SqlCommand(query, con);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        countryList.Add(reader[0].ToString());
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+            return countryList;
+        }
+
+
+
+        /*Fyll uppdragslista*/
+        public static List<string> FillQuestList()
+        {
+            List<string> questList = new List<string>();
+
+            try
+            {
+                con.Open();
+
+                query = "SELECT MissionName FROM Missions";
+                cmd = new SqlCommand(query, con);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        questList.Add(reader[0].ToString());
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+            return questList;
+        }
+
+        public static int getTraktamente(string land)
+        {
+            int returnValue = 0;
+
+            try 
+            {
+                con.Open();
+                query = @"SELECT Traktamente FROM Destinations WHERE Country ='"+land+"'";
+
+                cmd = new SqlCommand(query, con);
+
+                returnValue = (int)cmd.ExecuteScalar();
+
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+        public static void addTrip(string startdate, string enddate, string transit, int breakfast, int lunch, int dinner, int mission, string vacationdays, int advance, int traktamente)
+        {
+            try
+            {
+                con.Open();
+                query = "INSERT into Trip (StartDate, EndDate, Transit, Breakfast, Lunch, Dinner, Mission, Break, Advance, Traktamente) VALUES ( ) ";
+
+                using (cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.Add(new SqlParameter("StartDate", startdate));
+                    cmd.Parameters.Add(new SqlParameter("EndDate", enddate));
+                    cmd.Parameters.Add(new SqlParameter("Transit", transit));
+                    cmd.Parameters.Add(new SqlParameter("Breakfast", breakfast));
+                    cmd.Parameters.Add(new SqlParameter("Lunch", lunch));
+                    cmd.Parameters.Add(new SqlParameter("Dinner", dinner));
+                    cmd.Parameters.Add(new SqlParameter("Mission", mission));
+                    cmd.Parameters.Add(new SqlParameter("Break", vacationdays));
+                    cmd.Parameters.Add(new SqlParameter("Advance", advance));
+                    cmd.Parameters.Add(new SqlParameter("Traktamente", traktamente));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
 
     }
 }

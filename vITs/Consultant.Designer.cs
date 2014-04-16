@@ -503,6 +503,11 @@
             // cb_trip_travelWay
             // 
             this.cb_trip_travelWay.FormattingEnabled = true;
+            this.cb_trip_travelWay.Items.AddRange(new object[] {
+            "Flygplan",
+            "Egen Bil",
+            "Taxi",
+            "Tåg"});
             this.cb_trip_travelWay.Location = new System.Drawing.Point(676, 228);
             this.cb_trip_travelWay.Name = "cb_trip_travelWay";
             this.cb_trip_travelWay.Size = new System.Drawing.Size(100, 21);

@@ -25,6 +25,7 @@ namespace vITs
             panel_home.Visible = true;
             lbl_myName.Text = DataAccess.requestFullName(id);
             cb_trip_land.DataSource = vITs.DataAccess.FillCountryList();
+            cb_trip_assignments.DataSource = vITs.DataAccess.FillQuestList();
 
         }
 
@@ -143,6 +144,29 @@ namespace vITs
         private void btn_trip_confirm_Click(object sender, EventArgs e)
         {
 
+            string startdate = txt_trip_startdate.Text;
+            string enddate = txt_trip_endDate.Text;
+            string vacationdays = txt_trip_vacationDays.Text;
+            int breakfast;
+            int lunch;
+            int dinner;
+            int totalsum;
+
+            if (check_trip_breakfast.Checked == true)
+            {
+
+            }
+
+            if (check_trip_lunch.Checked == true)
+            {
+
+            }
+
+            if (check_trip_dinner.Checked == true)
+            {
+
+            }
+            
             DataAccess.addReceipt(receiptList, 2);
         }
 
