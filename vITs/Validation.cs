@@ -10,6 +10,10 @@ namespace vITs
     {
         /* Yo era gottegrisar */
 
-        //PUSS
+        // Hej det här skriver jag, Jakob
+
+        //KOM TILL PAPPA
+
+        // BAJS JAKOB BAJS JAKOB
     }
 }
