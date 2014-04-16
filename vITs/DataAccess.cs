@@ -250,7 +250,6 @@ namespace vITs
         }
 
 
-
         /*Fyll uppdragslista*/
         public static List<string> FillQuestList()
         {
@@ -347,12 +346,12 @@ namespace vITs
         }
 
 
-        /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor (för tillfället i form av en string med TripID) */
+        /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */
 
-        public static List<object> requestUnApprovedPrePays()
+        public static List<string[]> requestUnApprovedPrePays()
         {
-            List<object> returnValue = new List<object>();
-            query = "SELECT Trip.ID,PrePay.Advance,Missions.[Description] FROM Trip INNER JOIN PrePay ON Trip.ID = PrePay.TripID INNER JOIN Missions ON Missions.ID = Trip.Mission WHERE PrePay.Approved = 0;";
+            List<string[]> returnValue = new List<string[]>();
+            query = "SELECT Trip.ID,PrePay.Advance,Missions.[Description],Missions.MissionName FROM Trip INNER JOIN PrePay ON Trip.ID = PrePay.TripID INNER JOIN Missions ON Missions.ID = Trip.Mission WHERE PrePay.Approved = 0;";
 
             try
             {
@@ -364,9 +363,10 @@ namespace vITs
                     while (reader.Read())
                     {
                         /* TripID, Förskott, Uppdragsbeskrivning */
-                        var v = new { ID = reader[0], Advance = reader[1], Description = reader[2].ToString() };
 
-                        returnValue.Add(v);
+                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+
+                        returnValue.Add(arr);
                     }
                 }
 
@@ -410,51 +410,6 @@ namespace vITs
         }
 
 
-
-        /* Hämta specifik resas data */
-
-        public static Dictionary<string, string> getTripData(int tripId)
-        {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            query = "select * from Trip where ID = " + tripId;
-
-            try
-            {
-                con.Open();
-                cmd = new SqlCommand(query, con);
-
-
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        dictionary.Add("ID", reader[0].ToString());
-                        dictionary.Add("StaffID", reader[1].ToString());
-                        dictionary.Add("Destination", reader[2].ToString());
-                        dictionary.Add("StartDate", reader[3].ToString());
-                        dictionary.Add("EndDate", reader[4].ToString());
-                        dictionary.Add("Transit", reader[5].ToString());
-                        dictionary.Add("Breakfast", reader[6].ToString());
-                        dictionary.Add("Lunch", reader[7].ToString());
-                        dictionary.Add("Dinner", reader[8].ToString());
-                        dictionary.Add("Mission", reader[9].ToString());
-                        dictionary.Add("Break", reader[10].ToString());
-                    }
-                }
-
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message.ToString());
-            }
-            finally
-            {
-                con.Close();
-            }
-
-            return dictionary;
-        }
 
     }
 }
