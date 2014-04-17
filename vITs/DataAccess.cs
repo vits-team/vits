@@ -474,12 +474,12 @@ namespace vITs
 
         /* Uppdatera en användares data */
 
-        public static void updateUser(string userID, string firstname, string lastname, string phone, string email, string address, string password)
+        public static void updateUser(string userID, string firstname, string lastname, string phone, string email, string address, string password, string birthdate)
         {
             try
             {
                 con.Open();
-                query = "update Staff set FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, [Address] = @Address, [Password] = @Password where ID = " + userID;
+                query = "update Staff set FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, [Address] = @Address, [Password] = @Password, Birthdate = @Birthdate where ID = " + userID;
 
                 using (cmd = new SqlCommand(query, con))
                 {
@@ -489,9 +489,69 @@ namespace vITs
                     cmd.Parameters.Add(new SqlParameter("Email", email));
                     cmd.Parameters.Add(new SqlParameter("Address", address));
                     cmd.Parameters.Add(new SqlParameter("Password", password));
+                    cmd.Parameters.Add(new SqlParameter("Birthdate", birthdate));
 
                     cmd.ExecuteNonQuery();
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+        /* Lägg till en ny användare */
+
+        public static void createUser(string firstname, string lastname, int level, string phone, string email, string address, string password, string birthdate)
+        {
+            try
+            {
+                con.Open();
+                query = "insert into Staff (FirstName, LastName, [Level], Phone, Email, [Address], [Password], Birthdate) values (@FirstName, @LastName, @Level, @Phone, @Email, @Address, @Password, @Birthdate)";
+
+                using (cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add(new SqlParameter("FirstName", firstname));
+                    cmd.Parameters.Add(new SqlParameter("LastName", lastname));
+                    cmd.Parameters.Add(new SqlParameter("Level", level));
+                    cmd.Parameters.Add(new SqlParameter("Phone", phone));
+                    cmd.Parameters.Add(new SqlParameter("Email", email));
+                    cmd.Parameters.Add(new SqlParameter("Address", address));
+                    cmd.Parameters.Add(new SqlParameter("Password", password));
+                    cmd.Parameters.Add(new SqlParameter("Birthdate", birthdate));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+        /* Ta bort vald användare */
+
+        public static void deleteUser(string userID)
+        {
+            try
+            {
+                con.Open();
+                query = "delete from Staff where ID = " + userID;
+
+                cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
