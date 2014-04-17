@@ -18,7 +18,9 @@ namespace vITs
         public Login()
         {
             InitializeComponent();
-            id = 999; 
+            id = 999;
+
+            //DataAccess.dbTest();
         }
 
         /* Skicka vidare användarID:t till nästa Form, där den sätter värdet på ett fält, så att databas-id:t är lättåtkomligt ifrån andra klasserna. */
