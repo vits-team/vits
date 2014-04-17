@@ -196,9 +196,34 @@ namespace vITs
 
         private void btn_manage_confirm_Click(object sender, EventArgs e)
         {
-            DataAccess.updateUser(lb_manage_employees.SelectedValue.ToString(), txt_manage_firstName.ToString(), txt_manage_lastName.ToString(), txt_manage_phone.ToString(), txt_manage_email.ToString(), txt_manage_adress.ToString(), txt_manage_password.ToString());
+            DataAccess.updateUser(lb_manage_employees.SelectedValue.ToString(), txt_manage_firstName.ToString(), txt_manage_lastName.ToString(), txt_manage_phone.ToString(), txt_manage_email.ToString(), txt_manage_adress.ToString(), txt_manage_password.ToString(), txt_manage_personalNumber.ToString());
 
             initializeBoxes();
+        }
+
+
+        /* Ta bort den i listan valda användaren. */
+
+        private void btn_manage_remove_Click(object sender, EventArgs e)
+        {
+            DataAccess.deleteUser(lb_manage_employees.SelectedValue.ToString());
+
+            initializeBoxes();
+        }
+
+
+        /* Lägg till en användare med data från fälten. */
+
+        private void btn_add_confirm_Click(object sender, EventArgs e)
+        {
+            string inLvl = cb_add_position.SelectedText;
+            int lvl = 0;
+
+            int.TryParse(inLvl, out lvl);
+
+            DataAccess.createUser(txt_add_firstName.ToString(), txt_add_lastName.ToString(), lvl, txt_add_phone.ToString(), txt_add_email.ToString(), txt_add_adress.ToString(), txt_add_password.ToString(), txt_add_personalNumber.ToString());
+
+            MessageBox.Show("Användare lades till.");
         }
 
 
@@ -206,9 +231,7 @@ namespace vITs
 
         
 
-       
 
-        
 
       
     }

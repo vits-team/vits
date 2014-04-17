@@ -320,6 +320,7 @@
             this.txt_add_password.Name = "txt_add_password";
             this.txt_add_password.Size = new System.Drawing.Size(241, 20);
             this.txt_add_password.TabIndex = 26;
+            this.txt_add_password.Text = "Lösenord";
             // 
             // txt_add_phone
             // 
@@ -327,6 +328,7 @@
             this.txt_add_phone.Name = "txt_add_phone";
             this.txt_add_phone.Size = new System.Drawing.Size(241, 20);
             this.txt_add_phone.TabIndex = 25;
+            this.txt_add_phone.Text = "Telefon";
             // 
             // txt_add_adress
             // 
@@ -334,6 +336,7 @@
             this.txt_add_adress.Name = "txt_add_adress";
             this.txt_add_adress.Size = new System.Drawing.Size(241, 20);
             this.txt_add_adress.TabIndex = 24;
+            this.txt_add_adress.Text = "Adress";
             // 
             // txt_add_lastName
             // 
@@ -341,6 +344,7 @@
             this.txt_add_lastName.Name = "txt_add_lastName";
             this.txt_add_lastName.Size = new System.Drawing.Size(241, 20);
             this.txt_add_lastName.TabIndex = 23;
+            this.txt_add_lastName.Text = "Efternamn";
             // 
             // txt_add_email
             // 
@@ -348,6 +352,7 @@
             this.txt_add_email.Name = "txt_add_email";
             this.txt_add_email.Size = new System.Drawing.Size(241, 20);
             this.txt_add_email.TabIndex = 22;
+            this.txt_add_email.Text = "Email";
             // 
             // txt_add_personalNumber
             // 
@@ -355,6 +360,7 @@
             this.txt_add_personalNumber.Name = "txt_add_personalNumber";
             this.txt_add_personalNumber.Size = new System.Drawing.Size(241, 20);
             this.txt_add_personalNumber.TabIndex = 21;
+            this.txt_add_personalNumber.Text = "Personnummer (ÅÅÅÅ-MM-DD)";
             // 
             // txt_add_firstName
             // 
@@ -362,6 +368,7 @@
             this.txt_add_firstName.Name = "txt_add_firstName";
             this.txt_add_firstName.Size = new System.Drawing.Size(241, 20);
             this.txt_add_firstName.TabIndex = 20;
+            this.txt_add_firstName.Text = "Förnamn";
             // 
             // btn_add_confirm
             // 
@@ -374,14 +381,21 @@
             this.btn_add_confirm.TabIndex = 19;
             this.btn_add_confirm.Text = "Lägg till";
             this.btn_add_confirm.UseVisualStyleBackColor = true;
+            this.btn_add_confirm.Click += new System.EventHandler(this.btn_add_confirm_Click);
             // 
             // cb_add_position
             // 
             this.cb_add_position.FormattingEnabled = true;
+            this.cb_add_position.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
             this.cb_add_position.Location = new System.Drawing.Point(255, 300);
             this.cb_add_position.Name = "cb_add_position";
             this.cb_add_position.Size = new System.Drawing.Size(241, 21);
             this.cb_add_position.TabIndex = 2;
+            this.cb_add_position.Text = "Level";
             // 
             // label5
             // 
@@ -725,6 +739,7 @@
             this.btn_manage_remove.TabIndex = 24;
             this.btn_manage_remove.Text = "Ta bort";
             this.btn_manage_remove.UseVisualStyleBackColor = true;
+            this.btn_manage_remove.Click += new System.EventHandler(this.btn_manage_remove_Click);
             // 
             // btn_manage_confirm
             // 
@@ -968,8 +983,8 @@
             this.Controls.Add(this.nav_addUser);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel_manage);
-            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_addUser);
+            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Admin";
