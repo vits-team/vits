@@ -451,7 +451,7 @@ namespace vITs
                 {
                     while (reader.Read())
                     {
-                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
+                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
 
                         returnValue.Add(arr);
                     }
@@ -474,13 +474,14 @@ namespace vITs
 
         /* Uppdatera en användares data */
 
-        public static void updateUser(string userID, string firstname, string lastname, string phone, string email, string address, string password, string birthdate)
+        public static void updateUser(int userID, string firstname, string lastname, string phone, string email, string address, string password, string birthdate)
         {
+
             try
             {
                 con.Open();
                 query = "update Staff set FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, [Address] = @Address, [Password] = @Password, Birthdate = @Birthdate where ID = " + userID;
-
+                
                 using (cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.Add(new SqlParameter("FirstName", firstname));
@@ -543,7 +544,7 @@ namespace vITs
 
         /* Ta bort vald användare */
 
-        public static void deleteUser(string userID)
+        public static void deleteUser(int userID)
         {
             try
             {
@@ -552,6 +553,27 @@ namespace vITs
 
                 cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+        /* Testa om databaskopplingen fungerar. */
+
+        public static void dbTest()
+        {
+            try
+            {
+                con.Open();
+                MessageBox.Show("Databaskopplingen fungerar.");
             }
             catch (Exception e)
             {
