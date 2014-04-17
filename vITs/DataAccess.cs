@@ -410,6 +410,101 @@ namespace vITs
         }
 
 
+        /* Nekar en oförändrad förskottsbetalning. Tar trip-id som parameter. */
+
+        public static void denyPrePay(string tripId)
+        {
+            try
+            {
+                con.Open();
+
+                query = "update PrePay set Approved = 2 where TripID = " + tripId;
+                cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
+
+
+        /* Returnerar en lista med alla användare. */
+
+        public static List<string[]> requestUserList()
+        {
+            List<string[]> returnValue = new List<string[]>();
+            query = "SELECT * FROM Staff";
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
+
+                        returnValue.Add(arr);
+                    }
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+
+        /* Uppdatera en användares data */
+
+        public static void updateUser(string userID, string firstname, string lastname, string phone, string email, string address, string password)
+        {
+            try
+            {
+                con.Open();
+                query = "update Staff set FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, [Address] = @Address, [Password] = @Password where ID = " + userID;
+
+                using (cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add(new SqlParameter("FirstName", firstname));
+                    cmd.Parameters.Add(new SqlParameter("LastName", lastname));
+                    cmd.Parameters.Add(new SqlParameter("Phone", phone));
+                    cmd.Parameters.Add(new SqlParameter("Email", email));
+                    cmd.Parameters.Add(new SqlParameter("Address", address));
+                    cmd.Parameters.Add(new SqlParameter("Password", password));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
 
     }
 }
