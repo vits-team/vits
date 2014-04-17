@@ -1367,6 +1367,7 @@
             this.btn_toDo_deny.TabIndex = 24;
             this.btn_toDo_deny.Text = "Neka";
             this.btn_toDo_deny.UseVisualStyleBackColor = true;
+            this.btn_toDo_deny.Click += new System.EventHandler(this.btn_toDo_deny_Click);
             // 
             // btn_toDo_approve
             // 

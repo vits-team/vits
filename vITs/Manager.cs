@@ -279,6 +279,18 @@ namespace vITs
         }
 
 
+        /* Neka-knappen. När den trycks så ändras Approved-värdet på vald förskottsbetalning. */
+
+        private void btn_toDo_deny_Click(object sender, EventArgs e)
+        {
+            DataAccess.denyPrePay(unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(0).ToString());
+
+            MessageBox.Show("Förskottsbetalningen nekades.");
+
+            initializeBoxes();
+        }
+
+
         /* Vid klick i listan, ändra värdet i boxarna */
 
         private void lb_toDo_employee_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,9 +302,6 @@ namespace vITs
             // MissionName
             txt_toDo_assignment.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(3).ToString();
         }
-    
-
-        
 
        
 
