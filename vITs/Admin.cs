@@ -13,6 +13,7 @@ namespace vITs
     public partial class Admin : Form
     {
         private int id;
+        private List<string[]> users = DataAccess.requestUserList();
 
         public Admin()
         {
@@ -20,6 +21,8 @@ namespace vITs
             id = Login.passThisUser();
             hideAllPanels();
             panel_home.Visible = true;
+
+            initializeBoxes();
         }
 
         private void hideAllPanels()
@@ -153,6 +156,50 @@ namespace vITs
             }
         }
 
+
+        /* Initialisera alla boxar vid laddning */
+
+        private void initializeBoxes()
+        {
+            List<string[]> users = DataAccess.requestUserList();
+
+
+            /* Fyller listboxen med användare */
+            lb_manage_employees.DataSource = users.Select(x => new { ID = x[0], FirstName = x[1], LastName = x[2], Level = x[3], Phone = x[4], Email = x[5], Address = x[6], Password = x[7] }).ToList();
+            lb_manage_employees.DisplayMember = "FirstName";
+            lb_manage_employees.ValueMember = "ID";
+        }
+
+
+        /* Uppdatera boxarna efter vald användare */
+
+        private void lb_manage_employees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // FirstName
+            txt_manage_firstName.Text = users[lb_manage_employees.SelectedIndex].GetValue(1).ToString();
+            // LastName
+            txt_manage_lastName.Text = users[lb_manage_employees.SelectedIndex].GetValue(2).ToString();
+            // Personnummer
+            txt_manage_personalNumber.Text = "0000-00-00";
+            // Address
+            txt_manage_adress.Text = users[lb_manage_employees.SelectedIndex].GetValue(6).ToString();
+            // Phone
+            txt_manage_phone.Text = users[lb_manage_employees.SelectedIndex].GetValue(4).ToString();
+            // Email
+            txt_manage_email.Text = users[lb_manage_employees.SelectedIndex].GetValue(5).ToString();
+            // Password
+            txt_manage_password.Text = users[lb_manage_employees.SelectedIndex].GetValue(7).ToString();
+        }
+
+
+        /* Uppdatera vald användares användarinfo med data från boxarna */
+
+        private void btn_manage_confirm_Click(object sender, EventArgs e)
+        {
+            DataAccess.updateUser(lb_manage_employees.SelectedValue.ToString(), txt_manage_firstName.ToString(), txt_manage_lastName.ToString(), txt_manage_phone.ToString(), txt_manage_email.ToString(), txt_manage_adress.ToString(), txt_manage_password.ToString());
+
+            initializeBoxes();
+        }
 
 
     

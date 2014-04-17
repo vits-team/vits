@@ -704,6 +704,7 @@
             this.lb_manage_employees.Name = "lb_manage_employees";
             this.lb_manage_employees.Size = new System.Drawing.Size(241, 316);
             this.lb_manage_employees.TabIndex = 26;
+            this.lb_manage_employees.SelectedIndexChanged += new System.EventHandler(this.lb_manage_employees_SelectedIndexChanged);
             // 
             // txt_manage_firstName
             // 
@@ -736,6 +737,7 @@
             this.btn_manage_confirm.TabIndex = 21;
             this.btn_manage_confirm.Text = "Uppdatera";
             this.btn_manage_confirm.UseVisualStyleBackColor = true;
+            this.btn_manage_confirm.Click += new System.EventHandler(this.btn_manage_confirm_Click);
             // 
             // label9
             // 
@@ -965,10 +967,10 @@
             this.Controls.Add(this.nav_manage);
             this.Controls.Add(this.nav_addUser);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_manage);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_assignments);
-            this.Controls.Add(this.panel_manage);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Admin";
             this.Text = "Administrator";
