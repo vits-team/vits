@@ -161,11 +161,11 @@ namespace vITs
 
         private void initializeBoxes()
         {
-            List<string[]> users = DataAccess.requestUserList();
+            users = DataAccess.requestUserList();
 
 
             /* Fyller listboxen med användare */
-            lb_manage_employees.DataSource = users.Select(x => new { ID = x[0], FirstName = x[1], LastName = x[2], Level = x[3], Phone = x[4], Email = x[5], Address = x[6], Password = x[7] }).ToList();
+            lb_manage_employees.DataSource = users.Select(x => new { ID = x[0], FirstName = x[1], LastName = x[2], Level = x[3], Phone = x[4], Email = x[5], Address = x[6], Password = x[7], Birthdate = x[8] }).ToList();
             lb_manage_employees.DisplayMember = "FirstName";
             lb_manage_employees.ValueMember = "ID";
         }
@@ -180,7 +180,7 @@ namespace vITs
             // LastName
             txt_manage_lastName.Text = users[lb_manage_employees.SelectedIndex].GetValue(2).ToString();
             // Personnummer
-            txt_manage_personalNumber.Text = "0000-00-00";
+            txt_manage_personalNumber.Text = users[lb_manage_employees.SelectedIndex].GetValue(8).ToString();
             // Address
             txt_manage_adress.Text = users[lb_manage_employees.SelectedIndex].GetValue(6).ToString();
             // Phone
@@ -196,9 +196,10 @@ namespace vITs
 
         private void btn_manage_confirm_Click(object sender, EventArgs e)
         {
-            DataAccess.updateUser(lb_manage_employees.SelectedValue.ToString(), txt_manage_firstName.ToString(), txt_manage_lastName.ToString(), txt_manage_phone.ToString(), txt_manage_email.ToString(), txt_manage_adress.ToString(), txt_manage_password.ToString(), txt_manage_personalNumber.ToString());
+            DataAccess.updateUser(int.Parse(lb_manage_employees.SelectedValue.ToString()), txt_manage_firstName.Text, txt_manage_lastName.Text, txt_manage_phone.Text, txt_manage_email.Text, txt_manage_adress.Text, txt_manage_password.Text, txt_manage_personalNumber.Text);
 
             initializeBoxes();
+            MessageBox.Show("Användare uppdaterades.");
         }
 
 
@@ -206,9 +207,10 @@ namespace vITs
 
         private void btn_manage_remove_Click(object sender, EventArgs e)
         {
-            DataAccess.deleteUser(lb_manage_employees.SelectedValue.ToString());
+            DataAccess.deleteUser(int.Parse(lb_manage_employees.SelectedValue.ToString()));
 
             initializeBoxes();
+            MessageBox.Show("Användare togs bort.");
         }
 
 
@@ -216,12 +218,7 @@ namespace vITs
 
         private void btn_add_confirm_Click(object sender, EventArgs e)
         {
-            string inLvl = cb_add_position.SelectedText;
-            int lvl = 0;
-
-            int.TryParse(inLvl, out lvl);
-
-            DataAccess.createUser(txt_add_firstName.ToString(), txt_add_lastName.ToString(), lvl, txt_add_phone.ToString(), txt_add_email.ToString(), txt_add_adress.ToString(), txt_add_password.ToString(), txt_add_personalNumber.ToString());
+            DataAccess.createUser(txt_add_firstName.Text, txt_add_lastName.Text, int.Parse(cb_add_position.Text), txt_add_phone.Text, txt_add_email.Text, txt_add_adress.Text, txt_add_password.Text, txt_add_personalNumber.Text);
 
             MessageBox.Show("Användare lades till.");
         }
