@@ -14,6 +14,7 @@ namespace vITs
     {
         private int id;
         private List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
+        private List<int> tripIDGhost = new List<int>(); 
         
         public Manager()
         {
@@ -23,6 +24,8 @@ namespace vITs
             panel_home.Visible = true;
 
             initializeBoxes();
+            fillEmployeeList(); 
+
         }
 
         private void hideAllPanels()
@@ -301,6 +304,90 @@ namespace vITs
             txt_toDo_description.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(2).ToString();
             // MissionName
             txt_toDo_assignment.Text = unapprovedPrePays[lb_toDo_employee.SelectedIndex].GetValue(3).ToString();
+        }
+
+
+
+        private void fillEmployeeList()
+        {
+
+            List<string[]> list = new List<string[]>();
+            list = DataAccess.requestUserList();
+
+            lb_employeeList.DataSource = list.Select(x => new {ID = x[0], FirstName = x[1], LastName = x[2] }).ToList();
+            lb_employeeList.DisplayMember = "FirstName";
+            lb_employeeList.ValueMember = "ID";
+        }
+
+        private void lb_employeeList_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+
+            /* Koden som ligger innanför try fuckar ur vid uppstart, men funkar fint efter det. */
+
+            lb_employee_travelList.Items.Clear();
+            tripIDGhost.Clear();
+
+            try
+            {
+                int id = Convert.ToInt32(lb_employeeList.SelectedValue);
+                string result; 
+
+                List<List<string>> tripList = DataAccess.getEmployeeTrips(id);
+
+                lb_employee_travelList.Items.Add("Ingen resa");
+                /* Lägg till ett nummer som inte används, för att skapa rätt ordning */
+                tripIDGhost.Add(999); 
+                
+
+                foreach (List<string> str in tripList)
+                {
+                    result = str[1] + "\t\t" + str[2];
+                    lb_employee_travelList.Items.Add(result);
+                    tripIDGhost.Add(Convert.ToInt32(str[0]));
+                   
+                }
+
+            }
+            catch (Exception exc)
+            {
+
+            }
+            
+
+
+        }
+
+        private void lb_employee_travelList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lb_employee_travelList.SelectedItem.ToString().Equals("Ingen resa"))
+            {
+                dpicker_employee_date.Enabled = true;
+                cb_employee_timeSpan.Enabled = true;
+
+            }
+            else
+            {
+                dpicker_employee_date.Enabled = false;
+                cb_employee_timeSpan.Enabled = false; 
+            }
+            
+        }
+
+        private void report_employee_pdf_Click(object sender, EventArgs e)
+        {
+            if (lb_employee_travelList.SelectedItem.ToString().Equals("Ingen resa"))
+            {
+                // Ta hänsyn till tidsintervall, och startdatum. Annars ...
+            }
+            else
+            {
+               //Tar hänsyn och skapar en rapport utifrån den valda resan, eftersom ´...
+                
+                int id = tripIDGhost[lb_employee_travelList.SelectedIndex]; 
+
+                 
+
+            }
         }
 
        

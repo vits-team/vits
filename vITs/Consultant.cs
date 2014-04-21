@@ -167,7 +167,9 @@ namespace vITs
 
             }
             */
-            DataAccess.addReceipt(receiptList, 2);
+            
+            /* Efter att en resa skapats, så kommer tillhörande kvitton att registeras till den resan. */
+            DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
         }
 
 

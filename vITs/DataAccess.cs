@@ -18,6 +18,46 @@ namespace vITs
 
 
 
+        public static List<List<string>> getEmployeeTrips(int userID)
+        {
+            
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Trip.ID, Destinations.Country, Trip.StartDate + ' -- ' + Trip.EndDate as Dates from Destinations join Trip on Destinations.ID = Trip.Destination where Destinations.ID in (SELECT Destination from Trip WHERE StaffID = "+ userID +")";
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["ID"].ToString()); 
+                    miniList.Add(rdr["Country"].ToString()); 
+                    miniList.Add(rdr["Dates"].ToString());
+                   
+
+                    returnValue.Add(miniList); 
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
         /* Skicka tillbaka ID:t för senast tillagda resan. */
 
         public static int getIdentityOfLastTrip()
