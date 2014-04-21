@@ -58,6 +58,10 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.panel_assignments = new System.Windows.Forms.Panel();
+            this.dpicker_assignment_manage_endDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignment_manage_startDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignments_endDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignments_startDate = new System.Windows.Forms.DateTimePicker();
             this.txt_assignments_update = new System.Windows.Forms.Button();
             this.txt_assignments_manageDescription = new System.Windows.Forms.TextBox();
             this.txt_assignments_manageCostCenter = new System.Windows.Forms.TextBox();
@@ -108,10 +112,6 @@
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.dpicker_assignments_startDate = new System.Windows.Forms.DateTimePicker();
-            this.dpicker_assignments_endDate = new System.Windows.Forms.DateTimePicker();
-            this.dpicker_assignment_manage_startDate = new System.Windows.Forms.DateTimePicker();
-            this.dpicker_assignment_manage_endDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_addUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_manage)).BeginInit();
@@ -312,63 +312,84 @@
             this.cb_add_manager.Location = new System.Drawing.Point(255, 339);
             this.cb_add_manager.Name = "cb_add_manager";
             this.cb_add_manager.Size = new System.Drawing.Size(241, 21);
-            this.cb_add_manager.TabIndex = 27;
+            this.cb_add_manager.TabIndex = 29;
             // 
             // txt_add_password
             // 
+            this.txt_add_password.AccessibleName = "Lösenord";
             this.txt_add_password.Location = new System.Drawing.Point(535, 300);
             this.txt_add_password.Name = "txt_add_password";
             this.txt_add_password.Size = new System.Drawing.Size(241, 20);
-            this.txt_add_password.TabIndex = 26;
+            this.txt_add_password.TabIndex = 27;
             this.txt_add_password.Text = "Lösenord";
+            this.txt_add_password.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_password.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_phone
             // 
+            this.txt_add_phone.AccessibleName = "Telefon";
             this.txt_add_phone.Location = new System.Drawing.Point(535, 258);
             this.txt_add_phone.Name = "txt_add_phone";
             this.txt_add_phone.Size = new System.Drawing.Size(241, 20);
             this.txt_add_phone.TabIndex = 25;
             this.txt_add_phone.Text = "Telefon";
+            this.txt_add_phone.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_phone.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_adress
             // 
+            this.txt_add_adress.AccessibleName = "Adress";
             this.txt_add_adress.Location = new System.Drawing.Point(535, 216);
             this.txt_add_adress.Name = "txt_add_adress";
             this.txt_add_adress.Size = new System.Drawing.Size(241, 20);
-            this.txt_add_adress.TabIndex = 24;
+            this.txt_add_adress.TabIndex = 23;
             this.txt_add_adress.Text = "Adress";
+            this.txt_add_adress.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_adress.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_lastName
             // 
+            this.txt_add_lastName.AccessibleName = "Efternamn";
             this.txt_add_lastName.Location = new System.Drawing.Point(535, 175);
             this.txt_add_lastName.Name = "txt_add_lastName";
             this.txt_add_lastName.Size = new System.Drawing.Size(241, 20);
-            this.txt_add_lastName.TabIndex = 23;
+            this.txt_add_lastName.TabIndex = 21;
             this.txt_add_lastName.Text = "Efternamn";
+            this.txt_add_lastName.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_lastName.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_email
             // 
+            this.txt_add_email.AccessibleName = "Email";
             this.txt_add_email.Location = new System.Drawing.Point(255, 258);
             this.txt_add_email.Name = "txt_add_email";
             this.txt_add_email.Size = new System.Drawing.Size(241, 20);
-            this.txt_add_email.TabIndex = 22;
+            this.txt_add_email.TabIndex = 24;
             this.txt_add_email.Text = "Email";
+            this.txt_add_email.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_email.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_personalNumber
             // 
+            this.txt_add_personalNumber.AccessibleName = "Personnummer (ÅÅÅÅ-MM-DD)";
             this.txt_add_personalNumber.Location = new System.Drawing.Point(255, 216);
             this.txt_add_personalNumber.Name = "txt_add_personalNumber";
             this.txt_add_personalNumber.Size = new System.Drawing.Size(241, 20);
-            this.txt_add_personalNumber.TabIndex = 21;
+            this.txt_add_personalNumber.TabIndex = 22;
             this.txt_add_personalNumber.Text = "Personnummer (ÅÅÅÅ-MM-DD)";
+            this.txt_add_personalNumber.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_personalNumber.Leave += new System.EventHandler(this.addText);
             // 
             // txt_add_firstName
             // 
+            this.txt_add_firstName.AccessibleName = "Förnamn";
             this.txt_add_firstName.Location = new System.Drawing.Point(256, 175);
             this.txt_add_firstName.Name = "txt_add_firstName";
             this.txt_add_firstName.Size = new System.Drawing.Size(241, 20);
             this.txt_add_firstName.TabIndex = 20;
             this.txt_add_firstName.Text = "Förnamn";
+            this.txt_add_firstName.Enter += new System.EventHandler(this.removeText);
+            this.txt_add_firstName.Leave += new System.EventHandler(this.addText);
             // 
             // btn_add_confirm
             // 
@@ -378,7 +399,7 @@
             this.btn_add_confirm.Location = new System.Drawing.Point(676, 339);
             this.btn_add_confirm.Name = "btn_add_confirm";
             this.btn_add_confirm.Size = new System.Drawing.Size(100, 23);
-            this.btn_add_confirm.TabIndex = 19;
+            this.btn_add_confirm.TabIndex = 28;
             this.btn_add_confirm.Text = "Lägg till";
             this.btn_add_confirm.UseVisualStyleBackColor = true;
             this.btn_add_confirm.Click += new System.EventHandler(this.btn_add_confirm_Click);
@@ -394,7 +415,7 @@
             this.cb_add_position.Location = new System.Drawing.Point(255, 300);
             this.cb_add_position.Name = "cb_add_position";
             this.cb_add_position.Size = new System.Drawing.Size(241, 21);
-            this.cb_add_position.TabIndex = 2;
+            this.cb_add_position.TabIndex = 26;
             this.cb_add_position.Text = "Level";
             // 
             // label5
@@ -450,6 +471,34 @@
             this.panel_assignments.Name = "panel_assignments";
             this.panel_assignments.Size = new System.Drawing.Size(984, 761);
             this.panel_assignments.TabIndex = 17;
+            // 
+            // dpicker_assignment_manage_endDate
+            // 
+            this.dpicker_assignment_manage_endDate.Location = new System.Drawing.Point(676, 528);
+            this.dpicker_assignment_manage_endDate.Name = "dpicker_assignment_manage_endDate";
+            this.dpicker_assignment_manage_endDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignment_manage_endDate.TabIndex = 40;
+            // 
+            // dpicker_assignment_manage_startDate
+            // 
+            this.dpicker_assignment_manage_startDate.Location = new System.Drawing.Point(536, 528);
+            this.dpicker_assignment_manage_startDate.Name = "dpicker_assignment_manage_startDate";
+            this.dpicker_assignment_manage_startDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignment_manage_startDate.TabIndex = 39;
+            // 
+            // dpicker_assignments_endDate
+            // 
+            this.dpicker_assignments_endDate.Location = new System.Drawing.Point(396, 255);
+            this.dpicker_assignments_endDate.Name = "dpicker_assignments_endDate";
+            this.dpicker_assignments_endDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignments_endDate.TabIndex = 38;
+            // 
+            // dpicker_assignments_startDate
+            // 
+            this.dpicker_assignments_startDate.Location = new System.Drawing.Point(255, 255);
+            this.dpicker_assignments_startDate.Name = "dpicker_assignments_startDate";
+            this.dpicker_assignments_startDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignments_startDate.TabIndex = 37;
             // 
             // txt_assignments_update
             // 
@@ -931,34 +980,6 @@
             this.lineShape7.Y1 = 145;
             this.lineShape7.Y2 = 145;
             // 
-            // dpicker_assignments_startDate
-            // 
-            this.dpicker_assignments_startDate.Location = new System.Drawing.Point(255, 255);
-            this.dpicker_assignments_startDate.Name = "dpicker_assignments_startDate";
-            this.dpicker_assignments_startDate.Size = new System.Drawing.Size(100, 20);
-            this.dpicker_assignments_startDate.TabIndex = 37;
-            // 
-            // dpicker_assignments_endDate
-            // 
-            this.dpicker_assignments_endDate.Location = new System.Drawing.Point(396, 255);
-            this.dpicker_assignments_endDate.Name = "dpicker_assignments_endDate";
-            this.dpicker_assignments_endDate.Size = new System.Drawing.Size(100, 20);
-            this.dpicker_assignments_endDate.TabIndex = 38;
-            // 
-            // dpicker_assignment_manage_startDate
-            // 
-            this.dpicker_assignment_manage_startDate.Location = new System.Drawing.Point(536, 528);
-            this.dpicker_assignment_manage_startDate.Name = "dpicker_assignment_manage_startDate";
-            this.dpicker_assignment_manage_startDate.Size = new System.Drawing.Size(100, 20);
-            this.dpicker_assignment_manage_startDate.TabIndex = 39;
-            // 
-            // dpicker_assignment_manage_endDate
-            // 
-            this.dpicker_assignment_manage_endDate.Location = new System.Drawing.Point(676, 528);
-            this.dpicker_assignment_manage_endDate.Name = "dpicker_assignment_manage_endDate";
-            this.dpicker_assignment_manage_endDate.Size = new System.Drawing.Size(100, 20);
-            this.dpicker_assignment_manage_endDate.TabIndex = 40;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -978,10 +999,10 @@
             this.Controls.Add(this.nav_manage);
             this.Controls.Add(this.nav_addUser);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_manage);
-            this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Admin";
             this.Text = "Administrator";

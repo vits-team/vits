@@ -220,9 +220,30 @@ namespace vITs
         {
             DataAccess.createUser(txt_add_firstName.Text, txt_add_lastName.Text, int.Parse(cb_add_position.Text), txt_add_phone.Text, txt_add_email.Text, txt_add_adress.Text, txt_add_password.Text, txt_add_personalNumber.Text);
 
+            initializeBoxes();
             MessageBox.Show("Användare lades till.");
         }
 
+
+        /* Ta bort "placeholder"-texten. */
+
+        private void removeText(object sender, EventArgs e)
+        {
+            TextBox felt = sender as TextBox;
+
+            if (felt.Text == felt.AccessibleName) { felt.Text = ""; }
+        }
+
+
+        /* Lägg till "placeholder"-text. */
+
+        private void addText(object sender, EventArgs e)
+        {
+            TextBox felt = sender as TextBox;
+
+            if (string.IsNullOrEmpty(felt.Text)) { felt.Text = felt.AccessibleName; }
+
+        }
 
     
 
