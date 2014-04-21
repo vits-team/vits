@@ -44,13 +44,10 @@
             this.report_all_excel = new System.Windows.Forms.PictureBox();
             this.report_all_pdf = new System.Windows.Forms.PictureBox();
             this.cb_all_timeSpan = new System.Windows.Forms.ComboBox();
-            this.txt_all_startDate = new System.Windows.Forms.TextBox();
             this.report_employee_pdf = new System.Windows.Forms.PictureBox();
             this.report_employee_excel = new System.Windows.Forms.PictureBox();
             this.report_employee_system = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_employee_timeSpan = new System.Windows.Forms.ComboBox();
-            this.txt_employee_startDate = new System.Windows.Forms.TextBox();
             this.lb_employee_travelList = new System.Windows.Forms.ListBox();
             this.lb_employeeList = new System.Windows.Forms.ListBox();
             this.txt_employee_search = new System.Windows.Forms.TextBox();
@@ -77,6 +74,9 @@
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.dpicker_employee_date = new System.Windows.Forms.DateTimePicker();
+            this.cb_employee_timeSpan = new System.Windows.Forms.ComboBox();
+            this.dpicker_complete_date = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_home)).BeginInit();
@@ -209,17 +209,17 @@
             // 
             // panel_reports
             // 
+            this.panel_reports.Controls.Add(this.dpicker_complete_date);
+            this.panel_reports.Controls.Add(this.dpicker_employee_date);
             this.panel_reports.Controls.Add(this.report_all_system);
             this.panel_reports.Controls.Add(this.report_all_excel);
             this.panel_reports.Controls.Add(this.report_all_pdf);
             this.panel_reports.Controls.Add(this.cb_all_timeSpan);
-            this.panel_reports.Controls.Add(this.txt_all_startDate);
             this.panel_reports.Controls.Add(this.report_employee_pdf);
             this.panel_reports.Controls.Add(this.report_employee_excel);
             this.panel_reports.Controls.Add(this.report_employee_system);
             this.panel_reports.Controls.Add(this.label1);
             this.panel_reports.Controls.Add(this.cb_employee_timeSpan);
-            this.panel_reports.Controls.Add(this.txt_employee_startDate);
             this.panel_reports.Controls.Add(this.lb_employee_travelList);
             this.panel_reports.Controls.Add(this.lb_employeeList);
             this.panel_reports.Controls.Add(this.txt_employee_search);
@@ -275,14 +275,6 @@
             this.cb_all_timeSpan.Size = new System.Drawing.Size(100, 21);
             this.cb_all_timeSpan.TabIndex = 35;
             // 
-            // txt_all_startDate
-            // 
-            this.txt_all_startDate.Location = new System.Drawing.Point(256, 505);
-            this.txt_all_startDate.Name = "txt_all_startDate";
-            this.txt_all_startDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_all_startDate.TabIndex = 34;
-            this.txt_all_startDate.Text = "Välj startdatum";
-            // 
             // report_employee_pdf
             // 
             this.report_employee_pdf.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("report_employee_pdf.BackgroundImage")));
@@ -327,22 +319,6 @@
             this.label1.Size = new System.Drawing.Size(124, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Skapa fullständig rapport";
-            // 
-            // cb_employee_timeSpan
-            // 
-            this.cb_employee_timeSpan.FormattingEnabled = true;
-            this.cb_employee_timeSpan.Location = new System.Drawing.Point(397, 392);
-            this.cb_employee_timeSpan.Name = "cb_employee_timeSpan";
-            this.cb_employee_timeSpan.Size = new System.Drawing.Size(100, 21);
-            this.cb_employee_timeSpan.TabIndex = 29;
-            // 
-            // txt_employee_startDate
-            // 
-            this.txt_employee_startDate.Location = new System.Drawing.Point(256, 392);
-            this.txt_employee_startDate.Name = "txt_employee_startDate";
-            this.txt_employee_startDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_employee_startDate.TabIndex = 28;
-            this.txt_employee_startDate.Text = "Välj startdatum";
             // 
             // lb_employee_travelList
             // 
@@ -587,6 +563,28 @@
             this.lineShape7.Y1 = 145;
             this.lineShape7.Y2 = 145;
             // 
+            // dpicker_employee_date
+            // 
+            this.dpicker_employee_date.Location = new System.Drawing.Point(259, 392);
+            this.dpicker_employee_date.Name = "dpicker_employee_date";
+            this.dpicker_employee_date.Size = new System.Drawing.Size(97, 20);
+            this.dpicker_employee_date.TabIndex = 39;
+            // 
+            // cb_employee_timeSpan
+            // 
+            this.cb_employee_timeSpan.FormattingEnabled = true;
+            this.cb_employee_timeSpan.Location = new System.Drawing.Point(397, 392);
+            this.cb_employee_timeSpan.Name = "cb_employee_timeSpan";
+            this.cb_employee_timeSpan.Size = new System.Drawing.Size(100, 21);
+            this.cb_employee_timeSpan.TabIndex = 29;
+            // 
+            // dpicker_complete_date
+            // 
+            this.dpicker_complete_date.Location = new System.Drawing.Point(259, 504);
+            this.dpicker_complete_date.Name = "dpicker_complete_date";
+            this.dpicker_complete_date.Size = new System.Drawing.Size(97, 20);
+            this.dpicker_complete_date.TabIndex = 40;
+            // 
             // Economy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -602,8 +600,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nav_report);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_reports);
+            this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Economy";
             this.Text = "Ekonomi";
@@ -668,16 +666,16 @@
         private System.Windows.Forms.ListBox lb_employee_travelList;
         private System.Windows.Forms.PictureBox report_employee_system;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cb_employee_timeSpan;
-        private System.Windows.Forms.TextBox txt_employee_startDate;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.PictureBox report_employee_excel;
         private System.Windows.Forms.PictureBox report_employee_pdf;
         private System.Windows.Forms.ComboBox cb_all_timeSpan;
-        private System.Windows.Forms.TextBox txt_all_startDate;
         private System.Windows.Forms.PictureBox report_all_system;
         private System.Windows.Forms.PictureBox report_all_excel;
         private System.Windows.Forms.PictureBox report_all_pdf;
+        private System.Windows.Forms.DateTimePicker dpicker_complete_date;
+        private System.Windows.Forms.DateTimePicker dpicker_employee_date;
+        private System.Windows.Forms.ComboBox cb_employee_timeSpan;
 
     }
 }

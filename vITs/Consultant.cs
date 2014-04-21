@@ -143,7 +143,7 @@ namespace vITs
 
         private void btn_trip_confirm_Click(object sender, EventArgs e)
         {
-
+            /*
             string startdate = txt_trip_startdate.Text;
             string enddate = txt_trip_endDate.Text;
             string vacationdays = txt_trip_vacationDays.Text;
@@ -166,7 +166,7 @@ namespace vITs
             {
 
             }
-            
+            */
             DataAccess.addReceipt(receiptList, 2);
         }
 

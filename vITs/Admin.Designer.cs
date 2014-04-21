@@ -59,14 +59,10 @@
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.panel_assignments = new System.Windows.Forms.Panel();
             this.txt_assignments_update = new System.Windows.Forms.Button();
-            this.txt_assignments_manageEndDate = new System.Windows.Forms.TextBox();
-            this.txt_assignments_manageStartDate = new System.Windows.Forms.TextBox();
             this.txt_assignments_manageDescription = new System.Windows.Forms.TextBox();
             this.txt_assignments_manageCostCenter = new System.Windows.Forms.TextBox();
             this.txt_assignments_manageName = new System.Windows.Forms.TextBox();
             this.txt_assignments_description = new System.Windows.Forms.TextBox();
-            this.txt_assignments_endDate = new System.Windows.Forms.TextBox();
-            this.txt_assignments_startDate = new System.Windows.Forms.TextBox();
             this.txt_assignments_costCenter = new System.Windows.Forms.TextBox();
             this.txt_assignments_name = new System.Windows.Forms.TextBox();
             this.btn_assignments_remove = new System.Windows.Forms.Button();
@@ -112,6 +108,10 @@
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.dpicker_assignments_startDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignments_endDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignment_manage_startDate = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_assignment_manage_endDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_addUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_manage)).BeginInit();
@@ -428,15 +428,15 @@
             // 
             // panel_assignments
             // 
+            this.panel_assignments.Controls.Add(this.dpicker_assignment_manage_endDate);
+            this.panel_assignments.Controls.Add(this.dpicker_assignment_manage_startDate);
+            this.panel_assignments.Controls.Add(this.dpicker_assignments_endDate);
+            this.panel_assignments.Controls.Add(this.dpicker_assignments_startDate);
             this.panel_assignments.Controls.Add(this.txt_assignments_update);
-            this.panel_assignments.Controls.Add(this.txt_assignments_manageEndDate);
-            this.panel_assignments.Controls.Add(this.txt_assignments_manageStartDate);
             this.panel_assignments.Controls.Add(this.txt_assignments_manageDescription);
             this.panel_assignments.Controls.Add(this.txt_assignments_manageCostCenter);
             this.panel_assignments.Controls.Add(this.txt_assignments_manageName);
             this.panel_assignments.Controls.Add(this.txt_assignments_description);
-            this.panel_assignments.Controls.Add(this.txt_assignments_endDate);
-            this.panel_assignments.Controls.Add(this.txt_assignments_startDate);
             this.panel_assignments.Controls.Add(this.txt_assignments_costCenter);
             this.panel_assignments.Controls.Add(this.txt_assignments_name);
             this.panel_assignments.Controls.Add(this.btn_assignments_remove);
@@ -462,22 +462,6 @@
             this.txt_assignments_update.TabIndex = 36;
             this.txt_assignments_update.Text = "Uppdatera";
             this.txt_assignments_update.UseVisualStyleBackColor = true;
-            // 
-            // txt_assignments_manageEndDate
-            // 
-            this.txt_assignments_manageEndDate.Location = new System.Drawing.Point(676, 532);
-            this.txt_assignments_manageEndDate.Name = "txt_assignments_manageEndDate";
-            this.txt_assignments_manageEndDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_assignments_manageEndDate.TabIndex = 35;
-            this.txt_assignments_manageEndDate.Text = "Slutdatum";
-            // 
-            // txt_assignments_manageStartDate
-            // 
-            this.txt_assignments_manageStartDate.Location = new System.Drawing.Point(535, 532);
-            this.txt_assignments_manageStartDate.Name = "txt_assignments_manageStartDate";
-            this.txt_assignments_manageStartDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_assignments_manageStartDate.TabIndex = 34;
-            this.txt_assignments_manageStartDate.Text = "Startdatum";
             // 
             // txt_assignments_manageDescription
             // 
@@ -512,22 +496,6 @@
             this.txt_assignments_description.Size = new System.Drawing.Size(241, 58);
             this.txt_assignments_description.TabIndex = 30;
             this.txt_assignments_description.Text = "Uppdragsbeskrivning";
-            // 
-            // txt_assignments_endDate
-            // 
-            this.txt_assignments_endDate.Location = new System.Drawing.Point(397, 255);
-            this.txt_assignments_endDate.Name = "txt_assignments_endDate";
-            this.txt_assignments_endDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_assignments_endDate.TabIndex = 29;
-            this.txt_assignments_endDate.Text = "Slutdatum";
-            // 
-            // txt_assignments_startDate
-            // 
-            this.txt_assignments_startDate.Location = new System.Drawing.Point(255, 255);
-            this.txt_assignments_startDate.Name = "txt_assignments_startDate";
-            this.txt_assignments_startDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_assignments_startDate.TabIndex = 28;
-            this.txt_assignments_startDate.Text = "Startdatum";
             // 
             // txt_assignments_costCenter
             // 
@@ -963,6 +931,34 @@
             this.lineShape7.Y1 = 145;
             this.lineShape7.Y2 = 145;
             // 
+            // dpicker_assignments_startDate
+            // 
+            this.dpicker_assignments_startDate.Location = new System.Drawing.Point(255, 255);
+            this.dpicker_assignments_startDate.Name = "dpicker_assignments_startDate";
+            this.dpicker_assignments_startDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignments_startDate.TabIndex = 37;
+            // 
+            // dpicker_assignments_endDate
+            // 
+            this.dpicker_assignments_endDate.Location = new System.Drawing.Point(396, 255);
+            this.dpicker_assignments_endDate.Name = "dpicker_assignments_endDate";
+            this.dpicker_assignments_endDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignments_endDate.TabIndex = 38;
+            // 
+            // dpicker_assignment_manage_startDate
+            // 
+            this.dpicker_assignment_manage_startDate.Location = new System.Drawing.Point(536, 528);
+            this.dpicker_assignment_manage_startDate.Name = "dpicker_assignment_manage_startDate";
+            this.dpicker_assignment_manage_startDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignment_manage_startDate.TabIndex = 39;
+            // 
+            // dpicker_assignment_manage_endDate
+            // 
+            this.dpicker_assignment_manage_endDate.Location = new System.Drawing.Point(676, 528);
+            this.dpicker_assignment_manage_endDate.Name = "dpicker_assignment_manage_endDate";
+            this.dpicker_assignment_manage_endDate.Size = new System.Drawing.Size(100, 20);
+            this.dpicker_assignment_manage_endDate.TabIndex = 40;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -982,10 +978,10 @@
             this.Controls.Add(this.nav_manage);
             this.Controls.Add(this.nav_addUser);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_manage);
-            this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_assignments);
+            this.Controls.Add(this.panel_manage);
+            this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Admin";
             this.Text = "Administrator";
@@ -1087,14 +1083,14 @@
         private System.Windows.Forms.TextBox txt_assignments_name;
         private System.Windows.Forms.TextBox txt_assignments_costCenter;
         private System.Windows.Forms.TextBox txt_assignments_description;
-        private System.Windows.Forms.TextBox txt_assignments_endDate;
-        private System.Windows.Forms.TextBox txt_assignments_startDate;
         private System.Windows.Forms.Button txt_assignments_update;
-        private System.Windows.Forms.TextBox txt_assignments_manageEndDate;
-        private System.Windows.Forms.TextBox txt_assignments_manageStartDate;
         private System.Windows.Forms.TextBox txt_assignments_manageDescription;
         private System.Windows.Forms.TextBox txt_assignments_manageCostCenter;
         private System.Windows.Forms.TextBox txt_assignments_manageName;
+        private System.Windows.Forms.DateTimePicker dpicker_assignments_endDate;
+        private System.Windows.Forms.DateTimePicker dpicker_assignments_startDate;
+        private System.Windows.Forms.DateTimePicker dpicker_assignment_manage_endDate;
+        private System.Windows.Forms.DateTimePicker dpicker_assignment_manage_startDate;
 
     }
 }

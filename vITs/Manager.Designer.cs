@@ -59,13 +59,8 @@
             this.txt_trip_reciptDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_trip_vacationDays = new System.Windows.Forms.TextBox();
-            this.check_trip_dinner = new System.Windows.Forms.CheckBox();
-            this.check_trip_lunch = new System.Windows.Forms.CheckBox();
-            this.check_trip_breakfast = new System.Windows.Forms.CheckBox();
             this.cb_trip_travelWay = new System.Windows.Forms.ComboBox();
             this.cb_trip_land = new System.Windows.Forms.ComboBox();
-            this.txt_trip_endDate = new System.Windows.Forms.TextBox();
-            this.txt_trip_startdate = new System.Windows.Forms.TextBox();
             this.cb_trip_assignments = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
@@ -120,13 +115,11 @@
             this.report_all_excel = new System.Windows.Forms.PictureBox();
             this.report_all_pdf = new System.Windows.Forms.PictureBox();
             this.cb_all_timeSpan = new System.Windows.Forms.ComboBox();
-            this.txt_all_startDate = new System.Windows.Forms.TextBox();
             this.report_employee_pdf = new System.Windows.Forms.PictureBox();
             this.report_employee_excel = new System.Windows.Forms.PictureBox();
             this.report_employee_system = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cb_employee_timeSpan = new System.Windows.Forms.ComboBox();
-            this.txt_employee_startDate = new System.Windows.Forms.TextBox();
             this.lb_employee_travelList = new System.Windows.Forms.ListBox();
             this.lb_employeeList = new System.Windows.Forms.ListBox();
             this.txt_employee_search = new System.Windows.Forms.TextBox();
@@ -154,6 +147,16 @@
             this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.dpicker_trip_start = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_trip_end = new System.Windows.Forms.DateTimePicker();
+            this.txt_trip_breakfasts = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txt_trip_lunches = new System.Windows.Forms.TextBox();
+            this.txt_trip_dinners = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.dpicker_employee_date = new System.Windows.Forms.DateTimePicker();
+            this.dpicker_complete_date = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -364,6 +367,14 @@
             // 
             // panel_trip
             // 
+            this.panel_trip.Controls.Add(this.label25);
+            this.panel_trip.Controls.Add(this.label24);
+            this.panel_trip.Controls.Add(this.txt_trip_dinners);
+            this.panel_trip.Controls.Add(this.txt_trip_lunches);
+            this.panel_trip.Controls.Add(this.label23);
+            this.panel_trip.Controls.Add(this.txt_trip_breakfasts);
+            this.panel_trip.Controls.Add(this.dpicker_trip_end);
+            this.panel_trip.Controls.Add(this.dpicker_trip_start);
             this.panel_trip.Controls.Add(this.btn_trip_confirm);
             this.panel_trip.Controls.Add(this.btn_trip_removeReciept);
             this.panel_trip.Controls.Add(this.lb_trip_reciepts);
@@ -377,13 +388,8 @@
             this.panel_trip.Controls.Add(this.txt_trip_reciptDate);
             this.panel_trip.Controls.Add(this.label6);
             this.panel_trip.Controls.Add(this.txt_trip_vacationDays);
-            this.panel_trip.Controls.Add(this.check_trip_dinner);
-            this.panel_trip.Controls.Add(this.check_trip_lunch);
-            this.panel_trip.Controls.Add(this.check_trip_breakfast);
             this.panel_trip.Controls.Add(this.cb_trip_travelWay);
             this.panel_trip.Controls.Add(this.cb_trip_land);
-            this.panel_trip.Controls.Add(this.txt_trip_endDate);
-            this.panel_trip.Controls.Add(this.txt_trip_startdate);
             this.panel_trip.Controls.Add(this.cb_trip_assignments);
             this.panel_trip.Controls.Add(this.label5);
             this.panel_trip.Controls.Add(this.shapeContainer1);
@@ -507,36 +513,6 @@
             this.txt_trip_vacationDays.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_vacationDays.TabIndex = 10;
             // 
-            // check_trip_dinner
-            // 
-            this.check_trip_dinner.AutoSize = true;
-            this.check_trip_dinner.Location = new System.Drawing.Point(436, 280);
-            this.check_trip_dinner.Name = "check_trip_dinner";
-            this.check_trip_dinner.Size = new System.Drawing.Size(61, 17);
-            this.check_trip_dinner.TabIndex = 9;
-            this.check_trip_dinner.Text = "Middag";
-            this.check_trip_dinner.UseVisualStyleBackColor = true;
-            // 
-            // check_trip_lunch
-            // 
-            this.check_trip_lunch.AutoSize = true;
-            this.check_trip_lunch.Location = new System.Drawing.Point(349, 280);
-            this.check_trip_lunch.Name = "check_trip_lunch";
-            this.check_trip_lunch.Size = new System.Drawing.Size(56, 17);
-            this.check_trip_lunch.TabIndex = 8;
-            this.check_trip_lunch.Text = "Lunch";
-            this.check_trip_lunch.UseVisualStyleBackColor = true;
-            // 
-            // check_trip_breakfast
-            // 
-            this.check_trip_breakfast.AutoSize = true;
-            this.check_trip_breakfast.Location = new System.Drawing.Point(256, 280);
-            this.check_trip_breakfast.Name = "check_trip_breakfast";
-            this.check_trip_breakfast.Size = new System.Drawing.Size(61, 17);
-            this.check_trip_breakfast.TabIndex = 7;
-            this.check_trip_breakfast.Text = "Frukost";
-            this.check_trip_breakfast.UseVisualStyleBackColor = true;
-            // 
             // cb_trip_travelWay
             // 
             this.cb_trip_travelWay.FormattingEnabled = true;
@@ -552,20 +528,6 @@
             this.cb_trip_land.Name = "cb_trip_land";
             this.cb_trip_land.Size = new System.Drawing.Size(100, 21);
             this.cb_trip_land.TabIndex = 5;
-            // 
-            // txt_trip_endDate
-            // 
-            this.txt_trip_endDate.Location = new System.Drawing.Point(397, 228);
-            this.txt_trip_endDate.Name = "txt_trip_endDate";
-            this.txt_trip_endDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_trip_endDate.TabIndex = 4;
-            // 
-            // txt_trip_startdate
-            // 
-            this.txt_trip_startdate.Location = new System.Drawing.Point(256, 227);
-            this.txt_trip_startdate.Name = "txt_trip_startdate";
-            this.txt_trip_startdate.Size = new System.Drawing.Size(100, 20);
-            this.txt_trip_startdate.TabIndex = 3;
             // 
             // cb_trip_assignments
             // 
@@ -1050,17 +1012,17 @@
             // 
             // panel_reports
             // 
+            this.panel_reports.Controls.Add(this.dpicker_complete_date);
+            this.panel_reports.Controls.Add(this.dpicker_employee_date);
             this.panel_reports.Controls.Add(this.report_all_system);
             this.panel_reports.Controls.Add(this.report_all_excel);
             this.panel_reports.Controls.Add(this.report_all_pdf);
             this.panel_reports.Controls.Add(this.cb_all_timeSpan);
-            this.panel_reports.Controls.Add(this.txt_all_startDate);
             this.panel_reports.Controls.Add(this.report_employee_pdf);
             this.panel_reports.Controls.Add(this.report_employee_excel);
             this.panel_reports.Controls.Add(this.report_employee_system);
             this.panel_reports.Controls.Add(this.label17);
             this.panel_reports.Controls.Add(this.cb_employee_timeSpan);
-            this.panel_reports.Controls.Add(this.txt_employee_startDate);
             this.panel_reports.Controls.Add(this.lb_employee_travelList);
             this.panel_reports.Controls.Add(this.lb_employeeList);
             this.panel_reports.Controls.Add(this.txt_employee_search);
@@ -1110,14 +1072,6 @@
             this.cb_all_timeSpan.Size = new System.Drawing.Size(100, 21);
             this.cb_all_timeSpan.TabIndex = 35;
             // 
-            // txt_all_startDate
-            // 
-            this.txt_all_startDate.Location = new System.Drawing.Point(256, 505);
-            this.txt_all_startDate.Name = "txt_all_startDate";
-            this.txt_all_startDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_all_startDate.TabIndex = 34;
-            this.txt_all_startDate.Text = "Välj startdatum";
-            // 
             // report_employee_pdf
             // 
             this.report_employee_pdf.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("report_employee_pdf.BackgroundImage")));
@@ -1164,14 +1118,6 @@
             this.cb_employee_timeSpan.Name = "cb_employee_timeSpan";
             this.cb_employee_timeSpan.Size = new System.Drawing.Size(100, 21);
             this.cb_employee_timeSpan.TabIndex = 29;
-            // 
-            // txt_employee_startDate
-            // 
-            this.txt_employee_startDate.Location = new System.Drawing.Point(256, 392);
-            this.txt_employee_startDate.Name = "txt_employee_startDate";
-            this.txt_employee_startDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_employee_startDate.TabIndex = 28;
-            this.txt_employee_startDate.Text = "Välj startdatum";
             // 
             // lb_employee_travelList
             // 
@@ -1455,6 +1401,82 @@
             this.lineShape11.Y1 = 145;
             this.lineShape11.Y2 = 145;
             // 
+            // dpicker_trip_start
+            // 
+            this.dpicker_trip_start.Location = new System.Drawing.Point(255, 226);
+            this.dpicker_trip_start.Name = "dpicker_trip_start";
+            this.dpicker_trip_start.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_trip_start.TabIndex = 23;
+            // 
+            // dpicker_trip_end
+            // 
+            this.dpicker_trip_end.Location = new System.Drawing.Point(397, 226);
+            this.dpicker_trip_end.Name = "dpicker_trip_end";
+            this.dpicker_trip_end.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_trip_end.TabIndex = 24;
+            // 
+            // txt_trip_breakfasts
+            // 
+            this.txt_trip_breakfasts.Location = new System.Drawing.Point(318, 277);
+            this.txt_trip_breakfasts.Name = "txt_trip_breakfasts";
+            this.txt_trip_breakfasts.Size = new System.Drawing.Size(38, 20);
+            this.txt_trip_breakfasts.TabIndex = 25;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(252, 280);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(42, 13);
+            this.label23.TabIndex = 26;
+            this.label23.Text = "Frukost";
+            // 
+            // txt_trip_lunches
+            // 
+            this.txt_trip_lunches.Location = new System.Drawing.Point(460, 277);
+            this.txt_trip_lunches.Name = "txt_trip_lunches";
+            this.txt_trip_lunches.Size = new System.Drawing.Size(38, 20);
+            this.txt_trip_lunches.TabIndex = 27;
+            // 
+            // txt_trip_dinners
+            // 
+            this.txt_trip_dinners.Location = new System.Drawing.Point(597, 277);
+            this.txt_trip_dinners.Name = "txt_trip_dinners";
+            this.txt_trip_dinners.Size = new System.Drawing.Size(38, 20);
+            this.txt_trip_dinners.TabIndex = 28;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(394, 280);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(37, 13);
+            this.label24.TabIndex = 29;
+            this.label24.Text = "Lunch";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(532, 280);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(42, 13);
+            this.label25.TabIndex = 30;
+            this.label25.Text = "Middag";
+            // 
+            // dpicker_employee_date
+            // 
+            this.dpicker_employee_date.Location = new System.Drawing.Point(255, 393);
+            this.dpicker_employee_date.Name = "dpicker_employee_date";
+            this.dpicker_employee_date.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_employee_date.TabIndex = 39;
+            // 
+            // dpicker_complete_date
+            // 
+            this.dpicker_complete_date.Location = new System.Drawing.Point(255, 505);
+            this.dpicker_complete_date.Name = "dpicker_complete_date";
+            this.dpicker_complete_date.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_complete_date.TabIndex = 40;
+            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1480,12 +1502,12 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_home);
-            this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_reports);
-            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_trip);
+            this.Controls.Add(this.panel_toDo);
+            this.Controls.Add(this.panel_assignments);
+            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_prepayment);
             this.Controls.Add(this.panel_myTrips);
             this.Name = "Manager";
@@ -1551,12 +1573,7 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.ComboBox cb_trip_travelWay;
         private System.Windows.Forms.ComboBox cb_trip_land;
-        private System.Windows.Forms.TextBox txt_trip_endDate;
-        private System.Windows.Forms.TextBox txt_trip_startdate;
         private System.Windows.Forms.ComboBox cb_trip_assignments;
-        private System.Windows.Forms.CheckBox check_trip_dinner;
-        private System.Windows.Forms.CheckBox check_trip_lunch;
-        private System.Windows.Forms.CheckBox check_trip_breakfast;
         private System.Windows.Forms.TextBox txt_trip_vacationDays;
         private System.Windows.Forms.Label label6;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
@@ -1617,13 +1634,11 @@
         private System.Windows.Forms.PictureBox report_all_excel;
         private System.Windows.Forms.PictureBox report_all_pdf;
         private System.Windows.Forms.ComboBox cb_all_timeSpan;
-        private System.Windows.Forms.TextBox txt_all_startDate;
         private System.Windows.Forms.PictureBox report_employee_pdf;
         private System.Windows.Forms.PictureBox report_employee_excel;
         private System.Windows.Forms.PictureBox report_employee_system;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cb_employee_timeSpan;
-        private System.Windows.Forms.TextBox txt_employee_startDate;
         private System.Windows.Forms.ListBox lb_employee_travelList;
         private System.Windows.Forms.ListBox lb_employeeList;
         private System.Windows.Forms.TextBox txt_employee_search;
@@ -1651,6 +1666,16 @@
         private System.Windows.Forms.ListBox lb_toDo_viewTrips;
         private System.Windows.Forms.Button btn_toDo_approveTrip;
         private System.Windows.Forms.Button btn_toDo_denyTrip;
+        private System.Windows.Forms.DateTimePicker dpicker_trip_end;
+        private System.Windows.Forms.DateTimePicker dpicker_trip_start;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txt_trip_dinners;
+        private System.Windows.Forms.TextBox txt_trip_lunches;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txt_trip_breakfasts;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DateTimePicker dpicker_complete_date;
+        private System.Windows.Forms.DateTimePicker dpicker_employee_date;
 
     }
 }
