@@ -16,7 +16,179 @@ namespace vITs
         private static SqlCommand cmd;
         private static string query;
 
+        public static List<List<string>> getReportReceiptInformation(int tripID)
+        {
 
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Receipts.Date as Date, Receipts.Type as Type, Receipts.Number as Number, Receipts.Sum as Sum, Receipts.Currency as Curr, Receipts.Exist as Exist from Receipts where TripID =" + tripID; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["Date"].ToString());
+                    miniList.Add(rdr["Type"].ToString());
+                    miniList.Add(rdr["Number"].ToString());
+                    miniList.Add(rdr["Sum"].ToString());
+                    miniList.Add(rdr["Curr"].ToString());
+                    miniList.Add(rdr["Exist"].ToString());
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+        public static List<List<string>> getReportDestinationInformation(int tripID)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Destinations.Country as Land, Destinations.Traktamente as Trakt, Destinations.Breakfast as BFCost, Destinations.Lunch as LunchCost, Destinations.Dinner as DinnerCost, Trip.Transit as Transit, Trip.StartDate as StartDate, Trip.EndDate as EndDate, Trip.AmountOfBreakfasts as BF, Trip.AmountOfLunches as Lunch, Trip.AmountOfDinners as Dinners from Trip join Destinations on Trip.Destination = Destinations.ID where Trip.ID =" + tripID + ""; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["Land"].ToString());
+                    miniList.Add(rdr["Trakt"].ToString());
+                    miniList.Add(rdr["BFCost"].ToString());
+                    miniList.Add(rdr["LunchCost"].ToString());
+                    miniList.Add(rdr["DinnerCost"].ToString());
+                    
+                    miniList.Add(rdr["Transit"].ToString());
+                    miniList.Add(rdr["StartDate"].ToString());
+                    miniList.Add(rdr["EndDate"].ToString());
+                    miniList.Add(rdr["BF"].ToString());
+                    miniList.Add(rdr["Lunch"].ToString());
+                    miniList.Add(rdr["Dinners"].ToString());
+
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message); 
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+        public static List<List<string>> getReportMissionInformation(int tripID)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Missions.MissionName as MName, Missions.StartDate as MStartDate, Missions.EndDate as MEndDate from Missions, Trip where Missions.ID = (Select Trip.Mission where Trip.ID = "+ tripID +")"; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["MName"].ToString());
+                    miniList.Add(rdr["MStartDate"].ToString());
+                    miniList.Add(rdr["MEndDate"].ToString());
+
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+
+        public static List<List<string>> getReportEmployeeInformation(int tripID)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Staff.FirstName as FName, Staff.LastName as LName, Staff.ID as StaffID, Staff.Email as Staffmail, Staff.Phone as Staffphone from Staff where Staff.ID = (Select StaffID from Trip where Trip.ID =" + tripID + ")"; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["Fname"].ToString());
+                    miniList.Add(rdr["LName"].ToString());
+                    miniList.Add(rdr["StaffID"].ToString());
+                    miniList.Add(rdr["Staffmail"].ToString());
+                    miniList.Add(rdr["Staffphone"].ToString());
+
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
 
         public static List<List<string>> getEmployeeTrips(int userID)
         {

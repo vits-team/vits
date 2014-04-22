@@ -167,9 +167,11 @@ namespace vITs
 
             }
             */
+
+            MessageBox.Show(dpicker_start.Value.Date.ToString("yyyy/MM/dd")); 
             
             /* Efter att en resa skapats, så kommer tillhörande kvitton att registeras till den resan. */
-            DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
+            //DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
         }
 
 

@@ -47,6 +47,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>iTextSharp\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -121,6 +125,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="iTextSharp\itextsharp-dll-core.zip" />
+    <None Include="iTextSharp\itextsharp-dll-pdfa.zip" />
+    <None Include="iTextSharp\itextsharp-dll-xtra.zip" />
+    <None Include="iTextSharp\itextsharp-src-core.zip" />
+    <None Include="iTextSharp\itextsharp-src-pdfa.zip" />
+    <None Include="iTextSharp\itextsharp-src-xtra.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,7 +172,11 @@
     <Content Include="Images\icon-travel-grey.png" />
     <Content Include="Images\logotype-small.png" />
     <Content Include="Images\logotype.png" />
+    <Content Include="Images\vitsHead.jpg" />
+    <Content Include="Images\vitsLine.jpg" />
     <Content Include="Images\whiteBG.png" />
+    <Content Include="iTextSharp\itextsharp.dll" />
+    <Content Include="iTextSharp\iTextSharp.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO; 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text; 
+using iTextSharp.text.pdf;
+
+
 
 namespace vITs
 {
@@ -33,29 +38,29 @@ namespace vITs
             panel_home.Visible = false;
             panel_trip.Visible = false;
             string path = @"..\..\Images\icon-travel-grey.png";
-            nav_travel.BackgroundImage = Image.FromFile(path);
+            nav_travel.BackgroundImage = System.Drawing.Image.FromFile(path);
             
             panel_myTrips.Visible = false;
             string path1 = @"..\..\Images\icon-mytravels-grey.png";
-            nav_mytravels.BackgroundImage = Image.FromFile(path1);
+            nav_mytravels.BackgroundImage = System.Drawing.Image.FromFile(path1);
            
             panel_prepayment.Visible = false;
             string path3 = @"..\..\Images\icon-prepayment-grey.png";
-            nav_prepayment.BackgroundImage = Image.FromFile(path3);
+            nav_prepayment.BackgroundImage = System.Drawing.Image.FromFile(path3);
             
             panel_assignments.Visible = false;
             string path2 = @"..\..\Images\icon-assignments-grey.png";
-            nav_assignments.BackgroundImage = Image.FromFile(path2);
+            nav_assignments.BackgroundImage = System.Drawing.Image.FromFile(path2);
             
             panel_mySettings.Visible = false;
 
             panel_toDo.Visible = false;
             string path4 = @"..\..\Images\icon-manager-manage.png";
-            nav_toDo.BackgroundImage = Image.FromFile(path4);
+            nav_toDo.BackgroundImage = System.Drawing.Image.FromFile(path4);
             
             panel_reports.Visible = false;
             string path5 = @"..\..\Images\icon-reports.png";
-            nav_report.BackgroundImage = Image.FromFile(path5);
+            nav_report.BackgroundImage = System.Drawing.Image.FromFile(path5);
 
         }
 
@@ -64,7 +69,7 @@ namespace vITs
             hideAllPanels(); 
             panel_trip.Visible = true;
             string path = @"..\..\Images\icon-travel-cyan.png";
-            nav_travel.BackgroundImage = Image.FromFile(path);
+            nav_travel.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_mytravels_Click(object sender, EventArgs e)
@@ -72,7 +77,7 @@ namespace vITs
             hideAllPanels(); 
             panel_myTrips.Visible = true;
             string path = @"..\..\Images\icon-mytravels-cyan.png";
-            nav_mytravels.BackgroundImage = Image.FromFile(path);
+            nav_mytravels.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_home_Click(object sender, EventArgs e)
@@ -86,7 +91,7 @@ namespace vITs
             hideAllPanels();
             panel_assignments.Visible = true;
             string path = @"..\..\Images\icon-assignments-cyan.png";
-            nav_assignments.BackgroundImage = Image.FromFile(path);
+            nav_assignments.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_prepayment_Click(object sender, EventArgs e)
@@ -94,7 +99,7 @@ namespace vITs
             hideAllPanels();
             panel_prepayment.Visible = true;
             string path = @"..\..\Images\icon-prepayment-cyan.png";
-            nav_prepayment.BackgroundImage = Image.FromFile(path);
+            nav_prepayment.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_mySettings_Click(object sender, EventArgs e)
@@ -123,7 +128,7 @@ namespace vITs
             hideAllPanels();
             panel_toDo.Visible = true;
             string path = @"..\..\Images\icon-manager-manage-cyan.png";
-            nav_toDo.BackgroundImage = Image.FromFile(path);
+            nav_toDo.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_report_Click(object sender, EventArgs e)
@@ -131,13 +136,13 @@ namespace vITs
             hideAllPanels();
             panel_reports.Visible = true;
             string path = @"..\..\Images\icon-reports-cyan.png";
-            nav_report.BackgroundImage = Image.FromFile(path);
+            nav_report.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_travel_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-travel-cyan.png";
-            nav_travel.BackgroundImage = Image.FromFile(path);
+            nav_travel.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_travel_MouseLeave(object sender, EventArgs e)
@@ -145,19 +150,19 @@ namespace vITs
             if (panel_trip.Visible == true)
             {
                 string path = @"..\..\Images\icon-travel-cyan.png";
-                nav_travel.BackgroundImage = Image.FromFile(path);
+                nav_travel.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-travel-grey.png";
-                nav_travel.BackgroundImage = Image.FromFile(path);
+                nav_travel.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
         private void nav_mytravels_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-mytravels-cyan.png";
-            nav_mytravels.BackgroundImage = Image.FromFile(path);
+            nav_mytravels.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_mytravels_MouseLeave(object sender, EventArgs e)
@@ -165,19 +170,19 @@ namespace vITs
             if (panel_myTrips.Visible == true)
             {
                 string path = @"..\..\Images\icon-mytravels-cyan.png";
-                nav_mytravels.BackgroundImage = Image.FromFile(path);
+                nav_mytravels.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-mytravels-grey.png";
-                nav_mytravels.BackgroundImage = Image.FromFile(path);
+                nav_mytravels.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
         private void nav_assignments_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-assignments-cyan.png";
-            nav_assignments.BackgroundImage = Image.FromFile(path);
+            nav_assignments.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_assignments_MouseLeave(object sender, EventArgs e)
@@ -185,19 +190,19 @@ namespace vITs
             if (panel_assignments.Visible == true)
             {
                 string path = @"..\..\Images\icon-assignments-cyan.png";
-                nav_assignments.BackgroundImage = Image.FromFile(path);
+                nav_assignments.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-assignments-grey.png";
-                nav_assignments.BackgroundImage = Image.FromFile(path);
+                nav_assignments.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
         private void nav_prepayment_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-prepayment-cyan.png";
-            nav_prepayment.BackgroundImage = Image.FromFile(path);
+            nav_prepayment.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_prepayment_MouseLeave(object sender, EventArgs e)
@@ -205,19 +210,19 @@ namespace vITs
             if (panel_prepayment.Visible == true)
             {
                 string path = @"..\..\Images\icon-prepayment-cyan.png";
-                nav_prepayment.BackgroundImage = Image.FromFile(path);
+                nav_prepayment.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-prepayment-grey.png";
-                nav_prepayment.BackgroundImage = Image.FromFile(path);
+                nav_prepayment.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
         private void nav_toDo_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-manager-manage-cyan.png";
-            nav_toDo.BackgroundImage = Image.FromFile(path);
+            nav_toDo.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_toDo_MouseLeave(object sender, EventArgs e)
@@ -225,19 +230,19 @@ namespace vITs
             if (panel_toDo.Visible == true)
             {
                 string path = @"..\..\Images\icon-manager-manage-cyan.png";
-                nav_toDo.BackgroundImage = Image.FromFile(path);
+                nav_toDo.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-manager-manage.png";
-                nav_toDo.BackgroundImage = Image.FromFile(path);
+                nav_toDo.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
         private void nav_report_MouseEnter(object sender, EventArgs e)
         {
             string path = @"..\..\Images\icon-reports-cyan.png";
-            nav_report.BackgroundImage = Image.FromFile(path);
+            nav_report.BackgroundImage = System.Drawing.Image.FromFile(path);
         }
 
         private void nav_report_MouseLeave(object sender, EventArgs e)
@@ -245,12 +250,12 @@ namespace vITs
             if (panel_reports.Visible == true)
             {
                 string path = @"..\..\Images\icon-reports-cyan.png";
-                nav_report.BackgroundImage = Image.FromFile(path);
+                nav_report.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
             else
             {
                 string path = @"..\..\Images\icon-reports.png";
-                nav_report.BackgroundImage = Image.FromFile(path);
+                nav_report.BackgroundImage = System.Drawing.Image.FromFile(path);
             }
         }
 
@@ -335,6 +340,7 @@ namespace vITs
                 List<List<string>> tripList = DataAccess.getEmployeeTrips(id);
 
                 lb_employee_travelList.Items.Add("Ingen resa");
+
                 /* Lägg till ett nummer som inte används, för att skapa rätt ordning */
                 tripIDGhost.Add(999); 
                 
@@ -381,12 +387,181 @@ namespace vITs
             }
             else
             {
-               //Tar hänsyn och skapar en rapport utifrån den valda resan, eftersom ´...
-                
-                int id = tripIDGhost[lb_employee_travelList.SelectedIndex]; 
+               /* Definiera ID:t på den resan som man vill skapa rapport för */
+                int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
+                 List<List<string>> result = new List<List<string>>(); 
 
+               /* Variabellista som används i rapporten, innehåller: 
+                * ------------------------------------------------
+                * consultName - Förnamn och efternamn på konsulten.
+                * employeeNumber - anställningsnummer, mao databas-id:t.
+                * email - konsultens email. 
+                * phone - konsultens telefonnummer. 
+                * 
+                * 
+                * 
+                */
+
+                string consultName = null;
+                string employeeNumber = null;
+                string email = null;
+                string phone = null;
+
+                string missionName = null;
+                string missionStartDate = null;
+                string missionEndDate = null;
+
+                string land = null;
+                int traktamente = 0;
+                string transit = null;
+
+                int breakfastCost = 0;
+                int lunchCost = 0;
+                int dinnerCost = 0; 
+
+                string tripStartDate = null;
+                string tripEndDate = null;
+                
+                int breakfasts = 0;
+                int lunches = 0;
+                int dinners = 0;
+
+                int totalsum = 0;
+                int totalrecieptSum = 0;
+
+
+
+
+                /* Slut på variabler */
+
+                result = DataAccess.getReportEmployeeInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    consultName = str[0] + " " + str[1];
+                    employeeNumber = str[2]; 
+                    email = str[3];
+                    phone = str[4]; 
+                }
+
+                result = DataAccess.getReportMissionInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    missionName = str[0];
+                    missionStartDate = str[1];
+                    missionEndDate = str[2];
+
+                }
+
+                result = DataAccess.getReportDestinationInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    land = str[0];
+                    traktamente = Convert.ToInt32(str[1]);
+                    breakfastCost = Convert.ToInt32(str[2]);
+                    lunchCost = Convert.ToInt32(str[3]);
+                    dinnerCost = Convert.ToInt32(str[4]); 
+
+                    transit = str[5];
+                    tripStartDate = str[6];
+                    tripEndDate = str[7];
+
+                    breakfasts = Convert.ToInt32(str[8]);
+                    lunches = Convert.ToInt32(str[9]);
+                    dinners = Convert.ToInt32(str[10]); 
+
+                }
+
+
+               
                  
 
+                /* PDF-CODE */
+
+                Document myDocument = new Document(PageSize.A4);
+                PdfWriter.GetInstance(myDocument, new FileStream(@"..\..\iTextSharp\EmployeeReport.pdf", FileMode.Create));
+
+                myDocument.Open();
+
+                iTextSharp.text.Image header = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsHead.jpg");
+                header.ScaleToFit(myDocument.PageSize.Width, 110f);
+                myDocument.Add(header);
+
+
+                Paragraph consName = new Paragraph("Konsultnamn: " + consultName);
+                Paragraph consNumber = new Paragraph("Anställningsnummer: " + employeeNumber);
+                Paragraph consEmail = new Paragraph("Emailadress: " + email);
+                Paragraph consPhone = new Paragraph("Telefonnummer: " + phone);
+
+                myDocument.Add(consName);
+                myDocument.Add(consNumber);
+                myDocument.Add(consEmail);
+                myDocument.Add(consPhone);
+
+
+                iTextSharp.text.Image line = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsLine.jpg");
+                line.ScaleToFit(myDocument.PageSize.Width, 25f);
+                myDocument.Add(line);
+
+                /* destinationkoden */
+
+                Paragraph mission = new Paragraph("Uppdrag: " + missionName);
+                Paragraph missiondate = new Paragraph("Datum: " + missionStartDate + " -- " + missionEndDate);
+                myDocument.Add(mission);
+                myDocument.Add(missiondate);
+
+                myDocument.Add(line);
+                string tormat = "{0,-90} {1,-30} {2, -30} ";
+                string sormat = "{0,-81} {1,-30} {2, -30} ";
+                
+                Paragraph country = new Paragraph(land);
+                Paragraph destination = new Paragraph(string.Format(tormat, "Datum", "Antal", "Pris"));
+                Paragraph misc = new Paragraph(string.Format(sormat, tripStartDate + " -- " + tripEndDate, "6", traktamente));
+                Paragraph BF = new Paragraph(string.Format(sormat, "Frukostar:", breakfasts, breakfastCost));
+                Paragraph lurre = new Paragraph(string.Format(sormat, "Luncher:", lunches, lunchCost));
+                Paragraph middag = new Paragraph(string.Format(sormat, "Middagar:", dinners, dinnerCost));
+
+                myDocument.Add(country);
+                myDocument.Add(destination);
+                myDocument.Add(misc);
+                myDocument.Add(BF);
+                myDocument.Add(lurre);
+                myDocument.Add(middag);
+
+                myDocument.Add(line);
+                /* För att loopa ut alla kvitton som tillhör specifik resa. */
+                result = DataAccess.getReportReceiptInformation(id);
+                Paragraph reciept;
+                string exists; 
+
+                string format = "{0,-20} {1,-20} {2, -20} {3, -20} {4, -20}";
+                
+                foreach(List<string> str in result)
+                {
+                    if (Convert.ToInt32(str[5]) == 0)
+                    {
+                        exists = "Kvitto finns";
+                    }
+                    else
+                    {
+                        exists = "Kvitto finns inte";
+
+                    }
+                    reciept = new Paragraph(string.Format(format, str[0].ToString(), str[1].ToString(), str[2].ToString(), str[3].ToString() + " " + str[4].ToString(), exists));
+                    myDocument.Add(reciept);
+                     
+                }
+                
+
+               
+               
+
+
+                /* KÖR PDF */
+                myDocument.Close();
+                System.Diagnostics.Process.Start(@"..\..\iTextSharp\EmployeeReport.pdf");
             }
         }
 
