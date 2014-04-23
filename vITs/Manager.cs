@@ -17,6 +17,7 @@ namespace vITs
 {
     public partial class Manager : Form
     {
+        // tjenare babben
         private int id;
         private List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
         private List<int> tripIDGhost = new List<int>(); 

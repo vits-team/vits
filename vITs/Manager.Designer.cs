@@ -362,7 +362,7 @@
             this.panel_home.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_home.Location = new System.Drawing.Point(0, 0);
             this.panel_home.Name = "panel_home";
-            this.panel_home.Size = new System.Drawing.Size(984, 761);
+            this.panel_home.Size = new System.Drawing.Size(984, 749);
             this.panel_home.TabIndex = 15;
             // 
             // panel_trip
@@ -396,7 +396,7 @@
             this.panel_trip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_trip.Location = new System.Drawing.Point(0, 0);
             this.panel_trip.Name = "panel_trip";
-            this.panel_trip.Size = new System.Drawing.Size(984, 761);
+            this.panel_trip.Size = new System.Drawing.Size(984, 749);
             this.panel_trip.TabIndex = 16;
             // 
             // label25
@@ -616,7 +616,7 @@
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer1.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -643,7 +643,7 @@
             this.panel_myTrips.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_myTrips.Location = new System.Drawing.Point(0, 0);
             this.panel_myTrips.Name = "panel_myTrips";
-            this.panel_myTrips.Size = new System.Drawing.Size(984, 761);
+            this.panel_myTrips.Size = new System.Drawing.Size(984, 749);
             this.panel_myTrips.TabIndex = 17;
             // 
             // panel_assignments
@@ -660,7 +660,7 @@
             this.panel_assignments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_assignments.Location = new System.Drawing.Point(0, 0);
             this.panel_assignments.Name = "panel_assignments";
-            this.panel_assignments.Size = new System.Drawing.Size(984, 761);
+            this.panel_assignments.Size = new System.Drawing.Size(984, 749);
             this.panel_assignments.TabIndex = 17;
             // 
             // btn_assignments_remove
@@ -748,7 +748,7 @@
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape3,
             this.lineShape4});
-            this.shapeContainer2.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer2.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer2.TabIndex = 2;
             this.shapeContainer2.TabStop = false;
             // 
@@ -784,7 +784,7 @@
             this.panel_prepayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_prepayment.Location = new System.Drawing.Point(0, 0);
             this.panel_prepayment.Name = "panel_prepayment";
-            this.panel_prepayment.Size = new System.Drawing.Size(984, 761);
+            this.panel_prepayment.Size = new System.Drawing.Size(984, 749);
             this.panel_prepayment.TabIndex = 17;
             // 
             // button2
@@ -870,7 +870,7 @@
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape6,
             this.lineShape5});
-            this.shapeContainer3.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer3.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer3.TabIndex = 1;
             this.shapeContainer3.TabStop = false;
             // 
@@ -913,7 +913,7 @@
             this.panel_mySettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_mySettings.Location = new System.Drawing.Point(0, 0);
             this.panel_mySettings.Name = "panel_mySettings";
-            this.panel_mySettings.Size = new System.Drawing.Size(984, 761);
+            this.panel_mySettings.Size = new System.Drawing.Size(984, 749);
             this.panel_mySettings.TabIndex = 0;
             // 
             // label16
@@ -1050,7 +1050,7 @@
             this.shapeContainer4.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape8,
             this.lineShape7});
-            this.shapeContainer4.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer4.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer4.TabIndex = 0;
             this.shapeContainer4.TabStop = false;
             // 
@@ -1093,7 +1093,7 @@
             this.panel_reports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_reports.Location = new System.Drawing.Point(0, 0);
             this.panel_reports.Name = "panel_reports";
-            this.panel_reports.Size = new System.Drawing.Size(984, 761);
+            this.panel_reports.Size = new System.Drawing.Size(984, 749);
             this.panel_reports.TabIndex = 18;
             // 
             // dpicker_complete_date
@@ -1239,7 +1239,7 @@
             this.shapeContainer5.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape9,
             this.lineShape10});
-            this.shapeContainer5.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer5.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer5.TabIndex = 1;
             this.shapeContainer5.TabStop = false;
             // 
@@ -1325,7 +1325,7 @@
             this.panel_toDo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_toDo.Location = new System.Drawing.Point(0, 0);
             this.panel_toDo.Name = "panel_toDo";
-            this.panel_toDo.Size = new System.Drawing.Size(984, 761);
+            this.panel_toDo.Size = new System.Drawing.Size(984, 749);
             this.panel_toDo.TabIndex = 1;
             // 
             // btn_toDo_approveTrip
@@ -1458,7 +1458,7 @@
             this.shapeContainer6.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape12,
             this.lineShape11});
-            this.shapeContainer6.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer6.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer6.TabIndex = 2;
             this.shapeContainer6.TabStop = false;
             // 
@@ -1486,7 +1486,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.nav_logOut);
             this.Controls.Add(this.nav_mySettings);
             this.Controls.Add(this.lbl_myName);
