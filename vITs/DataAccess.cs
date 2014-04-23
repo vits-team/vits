@@ -15,8 +15,7 @@ namespace vITs
         private static SqlConnection con = new SqlConnection(connString); 
         private static SqlCommand cmd;
         private static string query;
-
-        public static List<List<string>> getdestinationbydate(int userid, int timespan)
+        public static List<List<string>> gettimespanusermissions(int userid)
         {
 
             List<List<string>> returnValue = new List<List<string>>();
@@ -24,7 +23,8 @@ namespace vITs
             try
             {
                 con.Open();
-                query = "Select Receipts.Date as Date, Receipts.Type as Type, Receipts.Number as Number, Receipts.Sum as Sum, Receipts.Currency as Curr, Receipts.Exist as Exist from Receipts where TripID =" + tripID;
+                query = "Select Missions.MissionName as MName, Missions.StartDate as MStartDate, Missions.EndDate as MEndDate from Missions, Trip where Trip.Mission=Missions.id and trip.StaffID = '"+userid+"'";
+
                 cmd = new SqlCommand(query, con);
 
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -33,12 +33,53 @@ namespace vITs
                 {
                     List<string> miniList = new List<string>();
 
-                    miniList.Add(rdr["Date"].ToString());
-                    miniList.Add(rdr["Type"].ToString());
-                    miniList.Add(rdr["Number"].ToString());
-                    miniList.Add(rdr["Sum"].ToString());
-                    miniList.Add(rdr["Curr"].ToString());
-                    miniList.Add(rdr["Exist"].ToString());
+                    miniList.Add(rdr["MName"].ToString());
+                    miniList.Add(rdr["MStartDate"].ToString());
+                    miniList.Add(rdr["MEndDate"].ToString());
+               
+
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+        public static List<List<string>> gettimespanuserinformation(int userid)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Staff.FirstName as FName, Staff.LastName as LName, Staff.ID as StaffID, Staff.Email as Staffmail, Staff.Phone as Staffphone from Staff where Staff.ID = '"+ userid+"'";
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["FName"].ToString());
+                    miniList.Add(rdr["LName"].ToString());
+                    miniList.Add(rdr["StaffID"].ToString());
+                    miniList.Add(rdr["Staffmail"].ToString());
+                    miniList.Add(rdr["Staffphone"].ToString());
+                  
 
                     returnValue.Add(miniList);
                 }
