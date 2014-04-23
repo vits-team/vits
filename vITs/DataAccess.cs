@@ -666,6 +666,52 @@ namespace vITs
             }
         }
   
+        /*Hämtar uppdragsinformation*/
+
+        public static List<string[]> getMissionDetails()
+        {
+            List<string[]> returnValue = new List<string[]>();
+            query = "Select * From Missions";
+           
+            try
+            {
+                con.Open();
+                
+
+                cmd = new SqlCommand(query, con);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString()};
+
+                        returnValue.Add(arr);
+                    }
+                }
+               
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
+        /*Redigerar uppdrag*/
+
+        public static void updateMission()
+        {
+
+        }
+
 
         /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */
 

@@ -581,6 +581,7 @@
             this.lb_assignments_assignmentList.Name = "lb_assignments_assignmentList";
             this.lb_assignments_assignmentList.Size = new System.Drawing.Size(241, 212);
             this.lb_assignments_assignmentList.TabIndex = 22;
+            this.lb_assignments_assignmentList.SelectedIndexChanged += new System.EventHandler(this.lb_assignments_assignmentList_SelectedIndexChanged);
             // 
             // label8
             // 

@@ -14,6 +14,7 @@ namespace vITs
     {
         private int id;
         private List<string[]> users = DataAccess.requestUserList();
+        private List<string[]> missions = DataAccess.getMissionDetails();
 
         public Admin()
         {
@@ -23,6 +24,7 @@ namespace vITs
             panel_home.Visible = true;
 
             initializeBoxes();
+            showMissions();
         }
 
         private void hideAllPanels()
@@ -245,6 +247,8 @@ namespace vITs
 
         }
 
+        /*Lägg till ett uppdrag*/
+
         private void btn_assignments_confirm_Click(object sender, EventArgs e)
         {
             string missionName = txt_assignments_name.Text;
@@ -258,11 +262,28 @@ namespace vITs
         }
 
     
+        /*Fyll uppdragslista*/
+        private void showMissions()
+        {
+            missions = DataAccess.getMissionDetails();
 
+
+            lb_assignments_assignmentList.DataSource = missions.Select(x => new { ID = x[0], MissionName = x[1], Description = x[2], StartDate = x[3], EndDate = x[4], costcenter = x[5]}).ToList();
+            lb_assignments_assignmentList.DisplayMember = "MissionName";
+            lb_assignments_assignmentList.ValueMember = "ID";
         
+           
+        }
+        /*Tilldela fälten aktuellt värde för valt uppdrag*/
+
+        private void lb_assignments_assignmentList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txt_assignments_manageName.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(1).ToString();
+            txt_assignments_manageDescription.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(2).ToString();
+            txt_assignments_manageCostCenter.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(5).ToString();
+        }
 
 
-
-      
+  
     }
 }
