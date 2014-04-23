@@ -31,7 +31,7 @@ namespace vITs
 
         private void btn_trip_addReciept_Click(object sender, EventArgs e)
         {
-            string date = txt_trip_reciptDate.Text;
+            string date = dpicker_trip_receiptdate.Value.Date.ToString();
             string type = txt_trip_recieptType.Text;
             string number = txt_trip_recieptNumber.Text;
             int sum = Convert.ToInt32(txt_trip_recieptAmount.Text);

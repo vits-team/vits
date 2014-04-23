@@ -64,7 +64,6 @@
             this.txt_trip_recieptAmount = new System.Windows.Forms.TextBox();
             this.txt_trip_recieptNumber = new System.Windows.Forms.TextBox();
             this.txt_trip_recieptType = new System.Windows.Forms.TextBox();
-            this.txt_trip_reciptDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_trip_vacationDays = new System.Windows.Forms.TextBox();
             this.cb_trip_travelWay = new System.Windows.Forms.ComboBox();
@@ -118,6 +117,7 @@
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.dpicker_trip_receiptdate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -313,11 +313,12 @@
             this.panel_home.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_home.Location = new System.Drawing.Point(0, 0);
             this.panel_home.Name = "panel_home";
-            this.panel_home.Size = new System.Drawing.Size(984, 761);
+            this.panel_home.Size = new System.Drawing.Size(984, 749);
             this.panel_home.TabIndex = 15;
             // 
             // panel_trip
             // 
+            this.panel_trip.Controls.Add(this.dpicker_trip_receiptdate);
             this.panel_trip.Controls.Add(this.dpicker_end);
             this.panel_trip.Controls.Add(this.dpicker_start);
             this.panel_trip.Controls.Add(this.label19);
@@ -336,7 +337,6 @@
             this.panel_trip.Controls.Add(this.txt_trip_recieptAmount);
             this.panel_trip.Controls.Add(this.txt_trip_recieptNumber);
             this.panel_trip.Controls.Add(this.txt_trip_recieptType);
-            this.panel_trip.Controls.Add(this.txt_trip_reciptDate);
             this.panel_trip.Controls.Add(this.label6);
             this.panel_trip.Controls.Add(this.txt_trip_vacationDays);
             this.panel_trip.Controls.Add(this.cb_trip_travelWay);
@@ -347,7 +347,7 @@
             this.panel_trip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_trip.Location = new System.Drawing.Point(0, 0);
             this.panel_trip.Name = "panel_trip";
-            this.panel_trip.Size = new System.Drawing.Size(984, 761);
+            this.panel_trip.Size = new System.Drawing.Size(984, 749);
             this.panel_trip.TabIndex = 16;
             // 
             // dpicker_end
@@ -515,13 +515,6 @@
             this.txt_trip_recieptType.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptType.TabIndex = 13;
             // 
-            // txt_trip_reciptDate
-            // 
-            this.txt_trip_reciptDate.Location = new System.Drawing.Point(256, 378);
-            this.txt_trip_reciptDate.Name = "txt_trip_reciptDate";
-            this.txt_trip_reciptDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_trip_reciptDate.TabIndex = 12;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -584,7 +577,7 @@
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer1.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -611,7 +604,7 @@
             this.panel_myTrips.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_myTrips.Location = new System.Drawing.Point(0, 0);
             this.panel_myTrips.Name = "panel_myTrips";
-            this.panel_myTrips.Size = new System.Drawing.Size(984, 761);
+            this.panel_myTrips.Size = new System.Drawing.Size(984, 749);
             this.panel_myTrips.TabIndex = 17;
             // 
             // panel_assignments
@@ -628,7 +621,7 @@
             this.panel_assignments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_assignments.Location = new System.Drawing.Point(0, 0);
             this.panel_assignments.Name = "panel_assignments";
-            this.panel_assignments.Size = new System.Drawing.Size(984, 761);
+            this.panel_assignments.Size = new System.Drawing.Size(984, 749);
             this.panel_assignments.TabIndex = 17;
             // 
             // btn_assignments_remove
@@ -716,7 +709,7 @@
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape3,
             this.lineShape4});
-            this.shapeContainer2.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer2.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer2.TabIndex = 2;
             this.shapeContainer2.TabStop = false;
             // 
@@ -752,7 +745,7 @@
             this.panel_prepayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_prepayment.Location = new System.Drawing.Point(0, 0);
             this.panel_prepayment.Name = "panel_prepayment";
-            this.panel_prepayment.Size = new System.Drawing.Size(984, 761);
+            this.panel_prepayment.Size = new System.Drawing.Size(984, 749);
             this.panel_prepayment.TabIndex = 17;
             // 
             // button2
@@ -838,7 +831,7 @@
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape6,
             this.lineShape5});
-            this.shapeContainer3.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer3.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer3.TabIndex = 1;
             this.shapeContainer3.TabStop = false;
             // 
@@ -881,7 +874,7 @@
             this.panel_mySettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_mySettings.Location = new System.Drawing.Point(0, 0);
             this.panel_mySettings.Name = "panel_mySettings";
-            this.panel_mySettings.Size = new System.Drawing.Size(984, 761);
+            this.panel_mySettings.Size = new System.Drawing.Size(984, 749);
             this.panel_mySettings.TabIndex = 0;
             // 
             // label16
@@ -1018,7 +1011,7 @@
             this.shapeContainer4.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape8,
             this.lineShape7});
-            this.shapeContainer4.Size = new System.Drawing.Size(984, 761);
+            this.shapeContainer4.Size = new System.Drawing.Size(984, 749);
             this.shapeContainer4.TabIndex = 0;
             this.shapeContainer4.TabStop = false;
             // 
@@ -1040,13 +1033,20 @@
             this.lineShape7.Y1 = 145;
             this.lineShape7.Y2 = 145;
             // 
+            // dpicker_trip_receiptdate
+            // 
+            this.dpicker_trip_receiptdate.Location = new System.Drawing.Point(255, 378);
+            this.dpicker_trip_receiptdate.Name = "dpicker_trip_receiptdate";
+            this.dpicker_trip_receiptdate.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_trip_receiptdate.TabIndex = 31;
+            // 
             // Consultant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.nav_logOut);
             this.Controls.Add(this.nav_mySettings);
             this.Controls.Add(this.lbl_myName);
@@ -1124,7 +1124,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.TextBox txt_trip_recieptNumber;
         private System.Windows.Forms.TextBox txt_trip_recieptType;
-        private System.Windows.Forms.TextBox txt_trip_reciptDate;
         private System.Windows.Forms.ComboBox cb_trip_currency;
         private System.Windows.Forms.TextBox txt_trip_recieptRate;
         private System.Windows.Forms.TextBox txt_trip_recieptAmount;
@@ -1182,6 +1181,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dpicker_end;
         private System.Windows.Forms.DateTimePicker dpicker_start;
+        private System.Windows.Forms.DateTimePicker dpicker_trip_receiptdate;
 
     }
 }
