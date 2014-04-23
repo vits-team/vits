@@ -429,6 +429,8 @@ namespace vITs
             }
         }
 
+
+
         /*Fyll länderlista*/
         public static List<string> FillCountryList()
         {
@@ -494,14 +496,83 @@ namespace vITs
             return questList;
         }
 
+
+
+        /*Hämta ID för uppdrag*/
+        public static int getMissionID(string mission)
+        {
+            int missionID = 0;
+
+            try
+            {
+                con.Open();
+
+                query = "SELECT ID FROM Missions WHere MissionName = '" + mission + "'";
+                cmd = new SqlCommand(query, con);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        missionID = int.Parse(reader[0].ToString());
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+            return missionID;
+        }
+
+        /*Hämta Destination ID*/
+        public static int getDestinationID(string destination)
+        {
+            int destinationID = 0;
+
+            try
+            {
+                con.Open();
+
+                query = "SELECT ID FROM Destinations WHere Country = '" + destination + "'";
+                cmd = new SqlCommand(query, con);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        destinationID = int.Parse(reader[0].ToString());
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+            return destinationID;
+        }
+
+
+
+
         public static int getTraktamente(string land)
         {
             int returnValue = 0;
 
-            try 
+            try
             {
                 con.Open();
-                query = @"SELECT Traktamente FROM Destinations WHERE Country ='"+land+"'";
+                query = @"SELECT Traktamente FROM Destinations WHERE Country ='" + land + "'";
 
                 cmd = new SqlCommand(query, con);
 
@@ -522,12 +593,14 @@ namespace vITs
             return returnValue;
         }
 
-        public static void addTrip(string startdate, string enddate, string transit, int breakfast, int lunch, int dinner, int mission, string vacationdays, int advance, int traktamente)
+
+        /*Lägger till en resa*/
+        public static void addTrip(int destination, string startdate, string enddate, string transit, int mission, int breakfast, int lunch, int dinner, int vacationdays, int id)
         {
             try
             {
                 con.Open();
-                query = "INSERT into Trip (StartDate, EndDate, Transit, Breakfast, Lunch, Dinner, Mission, Break, Advance, Traktamente) VALUES ( ) ";
+                query = "INSERT into Trip (Destination, StartDate, EndDate, Transit, Mission, [Break], StaffID, AmountOfBreakfasts, AmountOfLunches, AmountOfDinners) VALUES (@Destination, @StartDate, @EndDate, @Transit, @Mission, @Break, @StaffID, @AmountOfBreakfasts, @AmountOfLunches, @AmountOfDinners) ";
 
                 using (cmd = new SqlCommand(query, con))
                 {
@@ -535,13 +608,14 @@ namespace vITs
                     cmd.Parameters.Add(new SqlParameter("StartDate", startdate));
                     cmd.Parameters.Add(new SqlParameter("EndDate", enddate));
                     cmd.Parameters.Add(new SqlParameter("Transit", transit));
-                    cmd.Parameters.Add(new SqlParameter("Breakfast", breakfast));
-                    cmd.Parameters.Add(new SqlParameter("Lunch", lunch));
-                    cmd.Parameters.Add(new SqlParameter("Dinner", dinner));
+                    cmd.Parameters.Add(new SqlParameter("Destination", destination));
+                    cmd.Parameters.Add(new SqlParameter("AmountOfBreakfasts", breakfast));
+                    cmd.Parameters.Add(new SqlParameter("AmountOfLunches", lunch));
+                    cmd.Parameters.Add(new SqlParameter("AmountOfDinners", dinner));
                     cmd.Parameters.Add(new SqlParameter("Mission", mission));
                     cmd.Parameters.Add(new SqlParameter("Break", vacationdays));
-                    cmd.Parameters.Add(new SqlParameter("Advance", advance));
-                    cmd.Parameters.Add(new SqlParameter("Traktamente", traktamente));
+                    cmd.Parameters.Add(new SqlParameter("StaffID", id));
+
 
                     cmd.ExecuteNonQuery();
                 }
@@ -557,6 +631,41 @@ namespace vITs
             }
         }
 
+
+        /*Lägger till ett uppdrag*/
+
+        public static void addMission(string missionName, string description, string startdate, string enddate, int costcenter)
+        {
+            try
+            {
+                con.Open();
+                query = "Insert into Missions (MissionName, Description, StartDate, EndDate, costcenter) VALUES (@MissionName, @Description, @StartDate, @EndDate, @costcenter)";
+
+
+                using (cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.Add(new SqlParameter("MissionName", missionName));
+                    cmd.Parameters.Add(new SqlParameter("Description", description));
+                    cmd.Parameters.Add(new SqlParameter("StartDate", startdate));
+                    cmd.Parameters.Add(new SqlParameter("EndDate", enddate));
+                    cmd.Parameters.Add(new SqlParameter("costcenter", costcenter));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
+  
 
         /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */
 

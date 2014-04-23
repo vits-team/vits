@@ -245,6 +245,18 @@ namespace vITs
 
         }
 
+        private void btn_assignments_confirm_Click(object sender, EventArgs e)
+        {
+            string missionName = txt_assignments_name.Text;
+            string description = txt_assignments_description.Text;
+            string startdate = dpicker_assignments_startDate.Value.Date.ToString("yyyy/MM/dd");
+            string enddate = dpicker_assignment_manage_endDate.Value.Date.ToString("yyyy/MM/dd");
+            int costcenter = Convert.ToInt32(txt_assignments_costCenter.Text);
+
+            DataAccess.addMission(missionName, description, startdate, enddate, costcenter);
+            MessageBox.Show("Nytt uppdrag lades till");
+        }
+
     
 
         

@@ -143,35 +143,31 @@ namespace vITs
 
         private void btn_trip_confirm_Click(object sender, EventArgs e)
         {
-            /*
-            string startdate = txt_trip_startdate.Text;
-            string enddate = txt_trip_endDate.Text;
-            string vacationdays = txt_trip_vacationDays.Text;
-            int breakfast;
-            int lunch;
-            int dinner;
-            int totalsum;
+            int destinationID = DataAccess.getDestinationID(cb_trip_land.Text);
+            int missionID = DataAccess.getMissionID(cb_trip_assignments.Text);
 
-            if (check_trip_breakfast.Checked == true)
-            {
+            string startdate = dpicker_start.Value.Date.ToString("yyyy/MM/dd");
+            string enddate = dpicker_end.Value.Date.ToString("yyyy/MM/dd");
+            int breakfasts = Convert.ToInt32(txt_trip_breakfasts.Text);
+            int lunches = Convert.ToInt32(txt_trip_lunches.Text);
+            int dinners = Convert.ToInt32(txt_trip_dinners.Text);
+            int vacationdays = Convert.ToInt32(txt_trip_vacationDays.Text);
 
-            }
 
-            if (check_trip_lunch.Checked == true)
-            {
 
-            }
+            DataAccess.addTrip(destinationID, startdate, enddate, cb_trip_travelWay.Text, missionID, breakfasts, lunches, dinners, vacationdays, id);
 
-            if (check_trip_dinner.Checked == true)
-            {
+            MessageBox.Show("Du har lagt till en ny resa");
 
-            }
-            */
-
-            MessageBox.Show(dpicker_start.Value.Date.ToString("yyyy/MM/dd")); 
-            
             /* Efter att en resa skapats, så kommer tillhörande kvitton att registeras till den resan. */
-            //DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
+
+            if
+                (lb_trip_reciepts.Items.Count != 0)
+            {
+                DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
+            }
+            else { }
+       
         }
 
 

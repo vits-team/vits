@@ -602,6 +602,7 @@
             this.btn_assignments_confirm.TabIndex = 20;
             this.btn_assignments_confirm.Text = "Lägg till";
             this.btn_assignments_confirm.UseVisualStyleBackColor = true;
+            this.btn_assignments_confirm.Click += new System.EventHandler(this.btn_assignments_confirm_Click);
             // 
             // label7
             // 
@@ -999,9 +1000,9 @@
             this.Controls.Add(this.nav_manage);
             this.Controls.Add(this.nav_addUser);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_addUser);
             this.Controls.Add(this.panel_home);
-            this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_manage);
             this.Controls.Add(this.panel_mySettings);
             this.Name = "Admin";
