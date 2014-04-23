@@ -1143,6 +1143,11 @@
             // cb_all_timeSpan
             // 
             this.cb_all_timeSpan.FormattingEnabled = true;
+            this.cb_all_timeSpan.Items.AddRange(new object[] {
+            "Vecka",
+            "Månad",
+            "Kvartal",
+            "År"});
             this.cb_all_timeSpan.Location = new System.Drawing.Point(397, 504);
             this.cb_all_timeSpan.Name = "cb_all_timeSpan";
             this.cb_all_timeSpan.Size = new System.Drawing.Size(100, 21);
@@ -1191,6 +1196,11 @@
             // cb_employee_timeSpan
             // 
             this.cb_employee_timeSpan.FormattingEnabled = true;
+            this.cb_employee_timeSpan.Items.AddRange(new object[] {
+            "Vecka",
+            "Månad",
+            "Kvartal",
+            "År"});
             this.cb_employee_timeSpan.Location = new System.Drawing.Point(397, 392);
             this.cb_employee_timeSpan.Name = "cb_employee_timeSpan";
             this.cb_employee_timeSpan.Size = new System.Drawing.Size(100, 21);

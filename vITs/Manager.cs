@@ -20,7 +20,8 @@ namespace vITs
         
         private int id;
         private List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
-        private List<int> tripIDGhost = new List<int>(); 
+        private List<int> tripIDGhost = new List<int>();
+        private List<int> userIDGhost = new List<int>(); 
         
         public Manager()
         {
@@ -370,6 +371,9 @@ namespace vITs
             {
                 dpicker_employee_date.Enabled = true;
                 cb_employee_timeSpan.Enabled = true;
+                
+
+
 
             }
             else
@@ -382,9 +386,100 @@ namespace vITs
 
         private void report_employee_pdf_Click(object sender, EventArgs e)
         {
+
+
+            string consultName = null;
+            string employeeNumber = null;
+            string email = null;
+            string phone = null;
+
+            string missionName = null;
+            string missionStartDate = null;
+            string missionEndDate = null;
+
+            string land = null;
+            int traktamente = 0;
+            string transit = null;
+
+            int breakfastCost = 0;
+            int lunchCost = 0;
+            int dinnerCost = 0;
+
+            string tripStartDate = null;
+            string tripEndDate = null;
+
+            int breakfasts = 0;
+            int lunches = 0;
+            int dinners = 0;
+
+            int totalsum = 0;
+            int totalrecieptSum = 0;
+
             if (lb_employee_travelList.SelectedItem.ToString().Equals("Ingen resa"))
             {
                 // Ta hänsyn till tidsintervall, och startdatum. Annars ...
+                string date = dpicker_complete_date.Value.Date.ToString();
+                string datetime = cb_employee_timeSpan.SelectedItem.ToString();
+                int id = Convert.ToInt32(lb_employeeList.SelectedValue.ToString());
+
+                List<List<string>> resultat = new List<List<string>>();
+
+                resultat = DataAccess.gettimespanuserinformation(id);
+
+                foreach (List<string> str in resultat)
+                {
+                    consultName = str[0] + " " + str[1];
+                    employeeNumber = str[2];
+                    email = str[3];
+                    phone = str[4];
+                }
+
+
+                List<List<string>> missionresultat = DataAccess.gettimespanusermissions(id);
+
+                
+
+                Document myDocument = new Document(PageSize.A4);
+                PdfWriter.GetInstance(myDocument, new FileStream(@"..\..\iTextSharp\EmployeeReport.pdf", FileMode.Create));
+
+                myDocument.Open();
+
+                iTextSharp.text.Image header = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsHead.jpg");
+                header.ScaleToFit(myDocument.PageSize.Width, 110f);
+                myDocument.Add(header);
+
+                Paragraph consName = new Paragraph("Konsultnamn: " + consultName);
+                Paragraph consNumber = new Paragraph("Anställningsnummer: " + employeeNumber);
+                Paragraph consEmail = new Paragraph("Emailadress: " + email);
+                Paragraph consPhone = new Paragraph("Telefonnummer: " + phone);
+
+                myDocument.Add(consName);
+                myDocument.Add(consNumber);
+                myDocument.Add(consEmail);
+                myDocument.Add(consPhone);
+
+                iTextSharp.text.Image line = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsLine.jpg");
+                line.ScaleToFit(myDocument.PageSize.Width, 25f);
+                myDocument.Add(line);
+                string format1 = "{0,-75} {1,-20} {2, -30} ";
+                string format2 = "{0,-70} {1,-20} {2, -30} ";
+                Paragraph mission = new Paragraph(string.Format(format1, "Uppdrag", "Startdatum", "Slutdatum"));
+                myDocument.Add(mission);
+                foreach (List<string> str in missionresultat)
+                {
+
+                    
+                     Paragraph misc = new Paragraph(string.Format(format2, str[0], str[1], str[2]));
+                     
+                    myDocument.Add(misc);
+                }
+                
+
+                myDocument.Add(line);
+
+                myDocument.Close();
+                System.Diagnostics.Process.Start(@"..\..\iTextSharp\EmployeeReport.pdf");
+
             }
             else
             {
@@ -403,32 +498,9 @@ namespace vITs
                 * 
                 */
 
-                string consultName = null;
-                string employeeNumber = null;
-                string email = null;
-                string phone = null;
-
-                string missionName = null;
-                string missionStartDate = null;
-                string missionEndDate = null;
-
-                string land = null;
-                int traktamente = 0;
-                string transit = null;
-
-                int breakfastCost = 0;
-                int lunchCost = 0;
-                int dinnerCost = 0; 
-
-                string tripStartDate = null;
-                string tripEndDate = null;
                 
-                int breakfasts = 0;
-                int lunches = 0;
-                int dinners = 0;
 
-                int totalsum = 0;
-                int totalrecieptSum = 0;
+             
 
 
 
