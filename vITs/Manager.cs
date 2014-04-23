@@ -17,7 +17,7 @@ namespace vITs
 {
     public partial class Manager : Form
     {
-        // tjenare babben
+        
         private int id;
         private List<string[]> unapprovedPrePays = DataAccess.requestUnApprovedPrePays();
         private List<int> tripIDGhost = new List<int>(); 
@@ -516,13 +516,13 @@ namespace vITs
                 myDocument.Add(line);
                 string tormat = "{0,-90} {1,-30} {2, -30} ";
                 string sormat = "{0,-81} {1,-30} {2, -30} ";
-                
+                string kormat = "{0,-92} {1,-30} {2, -40} ";
                 Paragraph country = new Paragraph(land);
                 Paragraph destination = new Paragraph(string.Format(tormat, "Datum", "Antal", "Pris"));
                 Paragraph misc = new Paragraph(string.Format(sormat, tripStartDate + " -- " + tripEndDate, "6", traktamente));
-                Paragraph BF = new Paragraph(string.Format(sormat, "Frukostar:", breakfasts, breakfastCost));
-                Paragraph lurre = new Paragraph(string.Format(sormat, "Luncher:", lunches, lunchCost));
-                Paragraph middag = new Paragraph(string.Format(sormat, "Middagar:", dinners, dinnerCost));
+                Paragraph BF = new Paragraph(string.Format(kormat, "Frukostar:", breakfasts, breakfastCost));
+                Paragraph lurre = new Paragraph(string.Format(kormat, "Luncher:", lunches, lunchCost));
+                Paragraph middag = new Paragraph(string.Format(kormat, "Middagar:", dinners, dinnerCost));
 
                 myDocument.Add(country);
                 myDocument.Add(destination);
