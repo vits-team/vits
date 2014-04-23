@@ -16,6 +16,48 @@ namespace vITs
         private static SqlCommand cmd;
         private static string query;
 
+        public static List<List<string>> getdestinationbydate(int userid, int timespan)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Receipts.Date as Date, Receipts.Type as Type, Receipts.Number as Number, Receipts.Sum as Sum, Receipts.Currency as Curr, Receipts.Exist as Exist from Receipts where TripID =" + tripID;
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["Date"].ToString());
+                    miniList.Add(rdr["Type"].ToString());
+                    miniList.Add(rdr["Number"].ToString());
+                    miniList.Add(rdr["Sum"].ToString());
+                    miniList.Add(rdr["Curr"].ToString());
+                    miniList.Add(rdr["Exist"].ToString());
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
+
         public static List<List<string>> getReportReceiptInformation(int tripID)
         {
 
