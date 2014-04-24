@@ -532,7 +532,7 @@ namespace vITs
                 {
 
                     
-                     Paragraph misc = new Paragraph(string.Format(format2, str[0], str[1], str[2]));
+                     Paragraph misc = new Paragraph(string.Format(format2, str[0], str[1].Substring(0,10), str[2].Substring(0,10)));
                      
                     myDocument.Add(misc);
                 }
@@ -564,8 +564,8 @@ namespace vITs
                 foreach (List<string> str in result)
                 {
                     missionName = str[0];
-                    missionStartDate = str[1];
-                    missionEndDate = str[2];
+                    missionStartDate = str[1].Substring(0,10);
+                    missionEndDate = str[2].Substring(0,10);
 
                 }
 
@@ -580,8 +580,8 @@ namespace vITs
                     dinnerCost = Convert.ToInt32(str[4]); 
 
                     transit = str[5];
-                    tripStartDate = str[6];
-                    tripEndDate = str[7];
+                    tripStartDate = str[6].Substring(0,10);
+                    tripEndDate = str[7].Substring(0,10);
 
                     breakfasts = Convert.ToInt32(str[8]);
                     lunches = Convert.ToInt32(str[9]);
@@ -644,7 +644,7 @@ namespace vITs
                 Paragraph consPhone = new Paragraph("Telefonnummer: " + phone);
 
                 Paragraph mission = new Paragraph("Uppdrag: " + missionName);
-                Paragraph missiondate = new Paragraph("Datum: " + missionStartDate + " -- " + missionEndDate);
+                Paragraph missiondate = new Paragraph("Datum: " + missionStartDate.Substring(0,10) + " -- " + missionEndDate.Substring(0,10));
 
                 Paragraph country = new Paragraph("Destination: " + land + ", Färdsätt: " + transit);
                 Paragraph destination = new Paragraph(string.Format(format3, "Datum", "Antal", "Pris"));

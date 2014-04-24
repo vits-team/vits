@@ -282,7 +282,7 @@ namespace vITs
             try
             {
                 con.Open();
-                query = "Select Trip.ID, Destinations.Country, Trip.StartDate + ' -- ' + Trip.EndDate as Dates from Destinations join Trip on Destinations.ID = Trip.Destination where Destinations.ID in (SELECT Destination from Trip WHERE StaffID = "+ userID +")";
+                query = "Select Trip.ID, Destinations.Country, Trip.StartDate as startdate,  Trip.EndDate as enddate from Destinations join Trip on Destinations.ID = Trip.Destination where Destinations.ID in (SELECT Destination from Trip WHERE StaffID = "+ userID +")";
                 cmd = new SqlCommand(query, con);
 
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -293,7 +293,8 @@ namespace vITs
 
                     miniList.Add(rdr["ID"].ToString()); 
                     miniList.Add(rdr["Country"].ToString()); 
-                    miniList.Add(rdr["Dates"].ToString());
+                    miniList.Add(rdr["startdate"].ToString().Substring(0,10));
+                    miniList.Add(rdr["enddate"].ToString().Substring(0,10));
                    
 
                     returnValue.Add(miniList); 
