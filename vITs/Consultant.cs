@@ -161,12 +161,15 @@ namespace vITs
 
             /* Efter att en resa skapats, så kommer tillhörande kvitton att registeras till den resan. */
 
-            if
-                (lb_trip_reciepts.Items.Count != 0)
+            if (lb_trip_reciepts.Items.Count != 0)
             {
-                DataAccess.addReceipt(receiptList, DataAccess.getIdentityOfLastTrip());
+                int tripOfInterest = DataAccess.getIdentityOfLastTrip();
+                DataAccess.addReceipt(receiptList, tripOfInterest);
             }
-            else { }
+            else 
+            { 
+                // Inget att göra
+            }
        
         }
 

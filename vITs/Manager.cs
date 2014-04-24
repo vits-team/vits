@@ -617,7 +617,7 @@ namespace vITs
                 }
                 catch (Exception exc)
                 {
-
+                    MessageBox.Show("Dokumentet körs redan, stäng det."); 
                 }
 
                 myDocument.Open();
