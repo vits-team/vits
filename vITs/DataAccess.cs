@@ -15,6 +15,7 @@ namespace vITs
         private static SqlConnection con = new SqlConnection(connString); 
         private static SqlCommand cmd;
         private static string query;
+        public static int currentUserID;
 
 
         public static List<List<string>> getReportTimeSpanUserMissions(int userid, string startdate, int days)
@@ -426,7 +427,10 @@ namespace vITs
         public static int validateUserLogIn(int userID, string password)
         {
             int returnValue = 999;
-            cmd = new SqlCommand("ValidateUser", con); 
+            cmd = new SqlCommand("ValidateUser", con);
+
+            // Sätt en variabel som alla klasser når, innehållande den för tillfället inloggade användarens ID.
+            currentUserID = userID;
 
             try
             {
