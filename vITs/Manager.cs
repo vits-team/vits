@@ -31,6 +31,7 @@ namespace vITs
             panel_home.Visible = true;
 
             initializeBoxes();
+            initializeListview();
             fillEmployeeList(); 
 
         }
@@ -262,7 +263,6 @@ namespace vITs
         }
 
 
-
         /* Initialisera alla boxar vid laddning */
 
         private void initializeBoxes()
@@ -274,6 +274,32 @@ namespace vITs
             lb_toDo_employee.DataSource = unapprovedPrePays.Select(x => new { TripID = x[0], Advance = x[1], Description = x[2], MissionName = x[3] }).ToList();
             lb_toDo_employee.DisplayMember = "TripID";
             lb_toDo_employee.ValueMember = "TripID";
+        }
+
+
+        /* Initialisera listview med resor att godkänna/neka. */
+
+        private void initializeListview()
+        {
+            List<string[]> trips = DataAccess.getTrips();
+            lv_toDo_viewTrips.Clear();
+            lv_toDo_viewTrips.View = View.Details;
+            lv_toDo_viewTrips.FullRowSelect = true;
+
+            lv_toDo_viewTrips.Columns.Add("Trip ID");
+            lv_toDo_viewTrips.Columns.Add("Destination");
+            lv_toDo_viewTrips.Columns.Add("Färdsätt");
+            lv_toDo_viewTrips.Columns.Add("Uppdrag");
+            lv_toDo_viewTrips.Columns.Add("Nekad");
+
+
+            for(int x = 0; x < trips.Count; x++)
+            {
+                ListViewItem item = new ListViewItem(new[] { trips[x][0].ToString(), trips[x][1].ToString(), trips[x][4].ToString(), trips[x][5].ToString(), trips[x][11].ToString() == "0" ? "Nej" : "Ja" });
+                lv_toDo_viewTrips.Items.Add(item);
+            }
+            
+            
         }
 
 
@@ -298,6 +324,30 @@ namespace vITs
             MessageBox.Show("Förskottsbetalningen nekades.");
 
             initializeBoxes();
+        }
+
+
+        /* Godkänn den i listan valda resan. */
+
+        private void btn_toDo_approveTrip_Click(object sender, EventArgs e)
+        {
+            DataAccess.approveOfTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
+
+            MessageBox.Show("Resan godkändes.");
+
+            initializeListview();
+        }
+
+
+        /* Neka den i listan valda resan. */
+
+        private void btn_toDo_denyTrip_Click(object sender, EventArgs e)
+        {
+            DataAccess.denyTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
+
+            MessageBox.Show("Resan nekades.");
+
+            initializeListview();
         }
 
 
@@ -656,7 +706,6 @@ namespace vITs
             }
         }
 
-       
 
         
 
