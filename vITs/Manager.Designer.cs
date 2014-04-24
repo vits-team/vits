@@ -145,7 +145,6 @@
             this.btn_toDo_approveTrip = new System.Windows.Forms.Button();
             this.btn_toDo_denyTrip = new System.Windows.Forms.Button();
             this.btn_toDo_inspect = new System.Windows.Forms.Button();
-            this.lb_toDo_viewTrips = new System.Windows.Forms.ListBox();
             this.label22 = new System.Windows.Forms.Label();
             this.btn_toDo_deny = new System.Windows.Forms.Button();
             this.btn_toDo_approve = new System.Windows.Forms.Button();
@@ -157,6 +156,7 @@
             this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lv_toDo_viewTrips = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -1319,10 +1319,10 @@
             // 
             // panel_toDo
             // 
+            this.panel_toDo.Controls.Add(this.lv_toDo_viewTrips);
             this.panel_toDo.Controls.Add(this.btn_toDo_approveTrip);
             this.panel_toDo.Controls.Add(this.btn_toDo_denyTrip);
             this.panel_toDo.Controls.Add(this.btn_toDo_inspect);
-            this.panel_toDo.Controls.Add(this.lb_toDo_viewTrips);
             this.panel_toDo.Controls.Add(this.label22);
             this.panel_toDo.Controls.Add(this.btn_toDo_deny);
             this.panel_toDo.Controls.Add(this.btn_toDo_approve);
@@ -1349,6 +1349,7 @@
             this.btn_toDo_approveTrip.TabIndex = 29;
             this.btn_toDo_approveTrip.Text = "Godkänn";
             this.btn_toDo_approveTrip.UseVisualStyleBackColor = true;
+            this.btn_toDo_approveTrip.Click += new System.EventHandler(this.btn_toDo_approveTrip_Click);
             // 
             // btn_toDo_denyTrip
             // 
@@ -1361,6 +1362,7 @@
             this.btn_toDo_denyTrip.TabIndex = 28;
             this.btn_toDo_denyTrip.Text = "Neka";
             this.btn_toDo_denyTrip.UseVisualStyleBackColor = true;
+            this.btn_toDo_denyTrip.Click += new System.EventHandler(this.btn_toDo_denyTrip_Click);
             // 
             // btn_toDo_inspect
             // 
@@ -1373,14 +1375,6 @@
             this.btn_toDo_inspect.TabIndex = 27;
             this.btn_toDo_inspect.Text = "Granska";
             this.btn_toDo_inspect.UseVisualStyleBackColor = true;
-            // 
-            // lb_toDo_viewTrips
-            // 
-            this.lb_toDo_viewTrips.FormattingEnabled = true;
-            this.lb_toDo_viewTrips.Location = new System.Drawing.Point(259, 435);
-            this.lb_toDo_viewTrips.Name = "lb_toDo_viewTrips";
-            this.lb_toDo_viewTrips.Size = new System.Drawing.Size(390, 173);
-            this.lb_toDo_viewTrips.TabIndex = 26;
             // 
             // label22
             // 
@@ -1490,6 +1484,14 @@
             this.lineShape11.Y1 = 145;
             this.lineShape11.Y2 = 145;
             // 
+            // lv_toDo_viewTrips
+            // 
+            this.lv_toDo_viewTrips.Location = new System.Drawing.Point(256, 435);
+            this.lv_toDo_viewTrips.Name = "lv_toDo_viewTrips";
+            this.lv_toDo_viewTrips.Size = new System.Drawing.Size(393, 173);
+            this.lv_toDo_viewTrips.TabIndex = 30;
+            this.lv_toDo_viewTrips.UseCompatibleStateImageBehavior = false;
+            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1515,10 +1517,10 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_reports);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_trip);
-            this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_prepayment);
@@ -1676,7 +1678,6 @@
         private System.Windows.Forms.Label label22;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape12;
         private System.Windows.Forms.Button btn_toDo_inspect;
-        private System.Windows.Forms.ListBox lb_toDo_viewTrips;
         private System.Windows.Forms.Button btn_toDo_approveTrip;
         private System.Windows.Forms.Button btn_toDo_denyTrip;
         private System.Windows.Forms.DateTimePicker dpicker_trip_end;
@@ -1689,6 +1690,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dpicker_complete_date;
         private System.Windows.Forms.DateTimePicker dpicker_employee_date;
+        private System.Windows.Forms.ListView lv_toDo_viewTrips;
 
     }
 }
