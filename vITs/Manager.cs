@@ -443,6 +443,10 @@ namespace vITs
             int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
             List<List<string>> result = new List<List<string>>();
 
+            int timeSpandays = GetNumberOfTimespanDays(cb_employee_timeSpan.SelectedItem.ToString());
+            string getstartdate = dpicker_employee_date.Value.Date.ToString().Substring(0,10);
+
+
             /* Variabellista som används i rapporten, innehåller: 
              * ------------------------------------------------
              */
@@ -497,7 +501,7 @@ namespace vITs
                 }
 
 
-                result = DataAccess.getReportTimeSpanUserMissions(selectedId);
+                result = DataAccess.getReportTimeSpanUserMissions(selectedId, getstartdate, timeSpandays);
 
                 
 
@@ -779,6 +783,31 @@ namespace vITs
                 myDocument.Close();
                 System.Diagnostics.Process.Start(@"..\..\iTextSharp\EmployeeReport.pdf");
             }
+        }
+
+        private int GetNumberOfTimespanDays(string value)
+        {
+            int timeSpandays = 0;
+
+            if (value.Equals("Vecka"))
+            {
+                timeSpandays = 7;
+            }
+            else if (value.Equals("Månad"))
+            {
+                timeSpandays = 30;
+            }
+            else if (value.Equals("Kvartal"))
+            {
+                timeSpandays = 90;
+            }
+            else if (value.Equals("År"))
+            {
+                timeSpandays = 365;
+            }
+
+            return timeSpandays;
+        
         }
 
 

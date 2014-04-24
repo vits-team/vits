@@ -142,6 +142,7 @@
             this.nav_report = new System.Windows.Forms.PictureBox();
             this.label20 = new System.Windows.Forms.Label();
             this.panel_toDo = new System.Windows.Forms.Panel();
+            this.lv_toDo_viewTrips = new System.Windows.Forms.ListView();
             this.btn_toDo_approveTrip = new System.Windows.Forms.Button();
             this.btn_toDo_denyTrip = new System.Windows.Forms.Button();
             this.btn_toDo_inspect = new System.Windows.Forms.Button();
@@ -156,7 +157,6 @@
             this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lv_toDo_viewTrips = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -1338,6 +1338,14 @@
             this.panel_toDo.Size = new System.Drawing.Size(984, 749);
             this.panel_toDo.TabIndex = 1;
             // 
+            // lv_toDo_viewTrips
+            // 
+            this.lv_toDo_viewTrips.Location = new System.Drawing.Point(256, 435);
+            this.lv_toDo_viewTrips.Name = "lv_toDo_viewTrips";
+            this.lv_toDo_viewTrips.Size = new System.Drawing.Size(393, 173);
+            this.lv_toDo_viewTrips.TabIndex = 30;
+            this.lv_toDo_viewTrips.UseCompatibleStateImageBehavior = false;
+            // 
             // btn_toDo_approveTrip
             // 
             this.btn_toDo_approveTrip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_toDo_approveTrip.BackgroundImage")));
@@ -1484,14 +1492,6 @@
             this.lineShape11.Y1 = 145;
             this.lineShape11.Y2 = 145;
             // 
-            // lv_toDo_viewTrips
-            // 
-            this.lv_toDo_viewTrips.Location = new System.Drawing.Point(256, 435);
-            this.lv_toDo_viewTrips.Name = "lv_toDo_viewTrips";
-            this.lv_toDo_viewTrips.Size = new System.Drawing.Size(393, 173);
-            this.lv_toDo_viewTrips.TabIndex = 30;
-            this.lv_toDo_viewTrips.UseCompatibleStateImageBehavior = false;
-            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1517,8 +1517,8 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_reports);
+            this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_trip);
             this.Controls.Add(this.panel_assignments);

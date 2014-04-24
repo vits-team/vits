@@ -17,7 +17,7 @@ namespace vITs
         private static string query;
 
 
-        public static List<List<string>> getReportTimeSpanUserMissions(int userid)
+        public static List<List<string>> getReportTimeSpanUserMissions(int userid, string startdate, int days)
         {
 
             List<List<string>> returnValue = new List<List<string>>();
@@ -25,7 +25,7 @@ namespace vITs
             try
             {
                 con.Open();
-                query = "Select Missions.MissionName as MName, Missions.StartDate as MStartDate, Missions.EndDate as MEndDate from Missions, Trip where Trip.Mission=Missions.id and trip.StaffID = '"+userid+"'";
+                query = "Select Missions.MissionName as MName, Missions.StartDate as MStartDate, Missions.EndDate as MEndDate from Missions, Trip where Trip.Mission=Missions.id and trip.StaffID = '" + userid + "' and Missions.StartDate between '" + startdate + "' and cast('" + startdate + "' as datetime) + "+days+"  ";
 
                 cmd = new SqlCommand(query, con);
 
