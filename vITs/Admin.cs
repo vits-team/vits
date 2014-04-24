@@ -278,9 +278,27 @@ namespace vITs
 
         private void lb_assignments_assignmentList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //string sdate = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(3).ToString();
+            /* string year = sdate.Substring(0,3);
+             string month = sdate.Substring(5,6);
+             string day = sdate.Substring(8, 9);
+
+             int newYear = Convert.ToInt32(year);
+             int newMonth = Convert.ToInt32(month);
+             int newDay = Convert.ToInt32(day);*/
+
+
             txt_assignments_manageName.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(1).ToString();
             txt_assignments_manageDescription.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(2).ToString();
             txt_assignments_manageCostCenter.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(5).ToString();
+            // dpicker_assignment_manage_startDate.Value = new DateTime(newYear, newMonth, newDay);
+            //missions[lb_assignments_assignmentList.SelectedIndex].GetValue(3);
+
+        }
+
+        private void txt_assignments_update_Click(object sender, EventArgs e)
+        {
+
         }
 
 

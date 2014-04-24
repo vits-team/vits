@@ -511,6 +511,7 @@
             this.txt_assignments_update.TabIndex = 36;
             this.txt_assignments_update.Text = "Uppdatera";
             this.txt_assignments_update.UseVisualStyleBackColor = true;
+            this.txt_assignments_update.Click += new System.EventHandler(this.txt_assignments_update_Click);
             // 
             // txt_assignments_manageDescription
             // 

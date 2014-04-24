@@ -303,7 +303,7 @@ namespace vITs
             }
             catch (Exception e)
             {
-
+                MessageBox.Show(e.Message);
 
             }
             finally
@@ -781,7 +781,22 @@ namespace vITs
 
         public static void updateMission()
         {
+            try
+            {
+                con.Open();
+                query = "";
+            }
 
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+
+            }
+
+            finally
+            {
+                con.Close();
+            }
         }
 
         /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */
