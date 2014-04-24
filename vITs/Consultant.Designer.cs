@@ -46,6 +46,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel_home = new System.Windows.Forms.Panel();
             this.panel_trip = new System.Windows.Forms.Panel();
+            this.dpicker_trip_receiptdate = new System.Windows.Forms.DateTimePicker();
             this.dpicker_end = new System.Windows.Forms.DateTimePicker();
             this.dpicker_start = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
@@ -117,7 +118,6 @@
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.dpicker_trip_receiptdate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -350,6 +350,13 @@
             this.panel_trip.Size = new System.Drawing.Size(984, 749);
             this.panel_trip.TabIndex = 16;
             // 
+            // dpicker_trip_receiptdate
+            // 
+            this.dpicker_trip_receiptdate.Location = new System.Drawing.Point(255, 378);
+            this.dpicker_trip_receiptdate.Name = "dpicker_trip_receiptdate";
+            this.dpicker_trip_receiptdate.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_trip_receiptdate.TabIndex = 31;
+            // 
             // dpicker_end
             // 
             this.dpicker_end.Location = new System.Drawing.Point(389, 227);
@@ -397,6 +404,7 @@
             this.txt_trip_dinners.Name = "txt_trip_dinners";
             this.txt_trip_dinners.Size = new System.Drawing.Size(41, 20);
             this.txt_trip_dinners.TabIndex = 25;
+            this.txt_trip_dinners.Text = "0";
             // 
             // txt_trip_lunches
             // 
@@ -404,6 +412,7 @@
             this.txt_trip_lunches.Name = "txt_trip_lunches";
             this.txt_trip_lunches.Size = new System.Drawing.Size(41, 20);
             this.txt_trip_lunches.TabIndex = 24;
+            this.txt_trip_lunches.Text = "0";
             // 
             // txt_trip_breakfasts
             // 
@@ -411,6 +420,7 @@
             this.txt_trip_breakfasts.Name = "txt_trip_breakfasts";
             this.txt_trip_breakfasts.Size = new System.Drawing.Size(41, 20);
             this.txt_trip_breakfasts.TabIndex = 23;
+            this.txt_trip_breakfasts.Text = "0";
             // 
             // btn_trip_confirm
             // 
@@ -530,6 +540,7 @@
             this.txt_trip_vacationDays.Name = "txt_trip_vacationDays";
             this.txt_trip_vacationDays.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_vacationDays.TabIndex = 10;
+            this.txt_trip_vacationDays.Text = "0";
             // 
             // cb_trip_travelWay
             // 
@@ -1032,13 +1043,6 @@
             this.lineShape7.X2 = 775;
             this.lineShape7.Y1 = 145;
             this.lineShape7.Y2 = 145;
-            // 
-            // dpicker_trip_receiptdate
-            // 
-            this.dpicker_trip_receiptdate.Location = new System.Drawing.Point(255, 378);
-            this.dpicker_trip_receiptdate.Name = "dpicker_trip_receiptdate";
-            this.dpicker_trip_receiptdate.Size = new System.Drawing.Size(101, 20);
-            this.dpicker_trip_receiptdate.TabIndex = 31;
             // 
             // Consultant
             // 
