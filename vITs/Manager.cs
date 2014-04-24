@@ -902,6 +902,7 @@ namespace vITs
             string path = @"..\..\Images\icon-report-excel-cyan.png";
             report_all_excel.BackgroundImage = System.Drawing.Image.FromFile(path);
 
+
             ToolTip tp = new ToolTip();
             tp.InitialDelay = 100;
             tp.SetToolTip(report_all_excel, "Klicka för att skriva ut som excel"); 
