@@ -1119,6 +1119,8 @@
             this.report_all_system.Size = new System.Drawing.Size(40, 40);
             this.report_all_system.TabIndex = 38;
             this.report_all_system.TabStop = false;
+            this.report_all_system.MouseEnter += new System.EventHandler(this.report_all_system_MouseEnter);
+            this.report_all_system.MouseLeave += new System.EventHandler(this.report_all_system_MouseLeave);
             // 
             // report_all_excel
             // 
@@ -1129,6 +1131,8 @@
             this.report_all_excel.Size = new System.Drawing.Size(40, 40);
             this.report_all_excel.TabIndex = 37;
             this.report_all_excel.TabStop = false;
+            this.report_all_excel.MouseEnter += new System.EventHandler(this.report_all_excel_MouseEnter);
+            this.report_all_excel.MouseLeave += new System.EventHandler(this.report_all_excel_MouseLeave);
             // 
             // report_all_pdf
             // 
@@ -1139,6 +1143,8 @@
             this.report_all_pdf.Size = new System.Drawing.Size(40, 40);
             this.report_all_pdf.TabIndex = 36;
             this.report_all_pdf.TabStop = false;
+            this.report_all_pdf.MouseEnter += new System.EventHandler(this.report_all_pdf_MouseEnter);
+            this.report_all_pdf.MouseLeave += new System.EventHandler(this.report_all_pdf_MouseLeave);
             // 
             // cb_all_timeSpan
             // 
@@ -1163,6 +1169,8 @@
             this.report_employee_pdf.TabIndex = 33;
             this.report_employee_pdf.TabStop = false;
             this.report_employee_pdf.Click += new System.EventHandler(this.report_employee_pdf_Click);
+            this.report_employee_pdf.MouseEnter += new System.EventHandler(this.report_employee_pdf_MouseEnter);
+            this.report_employee_pdf.MouseLeave += new System.EventHandler(this.report_employee_pdf_MouseLeave);
             // 
             // report_employee_excel
             // 
@@ -1173,6 +1181,8 @@
             this.report_employee_excel.Size = new System.Drawing.Size(40, 40);
             this.report_employee_excel.TabIndex = 32;
             this.report_employee_excel.TabStop = false;
+            this.report_employee_excel.MouseEnter += new System.EventHandler(this.report_employee_excel_MouseEnter);
+            this.report_employee_excel.MouseLeave += new System.EventHandler(this.report_employee_excel_MouseLeave);
             // 
             // report_employee_system
             // 
@@ -1183,6 +1193,8 @@
             this.report_employee_system.Size = new System.Drawing.Size(40, 40);
             this.report_employee_system.TabIndex = 31;
             this.report_employee_system.TabStop = false;
+            this.report_employee_system.MouseEnter += new System.EventHandler(this.report_employee_system_MouseEnter);
+            this.report_employee_system.MouseLeave += new System.EventHandler(this.report_employee_system_MouseLeave);
             // 
             // label17
             // 

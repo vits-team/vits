@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text; 
 using iTextSharp.text.pdf;
-
+using System.Drawing.Imaging;
 
 
 namespace vITs
@@ -808,6 +808,104 @@ namespace vITs
 
             return timeSpandays;
         
+        }
+
+        private void report_employee_pdf_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-pdf-cyan.png";
+            report_employee_pdf.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_employee_pdf, "Klicka för att skriva ut pdf"); 
+        }
+
+        private void report_employee_pdf_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-pdf.png";
+            report_employee_pdf.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+        private void report_employee_excel_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-excel-cyan.png";
+            report_employee_excel.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_employee_excel, "Klicka för att skriva ut som excel"); 
+        }
+
+        private void report_employee_excel_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-excel.png";
+            report_employee_excel.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+        private void report_employee_system_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-system-cyan.png";
+            report_employee_system.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_employee_system, "Klicka för att skriva ut internt"); 
+        }
+
+        private void report_employee_system_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-system.png";
+            report_employee_system.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+        private void report_all_pdf_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-pdf-cyan.png";
+            report_all_pdf.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_all_pdf, "Klicka för att skriva ut pdf"); 
+        }
+
+        private void report_all_pdf_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-pdf.png";
+            report_all_pdf.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+      
+
+        private void report_all_excel_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-excel.png";
+            report_all_excel.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+        private void report_all_system_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-system-cyan.png";
+            report_all_system.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_all_system, "Klicka för att skriva ut internt"); 
+        }
+
+        private void report_all_system_MouseLeave(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-system.png";
+            report_all_system.BackgroundImage = System.Drawing.Image.FromFile(path);
+        }
+
+        private void report_all_excel_MouseEnter(object sender, EventArgs e)
+        {
+            string path = @"..\..\Images\icon-report-excel-cyan.png";
+            report_all_excel.BackgroundImage = System.Drawing.Image.FromFile(path);
+
+            ToolTip tp = new ToolTip();
+            tp.InitialDelay = 100;
+            tp.SetToolTip(report_all_excel, "Klicka för att skriva ut som excel"); 
         }
 
 
