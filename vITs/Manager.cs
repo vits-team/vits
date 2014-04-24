@@ -295,8 +295,11 @@ namespace vITs
 
             for(int x = 0; x < trips.Count; x++)
             {
-                ListViewItem item = new ListViewItem(new[] { trips[x][0].ToString(), trips[x][1].ToString(), trips[x][4].ToString(), trips[x][5].ToString(), trips[x][11].ToString() == "0" ? "Nej" : "Ja" });
-                lv_toDo_viewTrips.Items.Add(item);
+                if (trips[x][7] != DataAccess.currentUserID.ToString())
+                {
+                    ListViewItem item = new ListViewItem(new[] { trips[x][0].ToString(), trips[x][1].ToString(), trips[x][4].ToString(), trips[x][5].ToString(), trips[x][11].ToString() == "0" ? "Nej" : "Ja" });
+                    lv_toDo_viewTrips.Items.Add(item);
+                }
             }
             
             
