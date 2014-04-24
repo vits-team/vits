@@ -254,10 +254,10 @@ namespace vITs
             string missionName = txt_assignments_name.Text;
             string description = txt_assignments_description.Text;
             string startdate = dpicker_assignments_startDate.Value.Date.ToString("yyyy/MM/dd");
-            string enddate = dpicker_assignment_manage_endDate.Value.Date.ToString("yyyy/MM/dd");
+            string enddate = dpicker_assignments_endDate.Value.Date.ToString("yyyy/MM/dd");
             int costcenter = Convert.ToInt32(txt_assignments_costCenter.Text);
 
-            DataAccess.addMission(missionName, description, startdate, enddate, costcenter);
+            DataAccess.addMission(missionName, description, startdate, costcenter, enddate);
             MessageBox.Show("Nytt uppdrag lades till");
         }
 
@@ -268,7 +268,7 @@ namespace vITs
             missions = DataAccess.getMissionDetails();
 
 
-            lb_assignments_assignmentList.DataSource = missions.Select(x => new { ID = x[0], MissionName = x[1], Description = x[2], StartDate = x[3], EndDate = x[4], costcenter = x[5]}).ToList();
+            lb_assignments_assignmentList.DataSource = missions.Select(x => new { ID = x[0], MissionName = x[1], Description = x[2], StartDate = x[3], costcenter = x[4], Enddate = x[5]}).ToList();
             lb_assignments_assignmentList.DisplayMember = "MissionName";
             lb_assignments_assignmentList.ValueMember = "ID";
         
@@ -290,7 +290,7 @@ namespace vITs
 
             txt_assignments_manageName.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(1).ToString();
             txt_assignments_manageDescription.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(2).ToString();
-            txt_assignments_manageCostCenter.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(5).ToString();
+            txt_assignments_manageCostCenter.Text = missions[lb_assignments_assignmentList.SelectedIndex].GetValue(4).ToString();
             // dpicker_assignment_manage_startDate.Value = new DateTime(newYear, newMonth, newDay);
             //missions[lb_assignments_assignmentList.SelectedIndex].GetValue(3);
 
@@ -298,7 +298,16 @@ namespace vITs
 
         private void txt_assignments_update_Click(object sender, EventArgs e)
         {
+            string missionName = txt_assignments_manageName.Text;
+            string description = txt_assignments_manageDescription.Text;
+            string startdate = dpicker_assignment_manage_startDate.Value.Date.ToString("yyyy/MM/dd");
+            string enddate = dpicker_assignment_manage_endDate.Value.Date.ToString("yyyy/MM/dd");
+            int costcenter = Convert.ToInt32(txt_assignments_manageCostCenter.Text);
 
+            DataAccess.updateMission(int.Parse(lb_assignments_assignmentList.SelectedValue.ToString()), missionName, description, startdate, costcenter, enddate);
+
+            showMissions();
+            MessageBox.Show("Uppdrag uppdaterades");
         }
 
 

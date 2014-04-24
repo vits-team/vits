@@ -706,12 +706,12 @@ namespace vITs
 
         /*Lägger till ett uppdrag*/
 
-        public static void addMission(string missionName, string description, string startdate, string enddate, int costcenter)
+        public static void addMission(string missionName, string description, string startdate, int costcenter, string enddate)
         {
             try
             {
                 con.Open();
-                query = "Insert into Missions (MissionName, Description, StartDate, EndDate, costcenter) VALUES (@MissionName, @Description, @StartDate, @EndDate, @costcenter)";
+                query = "Insert into Missions (MissionName, Description, StartDate, costcenter, EndDate) VALUES (@MissionName, @Description, @StartDate, @costcenter, @EndDate)";
 
 
                 using (cmd = new SqlCommand(query, con))
@@ -779,12 +779,24 @@ namespace vITs
 
         /*Redigerar uppdrag*/
 
-        public static void updateMission()
+        public static void updateMission( int id, string missionname, string description, string startdate, int costcenter, string enddate)
         {
             try
             {
                 con.Open();
-                query = "";
+                query = "update missions set missionname = @missionname, description = @description, startdate = @startdate, costcenter = @costcenter, enddate = @enddate where ID = '" +id+ "'";
+
+                using (cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add(new SqlParameter("missionname", missionname));
+                    cmd.Parameters.Add(new SqlParameter("description", description));
+                    cmd.Parameters.Add(new SqlParameter("startdate", startdate));
+                    cmd.Parameters.Add(new SqlParameter("costcenter", costcenter));
+                    cmd.Parameters.Add(new SqlParameter("enddate", enddate));
+
+                    cmd.ExecuteNonQuery();
+                }
+
             }
 
             catch (Exception e)
