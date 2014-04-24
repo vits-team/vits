@@ -68,3 +68,5 @@ C:\Users\admin\Source\Repos\vits\vITs\obj\Debug\vITs.Economy.resources
 C:\Users\admin\Source\Repos\vits\vITs\obj\Debug\vITs.Login.resources
 C:\Users\admin\Source\Repos\vits\vITs\obj\Debug\vITs.Properties.Resources.resources
 C:\Users\admin\Source\Repos\vits\vITs\obj\Debug\vITs.csproj.GenerateResource.Cache
+C:\Users\Marcus\Source\Repos\vits\vITs\bin\Debug\itextsharp.dll
+C:\Users\Marcus\Source\Repos\vits\vITs\bin\Debug\itextsharp.xml

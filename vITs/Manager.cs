@@ -386,7 +386,22 @@ namespace vITs
 
         private void report_employee_pdf_Click(object sender, EventArgs e)
         {
+            /* Definiera ID:t på den resan som man vill skapa rapport för */
+            int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
+            List<List<string>> result = new List<List<string>>();
 
+            /* Variabellista som används i rapporten, innehåller: 
+             * ------------------------------------------------
+             * consultName - Förnamn och efternamn på konsulten.
+             * employeeNumber - anställningsnummer, mao databas-id:t.
+             * email - konsultens email. 
+             * phone - konsultens telefonnummer. 
+             * 
+             * 
+             * 
+             */
+
+            /* Slut på variabler */
 
             string consultName = null;
             string employeeNumber = null;
@@ -407,6 +422,7 @@ namespace vITs
 
             string tripStartDate = null;
             string tripEndDate = null;
+            int tripTotalDays = 0; 
 
             int breakfasts = 0;
             int lunches = 0;
@@ -420,13 +436,13 @@ namespace vITs
                 // Ta hänsyn till tidsintervall, och startdatum. Annars ...
                 string date = dpicker_complete_date.Value.Date.ToString();
                 string datetime = cb_employee_timeSpan.SelectedItem.ToString();
-                int id = Convert.ToInt32(lb_employeeList.SelectedValue.ToString());
+                int selectedId = Convert.ToInt32(lb_employeeList.SelectedValue.ToString());
 
-                List<List<string>> resultat = new List<List<string>>();
 
-                resultat = DataAccess.gettimespanuserinformation(id);
 
-                foreach (List<string> str in resultat)
+                result = DataAccess.getReportTimeSpanUserInformation(selectedId);
+
+                foreach (List<string> str in result)
                 {
                     consultName = str[0] + " " + str[1];
                     employeeNumber = str[2];
@@ -435,7 +451,7 @@ namespace vITs
                 }
 
 
-                List<List<string>> missionresultat = DataAccess.gettimespanusermissions(id);
+                result = DataAccess.getReportTimeSpanUserMissions(selectedId);
 
                 
 
@@ -465,7 +481,8 @@ namespace vITs
                 string format2 = "{0,-70} {1,-20} {2, -30} ";
                 Paragraph mission = new Paragraph(string.Format(format1, "Uppdrag", "Startdatum", "Slutdatum"));
                 myDocument.Add(mission);
-                foreach (List<string> str in missionresultat)
+                
+                foreach (List<string> str in result)
                 {
 
                     
@@ -483,29 +500,7 @@ namespace vITs
             }
             else
             {
-               /* Definiera ID:t på den resan som man vill skapa rapport för */
-                int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
-                 List<List<string>> result = new List<List<string>>(); 
-
-               /* Variabellista som används i rapporten, innehåller: 
-                * ------------------------------------------------
-                * consultName - Förnamn och efternamn på konsulten.
-                * employeeNumber - anställningsnummer, mao databas-id:t.
-                * email - konsultens email. 
-                * phone - konsultens telefonnummer. 
-                * 
-                * 
-                * 
-                */
-
-                
-
-             
-
-
-
-
-                /* Slut på variabler */
+              
 
                 result = DataAccess.getReportEmployeeInformation(id);
 
@@ -547,9 +542,23 @@ namespace vITs
 
                 }
 
+                /* Kalkyl av totalsumma */
 
-               
-                 
+                DateTime st = Convert.ToDateTime(tripStartDate);
+                DateTime end = Convert.ToDateTime(tripEndDate);
+                TimeSpan span = end - st;
+                tripTotalDays = Convert.ToInt32(span.TotalDays);
+
+
+                int reduceBreakfasts = 0;
+                int reduceLunches = 0;
+                int reduceDinners = 0;
+
+                reduceBreakfasts = breakfasts * breakfastCost;
+                reduceLunches = lunches * lunchCost;
+                reduceDinners = dinners * dinnerCost;
+
+                totalsum = (tripTotalDays * traktamente) -reduceBreakfasts -reduceLunches -reduceDinners;  
 
                 /* PDF-CODE */
 
@@ -586,15 +595,19 @@ namespace vITs
                 myDocument.Add(missiondate);
 
                 myDocument.Add(line);
-                string tormat = "{0,-90} {1,-30} {2, -30} ";
-                string sormat = "{0,-81} {1,-30} {2, -30} ";
-                string kormat = "{0,-92} {1,-30} {2, -40} ";
-                Paragraph country = new Paragraph(land);
-                Paragraph destination = new Paragraph(string.Format(tormat, "Datum", "Antal", "Pris"));
-                Paragraph misc = new Paragraph(string.Format(sormat, tripStartDate + " -- " + tripEndDate, "6", traktamente));
-                Paragraph BF = new Paragraph(string.Format(kormat, "Frukostar:", breakfasts, breakfastCost));
-                Paragraph lurre = new Paragraph(string.Format(kormat, "Luncher:", lunches, lunchCost));
-                Paragraph middag = new Paragraph(string.Format(kormat, "Middagar:", dinners, dinnerCost));
+                string format = "{0,-20} {1,-20} {2, -25} {3, -20} {4, -20}";
+
+                string format3 = "{0,-90} {1,-30} {2, -30} ";
+                string format4 = "{0,-81} {1,-30} {2, -30} ";
+                string format5 = "{0,-92} {1,-30} {2, -40} ";
+
+                Paragraph country = new Paragraph("Destination: " + land + ", Färdsätt: " + transit);
+                Paragraph destination = new Paragraph(string.Format(format3, "Datum", "Antal", "Pris"));
+                Paragraph misc = new Paragraph(string.Format(format4, tripStartDate + " -- " + tripEndDate, tripTotalDays, traktamente));
+                Paragraph BF = new Paragraph(string.Format(format5, "Frukostar:", breakfasts, breakfastCost));
+                Paragraph lurre = new Paragraph(string.Format(format5, "Luncher:", lunches, lunchCost));
+                Paragraph middag = new Paragraph(string.Format(format5, "Middagar:", dinners, dinnerCost));
+                Paragraph sumOfTrip = new Paragraph(string.Format(format5, "", "Totalsumma", totalsum + " Kr"));
 
                 myDocument.Add(country);
                 myDocument.Add(destination);
@@ -602,14 +615,16 @@ namespace vITs
                 myDocument.Add(BF);
                 myDocument.Add(lurre);
                 myDocument.Add(middag);
-
+                 
                 myDocument.Add(line);
+                myDocument.Add(sumOfTrip);
+
                 /* För att loopa ut alla kvitton som tillhör specifik resa. */
                 result = DataAccess.getReportReceiptInformation(id);
                 Paragraph reciept;
                 string exists; 
 
-                string format = "{0,-20} {1,-20} {2, -20} {3, -20} {4, -20}";
+                
                 
                 foreach(List<string> str in result)
                 {
@@ -622,14 +637,17 @@ namespace vITs
                         exists = "Kvitto finns inte";
 
                     }
+
+
+                    totalrecieptSum += Convert.ToInt32(str[3]);
                     reciept = new Paragraph(string.Format(format, str[0].ToString(), str[1].ToString(), str[2].ToString(), str[3].ToString() + " " + str[4].ToString(), exists));
                     myDocument.Add(reciept);
                      
                 }
-                
 
-               
-               
+                myDocument.Add(line);
+                Paragraph recieptSumma = new Paragraph(string.Format(format5, "", "Totalsumma: ", totalrecieptSum));
+                myDocument.Add(recieptSumma);
 
 
                 /* KÖR PDF */

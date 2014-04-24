@@ -15,7 +15,9 @@ namespace vITs
         private static SqlConnection con = new SqlConnection(connString); 
         private static SqlCommand cmd;
         private static string query;
-        public static List<List<string>> gettimespanusermissions(int userid)
+
+
+        public static List<List<string>> getReportTimeSpanUserMissions(int userid)
         {
 
             List<List<string>> returnValue = new List<List<string>>();
@@ -57,7 +59,7 @@ namespace vITs
             return returnValue;
         }
 
-        public static List<List<string>> gettimespanuserinformation(int userid)
+        public static List<List<string>> getReportTimeSpanUserInformation(int userid)
         {
 
             List<List<string>> returnValue = new List<List<string>>();
@@ -230,7 +232,6 @@ namespace vITs
             return returnValue;
         }
 
-
         public static List<List<string>> getReportEmployeeInformation(int tripID)
         {
 
@@ -369,9 +370,6 @@ namespace vITs
 
         }
 
-        
-
-
         public static string requestFullName(int userID)
         {
             string returnValue = null; 
@@ -487,7 +485,6 @@ namespace vITs
             return returnValue;
         }
 
-
         /* Godkänner en icke-godkänd resa. Tar trip-id som parameter. */
 
         public static void approveOfTrip(string tripId)
@@ -511,8 +508,6 @@ namespace vITs
 
             }
         }
-
-
 
         /*Fyll länderlista*/
         public static List<string> FillCountryList()
@@ -546,7 +541,6 @@ namespace vITs
             return countryList;
         }
 
-
         /*Fyll uppdragslista*/
         public static List<string> FillQuestList()
         {
@@ -578,8 +572,6 @@ namespace vITs
             }
             return questList;
         }
-
-
 
         /*Hämta ID för uppdrag*/
         public static int getMissionID(string mission)
@@ -645,9 +637,6 @@ namespace vITs
             return destinationID;
         }
 
-
-
-
         public static int getTraktamente(string land)
         {
             int returnValue = 0;
@@ -675,7 +664,6 @@ namespace vITs
 
             return returnValue;
         }
-
 
         /*Lägger till en resa*/
         public static void addTrip(int destination, string startdate, string enddate, string transit, int mission, int breakfast, int lunch, int dinner, int vacationdays, int id)
@@ -713,7 +701,6 @@ namespace vITs
                 con.Close();
             }
         }
-
 
         /*Lägger till ett uppdrag*/
 
@@ -795,7 +782,6 @@ namespace vITs
 
         }
 
-
         /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */
 
         public static List<string[]> requestUnApprovedPrePays()
@@ -834,7 +820,6 @@ namespace vITs
             return returnValue;
         }
 
-
         /* Godkänner en icke-godkänd förskottsbetalning. Tar trip-id som parameter. */
 
         public static void approveOfPrePay(string tripId)
@@ -859,7 +844,6 @@ namespace vITs
             }
         }
 
-
         /* Nekar en oförändrad förskottsbetalning. Tar trip-id som parameter. */
 
         public static void denyPrePay(string tripId)
@@ -883,7 +867,6 @@ namespace vITs
 
             }
         }
-
 
         /* Returnerar en lista med alla användare. */
 
@@ -921,7 +904,6 @@ namespace vITs
             return returnValue;
         }
 
-
         /* Uppdatera en användares data */
 
         public static void updateUser(int userID, string firstname, string lastname, string phone, string email, string address, string password, string birthdate)
@@ -956,7 +938,6 @@ namespace vITs
             }
         }
 
-
         /* Lägg till en ny användare */
 
         public static void createUser(string firstname, string lastname, int level, string phone, string email, string address, string password, string birthdate)
@@ -990,8 +971,7 @@ namespace vITs
                 con.Close();
             }
         }
-
-
+        
         /* Ta bort vald användare */
 
         public static void deleteUser(int userID)
@@ -1014,7 +994,6 @@ namespace vITs
                 con.Close();
             }
         }
-
 
         /* Testa om databaskopplingen fungerar. */
 
