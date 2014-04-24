@@ -324,6 +324,8 @@ namespace vITs
             {
                 con.Open();
                 query = "SELECT top 1 ID FROM Trip ORDER BY ID DESC";
+                cmd = new SqlCommand(query, con);
+
                 returnValue = (int)cmd.ExecuteScalar();
             }
             catch (Exception e)

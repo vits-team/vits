@@ -157,7 +157,7 @@ namespace vITs
 
             DataAccess.addTrip(destinationID, startdate, enddate, cb_trip_travelWay.Text, missionID, breakfasts, lunches, dinners, vacationdays, id);
 
-            MessageBox.Show("Du har lagt till en ny resa");
+            
 
             /* Efter att en resa skapats, så kommer tillhörande kvitton att registeras till den resan. */
 
@@ -170,7 +170,8 @@ namespace vITs
             { 
                 // Inget att göra
             }
-       
+
+            MessageBox.Show("En ny resa har lagts till.");
         }
 
 
