@@ -281,7 +281,7 @@ namespace vITs
 
         private void initializeListview()
         {
-            List<string[]> trips = DataAccess.getTrips();
+            /*List<string[]> trips = DataAccess.getTrips();
             lv_toDo_viewTrips.Clear();
             lv_toDo_viewTrips.View = View.Details;
             lv_toDo_viewTrips.FullRowSelect = true;
@@ -298,7 +298,7 @@ namespace vITs
                 ListViewItem item = new ListViewItem(new[] { trips[x][0].ToString(), trips[x][1].ToString(), trips[x][4].ToString(), trips[x][5].ToString(), trips[x][11].ToString() == "0" ? "Nej" : "Ja" });
                 lv_toDo_viewTrips.Items.Add(item);
             }
-            
+            */
             
         }
 
@@ -343,12 +343,14 @@ namespace vITs
 
         private void btn_toDo_denyTrip_Click(object sender, EventArgs e)
         {
-            DataAccess.denyTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
+            /*DataAccess.denyTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
 
             MessageBox.Show("Resan nekades.");
 
             initializeListview();
+             */ 
         }
+             
 
 
         /* Vid klick i listan, ändra värdet i boxarna */
@@ -437,21 +439,13 @@ namespace vITs
         private void report_employee_pdf_Click(object sender, EventArgs e)
         {
             /* Definiera ID:t på den resan som man vill skapa rapport för */
+           
             int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
             List<List<string>> result = new List<List<string>>();
 
             /* Variabellista som används i rapporten, innehåller: 
              * ------------------------------------------------
-             * consultName - Förnamn och efternamn på konsulten.
-             * employeeNumber - anställningsnummer, mao databas-id:t.
-             * email - konsultens email. 
-             * phone - konsultens telefonnummer. 
-             * 
-             * 
-             * 
              */
-
-            /* Slut på variabler */
 
             string consultName = null;
             string employeeNumber = null;
@@ -481,6 +475,8 @@ namespace vITs
             int totalsum = 0;
             int totalrecieptSum = 0;
 
+            /* Slut på variabler */
+            
             if (lb_employee_travelList.SelectedItem.ToString().Equals("Ingen resa"))
             {
                 // Ta hänsyn till tidsintervall, och startdatum. Annars ...
@@ -551,6 +547,7 @@ namespace vITs
             else
             {
               
+                // Tilldela variabler värden ifrån databasen
 
                 result = DataAccess.getReportEmployeeInformation(id);
 
@@ -612,8 +609,16 @@ namespace vITs
 
                 /* PDF-CODE */
 
+                
                 Document myDocument = new Document(PageSize.A4);
-                PdfWriter.GetInstance(myDocument, new FileStream(@"..\..\iTextSharp\EmployeeReport.pdf", FileMode.Create));
+                try
+                {
+                    PdfWriter.GetInstance(myDocument, new FileStream(@"..\..\iTextSharp\EmployeeReport.pdf", FileMode.Create));
+                }
+                catch (Exception exc)
+                {
+
+                }
 
                 myDocument.Open();
 
@@ -621,35 +626,25 @@ namespace vITs
                 header.ScaleToFit(myDocument.PageSize.Width, 110f);
                 myDocument.Add(header);
 
+                iTextSharp.text.Image line = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsLine.jpg");
+                line.ScaleToFit(myDocument.PageSize.Width, 25f);
+
+                iTextSharp.text.Font footFont = FontFactory.GetFont("Century Gothic", 10);
+
+                string format = "{0,-20} {1,-20} {2, -25} {3, -20} {4, -20}";
+                string format3 = "{0,-90} {1,-30} {2, -30} ";
+                string format4 = "{0,-81} {1,-30} {2, -30} ";
+                string format5 = "{0,-92} {1,-30} {2, -40} ";
+
+                // Alla miljoner paragrafer 
 
                 Paragraph consName = new Paragraph("Konsultnamn: " + consultName);
                 Paragraph consNumber = new Paragraph("Anställningsnummer: " + employeeNumber);
                 Paragraph consEmail = new Paragraph("Emailadress: " + email);
                 Paragraph consPhone = new Paragraph("Telefonnummer: " + phone);
 
-                myDocument.Add(consName);
-                myDocument.Add(consNumber);
-                myDocument.Add(consEmail);
-                myDocument.Add(consPhone);
-
-
-                iTextSharp.text.Image line = iTextSharp.text.Image.GetInstance(@"..\..\Images\vitsLine.jpg");
-                line.ScaleToFit(myDocument.PageSize.Width, 25f);
-                myDocument.Add(line);
-
-                /* destinationkoden */
-
                 Paragraph mission = new Paragraph("Uppdrag: " + missionName);
                 Paragraph missiondate = new Paragraph("Datum: " + missionStartDate + " -- " + missionEndDate);
-                myDocument.Add(mission);
-                myDocument.Add(missiondate);
-
-                myDocument.Add(line);
-                string format = "{0,-20} {1,-20} {2, -25} {3, -20} {4, -20}";
-
-                string format3 = "{0,-90} {1,-30} {2, -30} ";
-                string format4 = "{0,-81} {1,-30} {2, -30} ";
-                string format5 = "{0,-92} {1,-30} {2, -40} ";
 
                 Paragraph country = new Paragraph("Destination: " + land + ", Färdsätt: " + transit);
                 Paragraph destination = new Paragraph(string.Format(format3, "Datum", "Antal", "Pris"));
@@ -659,23 +654,35 @@ namespace vITs
                 Paragraph middag = new Paragraph(string.Format(format5, "Middagar:", dinners, dinnerCost));
                 Paragraph sumOfTrip = new Paragraph(string.Format(format5, "", "Totalsumma", totalsum + " Kr"));
 
+                Paragraph reciept;
+                
+
+                string exists;
+                List<List<string>> otherCurrencies = new List<List<string>>(); 
+
+                myDocument.Add(consName);
+                myDocument.Add(consNumber);
+                myDocument.Add(consEmail);
+                myDocument.Add(consPhone);
+
+                myDocument.Add(line);
+                myDocument.Add(mission);
+                myDocument.Add(missiondate);
+                myDocument.Add(line);
+
                 myDocument.Add(country);
                 myDocument.Add(destination);
                 myDocument.Add(misc);
                 myDocument.Add(BF);
                 myDocument.Add(lurre);
                 myDocument.Add(middag);
-                 
+
                 myDocument.Add(line);
                 myDocument.Add(sumOfTrip);
 
                 /* För att loopa ut alla kvitton som tillhör specifik resa. */
-                result = DataAccess.getReportReceiptInformation(id);
-                Paragraph reciept;
-                string exists; 
 
-                
-                
+                result = DataAccess.getReportReceiptInformation(id);
                 foreach(List<string> str in result)
                 {
                     if (Convert.ToInt32(str[5]) == 0)
@@ -688,16 +695,84 @@ namespace vITs
 
                     }
 
+                    if (str[4].ToString() != "SEK")
+                    {
+                        List<string> theCurrency = new List<string>();
+                        theCurrency.Add(str[3].ToString());
+                        theCurrency.Add(str[4].ToString());
 
-                    totalrecieptSum += Convert.ToInt32(str[3]);
+                        otherCurrencies.Add(theCurrency); 
+                    }
+                    else
+                    {
+                        totalrecieptSum += Convert.ToInt32(str[3]);
+                    }
+                   
                     reciept = new Paragraph(string.Format(format, str[0].ToString(), str[1].ToString(), str[2].ToString(), str[3].ToString() + " " + str[4].ToString(), exists));
                     myDocument.Add(reciept);
                      
                 }
 
+                // Räkna om valutor till svenska kronor
+
+                foreach (List<string> str in otherCurrencies)
+                {
+
+
+                    if (str[1].Equals("EUR"))
+                    {
+                        int toAdd = Convert.ToInt32(str[0]) * 9;
+                        totalrecieptSum += toAdd;
+
+                    }
+                    else if (str[1].Equals("USD"))
+                    {
+                        double toAdd = Convert.ToInt32(str[0]) * 6.5;
+                        totalrecieptSum += (int)toAdd;
+
+                    }
+                    else if (str[1].Equals("GBP"))
+                    {
+                        double toAdd = Convert.ToInt32(str[0]) * 10.9;
+                        totalrecieptSum += (int)toAdd;
+
+                    }
+                    else if (str[1].Equals("NOK"))
+                    {
+                        double toAdd = Convert.ToInt32(str[0]) * 1.1;
+                        totalrecieptSum += (int)toAdd;
+                    }
+                    else if (str[1].Equals("DKK"))
+                    {
+                        double toAdd = Convert.ToInt32(str[0]) * 1.2;
+                        totalrecieptSum += (int)toAdd;
+
+                    }
+
+                }
+
+                Paragraph recieptSumma = new Paragraph(string.Format(format5, "", "Totalsumma: ", totalrecieptSum + " Kr"));
+               
+
                 myDocument.Add(line);
-                Paragraph recieptSumma = new Paragraph(string.Format(format5, "", "Totalsumma: ", totalrecieptSum));
                 myDocument.Add(recieptSumma);
+
+                
+
+                Paragraph currs = new Paragraph("Rådande växelkurser som tagits med i uträkningen", footFont);
+                Paragraph euro = new Paragraph("EUR - rådande växelkurs: 9.00 SEK", footFont);
+                Paragraph usd = new Paragraph("USD - rådande växelkurs: 6.50 SEK", footFont);
+                Paragraph gbp = new Paragraph("GBP - rådande växelkurs: 10.90 SEK", footFont);
+                Paragraph nok = new Paragraph("NOK - rådande växelkurs: 1.10 SEK", footFont); 
+                Paragraph dkk = new Paragraph("DKK - rådande växelkurs: 1.20 SEK", footFont);
+
+                myDocument.Add(currs);
+                myDocument.Add(euro);
+                myDocument.Add(usd);
+                myDocument.Add(gbp);
+                myDocument.Add(nok);
+                myDocument.Add(dkk);
+                
 
 
                 /* KÖR PDF */
