@@ -489,7 +489,6 @@ namespace vITs
         }
 
         /* Godkänner en icke-godkänd resa. Tar trip-id som parameter. */
-
         public static void approveOfTrip(string tripId)
         {
             try
@@ -497,6 +496,29 @@ namespace vITs
                 con.Open();
 
                 query = "update Trip set Approved = 1 where ID = " + tripId;
+                cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
+
+        /* Nekar en icke-godkänd resa. Tar trip-id som parameter. */
+        public static void denyTrip(string tripId)
+        {
+            try
+            {
+                con.Open();
+
+                query = "update Trip set Approved = 2 where ID = " + tripId;
                 cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
 
@@ -810,6 +832,44 @@ namespace vITs
             {
                 con.Close();
             }
+        }
+
+
+        /* Hämta alla icke godkända resor */
+        public static List<string[]> getTrips()
+        {
+            List<string[]> returnValue = new List<string[]>();
+            query = "SELECT * FROM Trip WHERE Approved <> 1";
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        /* ID, Destination, StartDate, EndDate, Transit, Mission, Break, StaffID, AmmountOfBreakfast, AmmountOfLunches, AmmountOfDinners, Approved */
+
+                        string[] arr = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString() };
+
+                        returnValue.Add(arr);
+                    }
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
         }
 
         /* Returnerar en lista med alla icke-godkända förskottsbetalningars resor. */

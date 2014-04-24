@@ -281,7 +281,7 @@ namespace vITs
 
         private void initializeListview()
         {
-            /*List<string[]> trips = DataAccess.getTrips();
+            List<string[]> trips = DataAccess.getTrips();
             lv_toDo_viewTrips.Clear();
             lv_toDo_viewTrips.View = View.Details;
             lv_toDo_viewTrips.FullRowSelect = true;
@@ -298,7 +298,7 @@ namespace vITs
                 ListViewItem item = new ListViewItem(new[] { trips[x][0].ToString(), trips[x][1].ToString(), trips[x][4].ToString(), trips[x][5].ToString(), trips[x][11].ToString() == "0" ? "Nej" : "Ja" });
                 lv_toDo_viewTrips.Items.Add(item);
             }
-            */
+            
             
         }
 
@@ -343,12 +343,11 @@ namespace vITs
 
         private void btn_toDo_denyTrip_Click(object sender, EventArgs e)
         {
-            /*DataAccess.denyTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
+            DataAccess.denyTrip(lv_toDo_viewTrips.SelectedItems[0].Text);
 
             MessageBox.Show("Resan nekades.");
 
             initializeListview();
-             */ 
         }
              
 
