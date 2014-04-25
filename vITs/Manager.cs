@@ -1272,7 +1272,7 @@ namespace vITs
 
                     ws.Cells[row, 1] = str[0].ToString().Substring(0,10);
                     ws.Cells[row, 2] = str[1].ToString();
-                    ws.Cells[row, 3] = str[2].ToString();
+                    ws.Cells[row, 3] = str[2].ToString().Substring(0,11);
                     ws.Cells[row, 4] = str[3].ToString() + " " + str[4].ToString() ;
                     totalrecieptSum += Convert.ToInt32(str[3]);
                     if (str[5].ToString().Equals("0"))
@@ -1290,6 +1290,7 @@ namespace vITs
 
                  ws.Cells[row +1, 4] = "Totalsumma:";
                  ws.Cells[row +1, 5] = totalrecieptSum;
+                 
                 
             }
         
