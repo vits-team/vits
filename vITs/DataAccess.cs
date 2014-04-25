@@ -17,6 +17,92 @@ namespace vITs
         private static string query;
         public static int currentUserID;
 
+        public static int getPrePayOfTrip(int tripID)
+        {
+            int returnValue = 0; 
+            try
+            {
+                con.Open();
+                query = "SELECT Top 1 Advance, Approved from PrePay where TripID =" + tripID; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    if(Convert.ToInt32(rdr[1]) == 2)
+                    {
+                        returnValue = Convert.ToInt32(rdr[0]); 
+                    }
+
+ 
+                }
+
+               
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+
+        }
+
+        public static List<List<string>> getReportTimeSpanUserTrips(int userid, string startdate, int days)
+        {
+
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select Trip.ID as TripID, Destinations.Country as Land, Destinations.Traktamente as Trakt, Destinations.Breakfast as BFCost, Destinations.Lunch as LunchCost, Destinations.Dinner as DinnerCost, Trip.Transit as Transit, Trip.StartDate as StartDate, Trip.EndDate as EndDate, Trip.AmountOfBreakfasts as BF, Trip.AmountOfLunches as Lunch, Trip.AmountOfDinners as Dinners from Trip join Destinations on Trip.Destination = Destinations.ID where Trip.StaffID =" + userid + " and Trip.StartDate between '" + startdate + "' and cast('" + startdate + "' as datetime) + " + days;
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["Land"].ToString());
+                    miniList.Add(rdr["Trakt"].ToString());
+                    miniList.Add(rdr["BFCost"].ToString());
+                    miniList.Add(rdr["LunchCost"].ToString());
+                    miniList.Add(rdr["DinnerCost"].ToString());
+
+                    miniList.Add(rdr["Transit"].ToString());
+                    miniList.Add(rdr["StartDate"].ToString());
+                    miniList.Add(rdr["EndDate"].ToString());
+                    miniList.Add(rdr["BF"].ToString());
+                    miniList.Add(rdr["Lunch"].ToString());
+                    miniList.Add(rdr["Dinners"].ToString());
+                    miniList.Add(rdr["TripID"].ToString());
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+        }
 
         public static List<List<string>> getReportTimeSpanUserMissions(int userid, string startdate, int days)
         {
@@ -283,7 +369,7 @@ namespace vITs
             try
             {
                 con.Open();
-                query = "Select Trip.ID, Destinations.Country, Trip.StartDate as startdate,  Trip.EndDate as enddate from Destinations join Trip on Destinations.ID = Trip.Destination where Destinations.ID in (SELECT Destination from Trip WHERE StaffID = "+ userID +")";
+                query = "Select Trip.ID, Destinations.Country, Trip.StartDate as startdate,  Trip.EndDate as enddate from Trip join Destinations on Destinations.ID = Trip.Destination where Trip.StaffID =" + userID;
                 cmd = new SqlCommand(query, con);
 
                 SqlDataReader rdr = cmd.ExecuteReader();
