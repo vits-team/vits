@@ -1181,6 +1181,7 @@
             this.report_employee_excel.Size = new System.Drawing.Size(40, 40);
             this.report_employee_excel.TabIndex = 32;
             this.report_employee_excel.TabStop = false;
+            this.report_employee_excel.Click += new System.EventHandler(this.report_employee_excel_Click);
             this.report_employee_excel.MouseEnter += new System.EventHandler(this.report_employee_excel_MouseEnter);
             this.report_employee_excel.MouseLeave += new System.EventHandler(this.report_employee_excel_MouseLeave);
             // 

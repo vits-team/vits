@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using iTextSharp.text; 
 using iTextSharp.text.pdf;
 using System.Drawing.Imaging;
-
+using Microsoft.Office.Interop.Excel;
 
 namespace vITs
 {
@@ -1092,6 +1092,204 @@ namespace vITs
             ToolTip tp = new ToolTip();
             tp.InitialDelay = 100;
             tp.SetToolTip(report_all_excel, "Klicka för att skriva ut som excel"); 
+        }
+
+        private void report_employee_excel_Click(object sender, EventArgs e)
+        {
+
+            List<List<string>> result = new List<List<string>>();
+
+            string consultName = null;
+            string employeeNumber = null;
+            string email = null;
+            string phone = null;
+
+            string missionName = null;
+            string missionStartDate = null;
+            string missionEndDate = null;
+
+            string land = null;
+            int traktamente = 0;
+            string transit = null;
+
+            int breakfastCost = 0;
+            int lunchCost = 0;
+            int dinnerCost = 0;
+
+            string tripStartDate = null;
+            string tripEndDate = null;
+            int tripTotalDays = 0; 
+
+            int breakfasts = 0;
+            int lunches = 0;
+            int dinners = 0;
+
+            int totalsum = 0;
+            int totalrecieptSum = 0;
+            int allTripTotalSum = 0; 
+
+            /* Slut på variabler */
+
+            if (lb_employee_travelList.SelectedItem.ToString().Equals("Ingen resa") || lb_employee_travelList.SelectedIndex == -1)
+            {
+            }
+            else
+            {
+                // Tilldela variabler värden ifrån databasen
+                int id = tripIDGhost[lb_employee_travelList.SelectedIndex];
+                result = DataAccess.getReportEmployeeInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    consultName = str[0] + " " + str[1];
+                    employeeNumber = str[2];
+                    email = str[3];
+                    phone = str[4];
+                }
+
+                result = DataAccess.getReportMissionInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    missionName = str[0];
+                    missionStartDate = str[1].Substring(0, 10);
+                    missionEndDate = str[2].Substring(0, 10);
+
+                }
+
+                result = DataAccess.getReportDestinationInformation(id);
+
+                foreach (List<string> str in result)
+                {
+                    land = str[0];
+                    traktamente = Convert.ToInt32(str[1]);
+                    breakfastCost = Convert.ToInt32(str[2]);
+                    lunchCost = Convert.ToInt32(str[3]);
+                    dinnerCost = Convert.ToInt32(str[4]);
+
+                    transit = str[5];
+                    tripStartDate = str[6].Substring(0, 10);
+                    tripEndDate = str[7].Substring(0, 10);
+
+                    breakfasts = Convert.ToInt32(str[8]);
+                    lunches = Convert.ToInt32(str[9]);
+                    dinners = Convert.ToInt32(str[10]);
+
+                }
+
+                /* Kalkyl av totalsumma */
+
+                DateTime st = Convert.ToDateTime(tripStartDate);
+                DateTime end = Convert.ToDateTime(tripEndDate);
+                TimeSpan span = end - st;
+                tripTotalDays = Convert.ToInt32(span.TotalDays);
+
+
+                int reduceBreakfasts = 0;
+                int reduceLunches = 0;
+                int reduceDinners = 0;
+                int prePayment = 0;
+
+                reduceBreakfasts = breakfasts * breakfastCost;
+                reduceLunches = lunches * lunchCost;
+                reduceDinners = dinners * dinnerCost;
+                prePayment = DataAccess.getPrePayOfTrip(id);
+                totalsum = (tripTotalDays * traktamente) - reduceBreakfasts - reduceLunches - reduceDinners - prePayment;  
+               
+                
+                Microsoft.Office.Interop.Excel.Application xla = new Microsoft.Office.Interop.Excel.Application();
+                             
+                
+                Workbook wb = xla.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet ws = (Worksheet)xla.ActiveSheet;
+
+                xla.Visible = true;
+
+                ws.Cells[1, 1].EntireRow.Font.Bold = true;
+                ws.Cells[4, 1].EntireRow.Font.Bold = true;
+                ws.Cells[7, 1].EntireRow.Font.Bold = true;
+                ws.Cells[10, 1].EntireRow.Font.Bold = true;
+                ws.Cells[19, 1].EntireRow.Font.Bold = true;
+                ws.Columns["A:D"].ColumnWidth = 20;
+                ws.get_Range("A:D").Cells.HorizontalAlignment =
+                 Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+                ws.Cells[1, 1] = "Konsultnamn";
+                ws.Cells[1, 2] = "Anställningsnummer";
+                ws.Cells[1, 3] = "Epost";
+                ws.Cells[1, 4] = "telefon";
+
+                ws.Cells[2, 1] = consultName;
+                ws.Cells[2, 2] = employeeNumber;
+                ws.Cells[2, 3] = email;
+                ws.Cells[2, 4] = phone;
+
+                ws.Cells[4, 1] = "Uppdragsnamn";
+                ws.Cells[4, 2] = "Startdatum";
+                ws.Cells[4, 3] = "Slutdatum";
+           
+
+                ws.Cells[5, 1] = missionName;
+                ws.Cells[5, 2] = missionStartDate;
+                ws.Cells[5, 3] = missionEndDate;
+
+                ws.Cells[7, 1] = "Land";
+                ws.Cells[7, 3] = "Färdsätt";
+                ws.Cells[8, 1] = land;
+                ws.Cells[8, 3] = transit;
+
+
+                ws.Cells[10, 1] = "Datum";
+                ws.Cells[10, 3] = "Antal";
+                ws.Cells[10, 4] = "Pris";
+                ws.Cells[11, 1] = tripStartDate + " -- " + tripEndDate;
+                ws.Cells[11, 3] = tripTotalDays;
+                ws.Cells[11, 4] = traktamente;
+
+                ws.Cells[13, 1] = "Frukostar";
+                ws.Cells[15, 1] = "Luncher";
+                ws.Cells[17, 1] = "Middagar";
+
+                ws.Cells[13, 3] = breakfasts;
+                ws.Cells[13, 4] = breakfastCost;
+                ws.Cells[15, 3] = lunches;
+                ws.Cells[15, 4] = lunchCost;
+                ws.Cells[17, 3] = dinners;
+                ws.Cells[17, 4] = dinnerCost;
+
+                ws.Cells[19, 1] = "Datum";
+                ws.Cells[19, 2] = "Typ";
+                ws.Cells[19, 3] = "Kvittonummer";
+                ws.Cells[19, 4] = "Summa";
+                ws.Cells[19, 5] = "Kvitto";
+
+
+                 List<List<string>> kvitton = DataAccess.getReportReceiptInformation(id);
+
+                int row = 21;
+                 foreach (List<string> str in kvitton)
+                {
+
+                    ws.Cells[row, 1] = str[0].ToString().Substring(0,10);
+                    ws.Cells[row, 2] = str[1].ToString();
+                    ws.Cells[row, 3] = str[2].ToString();
+                    ws.Cells[row, 4] = str[3].ToString() + " " + str[4].ToString() ;
+                    if (str[5].ToString().Equals("0"))
+                    {
+                        ws.Cells[row, 5] = "Kvitto Finns";
+                    }
+                    else
+
+                    {
+                        ws.Cells[row, 5] = "Kvitto Finns inte";
+                    }
+                    row++;
+                
+                }
+
+                
+            }
+        
         }
 
 
