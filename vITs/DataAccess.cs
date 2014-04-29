@@ -1195,6 +1195,51 @@ namespace vITs
             }
         }
 
+        public static List<List<string>> getUserInformation(int userID)
+        {
+            List<List<string>> returnValue = new List<List<string>>();
+
+            try
+            {
+                con.Open();
+                query = "Select FirstName, LastName, Phone, Email, Password, ID, Birthdate, Level from Staff where ID = " + userID; 
+                cmd = new SqlCommand(query, con);
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> miniList = new List<string>();
+
+                    miniList.Add(rdr["FirstName"].ToString());
+                    miniList.Add(rdr["LastName"].ToString());
+                    miniList.Add(rdr["Phone"].ToString());
+                    miniList.Add(rdr["Email"].ToString());
+                    miniList.Add(rdr["Password"].ToString());
+
+                    miniList.Add(rdr["ID"].ToString());
+                    miniList.Add(rdr["Birthdate"].ToString());
+                    miniList.Add(rdr["Level"].ToString());
+
+                    returnValue.Add(miniList);
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return returnValue;
+
+
+        }
 
 
     }

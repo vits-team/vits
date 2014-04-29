@@ -23,8 +23,10 @@ namespace vITs
             hideAllPanels();
             panel_home.Visible = true;
 
+            lbl_myName.Text = DataAccess.requestFullName(id);
             initializeBoxes();
             showMissions();
+            fillUserInformation(); 
         }
 
         private void hideAllPanels()
@@ -259,6 +261,9 @@ namespace vITs
 
             DataAccess.addMission(missionName, description, startdate, costcenter, enddate);
             MessageBox.Show("Nytt uppdrag lades till");
+
+            //lb_assignments_assignmentList.Items.Clear();
+            showMissions(); 
         }
 
     
@@ -310,7 +315,36 @@ namespace vITs
             MessageBox.Show("Uppdrag uppdaterades");
         }
 
+        private void fillUserInformation()
+        {
+            List<List<string>> staffInformation = DataAccess.getUserInformation(id);
 
+            txt_mySettings_firstName.Text = staffInformation[0][0].ToString() + " " + staffInformation[0][1].ToString();
+            txt_mySettings_lastName.Text = staffInformation[0][2].ToString();
+            txt_mySettings_email.Text = staffInformation[0][3].ToString();
+            txt_mySettings_password.Text = staffInformation[0][4].ToString();
+
+            txt_mySettings_employmentNumber.Text = staffInformation[0][5].ToString();
+            txt_mySettings_personalNumber.Text = staffInformation[0][6].ToString().Substring(0, 10);
+
+            if (staffInformation[0][7].ToString().Equals("1"))
+            {
+                txt_mySettings_position.Text = "Konsult";
+            }
+            else if (staffInformation[0][7].ToString().Equals("2"))
+            {
+                txt_mySettings_position.Text = "Chef";
+            }
+            else if (staffInformation[0][7].ToString().Equals("3"))
+            {
+                txt_mySettings_position.Text = "Ekonom";
+            }
+            else if (staffInformation[0][7].ToString().Equals("4"))
+            {
+                txt_mySettings_position.Text = "Administratör";
+            }
+
+        }
   
     }
 }

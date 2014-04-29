@@ -64,7 +64,6 @@
             this.txt_trip_recieptAmount = new System.Windows.Forms.TextBox();
             this.txt_trip_recieptNumber = new System.Windows.Forms.TextBox();
             this.txt_trip_recieptType = new System.Windows.Forms.TextBox();
-            this.txt_trip_reciptDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_trip_vacationDays = new System.Windows.Forms.TextBox();
             this.cb_trip_travelWay = new System.Windows.Forms.ComboBox();
@@ -157,6 +156,7 @@
             this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape12 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape11 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.dpicker_trip_receiptdate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_travel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nav_mytravels)).BeginInit();
@@ -367,6 +367,7 @@
             // 
             // panel_trip
             // 
+            this.panel_trip.Controls.Add(this.dpicker_trip_receiptdate);
             this.panel_trip.Controls.Add(this.label25);
             this.panel_trip.Controls.Add(this.label24);
             this.panel_trip.Controls.Add(this.txt_trip_dinners);
@@ -385,7 +386,6 @@
             this.panel_trip.Controls.Add(this.txt_trip_recieptAmount);
             this.panel_trip.Controls.Add(this.txt_trip_recieptNumber);
             this.panel_trip.Controls.Add(this.txt_trip_recieptType);
-            this.panel_trip.Controls.Add(this.txt_trip_reciptDate);
             this.panel_trip.Controls.Add(this.label6);
             this.panel_trip.Controls.Add(this.txt_trip_vacationDays);
             this.panel_trip.Controls.Add(this.cb_trip_travelWay);
@@ -537,6 +537,8 @@
             this.txt_trip_recieptAmount.Name = "txt_trip_recieptAmount";
             this.txt_trip_recieptAmount.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptAmount.TabIndex = 15;
+            this.txt_trip_recieptAmount.Text = "Summa";
+            this.txt_trip_recieptAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptAmount_MouseClick);
             // 
             // txt_trip_recieptNumber
             // 
@@ -544,6 +546,8 @@
             this.txt_trip_recieptNumber.Name = "txt_trip_recieptNumber";
             this.txt_trip_recieptNumber.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptNumber.TabIndex = 14;
+            this.txt_trip_recieptNumber.Text = "Kvittonummer";
+            this.txt_trip_recieptNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptNumber_MouseClick);
             // 
             // txt_trip_recieptType
             // 
@@ -551,13 +555,8 @@
             this.txt_trip_recieptType.Name = "txt_trip_recieptType";
             this.txt_trip_recieptType.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptType.TabIndex = 13;
-            // 
-            // txt_trip_reciptDate
-            // 
-            this.txt_trip_reciptDate.Location = new System.Drawing.Point(256, 378);
-            this.txt_trip_reciptDate.Name = "txt_trip_reciptDate";
-            this.txt_trip_reciptDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_trip_reciptDate.TabIndex = 12;
+            this.txt_trip_recieptType.Text = "Kvittotyp";
+            this.txt_trip_recieptType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptType_MouseClick);
             // 
             // label6
             // 
@@ -574,6 +573,8 @@
             this.txt_trip_vacationDays.Name = "txt_trip_vacationDays";
             this.txt_trip_vacationDays.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_vacationDays.TabIndex = 10;
+            this.txt_trip_vacationDays.Text = "Lediga dagar";
+            this.txt_trip_vacationDays.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_vacationDays_MouseClick);
             // 
             // cb_trip_travelWay
             // 
@@ -1505,6 +1506,13 @@
             this.lineShape11.Y1 = 145;
             this.lineShape11.Y2 = 145;
             // 
+            // dpicker_trip_receiptdate
+            // 
+            this.dpicker_trip_receiptdate.Location = new System.Drawing.Point(255, 378);
+            this.dpicker_trip_receiptdate.Name = "dpicker_trip_receiptdate";
+            this.dpicker_trip_receiptdate.Size = new System.Drawing.Size(101, 20);
+            this.dpicker_trip_receiptdate.TabIndex = 32;
+            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1530,10 +1538,10 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel_trip);
             this.Controls.Add(this.panel_reports);
             this.Controls.Add(this.panel_toDo);
             this.Controls.Add(this.panel_home);
-            this.Controls.Add(this.panel_trip);
             this.Controls.Add(this.panel_assignments);
             this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_prepayment);
@@ -1607,7 +1615,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.TextBox txt_trip_recieptNumber;
         private System.Windows.Forms.TextBox txt_trip_recieptType;
-        private System.Windows.Forms.TextBox txt_trip_reciptDate;
         private System.Windows.Forms.ComboBox cb_trip_currency;
         private System.Windows.Forms.TextBox txt_trip_recieptRate;
         private System.Windows.Forms.TextBox txt_trip_recieptAmount;
@@ -1704,6 +1711,7 @@
         private System.Windows.Forms.DateTimePicker dpicker_complete_date;
         private System.Windows.Forms.DateTimePicker dpicker_employee_date;
         private System.Windows.Forms.ListView lv_toDo_viewTrips;
+        private System.Windows.Forms.DateTimePicker dpicker_trip_receiptdate;
 
     }
 }

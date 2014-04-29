@@ -510,6 +510,8 @@
             this.txt_trip_recieptAmount.Name = "txt_trip_recieptAmount";
             this.txt_trip_recieptAmount.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptAmount.TabIndex = 15;
+            this.txt_trip_recieptAmount.Text = "Summa";
+            this.txt_trip_recieptAmount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptAmount_MouseClick);
             // 
             // txt_trip_recieptNumber
             // 
@@ -517,6 +519,8 @@
             this.txt_trip_recieptNumber.Name = "txt_trip_recieptNumber";
             this.txt_trip_recieptNumber.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptNumber.TabIndex = 14;
+            this.txt_trip_recieptNumber.Text = "Kvittonummer";
+            this.txt_trip_recieptNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptNumber_MouseClick);
             // 
             // txt_trip_recieptType
             // 
@@ -524,6 +528,8 @@
             this.txt_trip_recieptType.Name = "txt_trip_recieptType";
             this.txt_trip_recieptType.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_recieptType.TabIndex = 13;
+            this.txt_trip_recieptType.Text = "Kvittotyp";
+            this.txt_trip_recieptType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_recieptType_MouseClick);
             // 
             // label6
             // 
@@ -540,7 +546,8 @@
             this.txt_trip_vacationDays.Name = "txt_trip_vacationDays";
             this.txt_trip_vacationDays.Size = new System.Drawing.Size(100, 20);
             this.txt_trip_vacationDays.TabIndex = 10;
-            this.txt_trip_vacationDays.Text = "0";
+            this.txt_trip_vacationDays.Text = "Lediga dagar";
+            this.txt_trip_vacationDays.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_trip_vacationDays_MouseClick);
             // 
             // cb_trip_travelWay
             // 
@@ -1066,10 +1073,10 @@
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel_trip);
+            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_prepayment);
             this.Controls.Add(this.panel_assignments);
-            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_myTrips);
             this.Name = "Consultant";
             this.Text = "Consultant";
