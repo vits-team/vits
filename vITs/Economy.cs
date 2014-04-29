@@ -23,7 +23,9 @@ namespace vITs
             id = Login.passThisUser();
             hideAllPanels();
             panel_home.Visible = true;
-            
+            lbl_myName.Text = DataAccess.requestFullName(id);
+
+            fillUserInformation(); 
         }
 
         private void hideAllPanels()
@@ -192,7 +194,36 @@ namespace vITs
             report_all_system.BackgroundImage = Image.FromFile(path);
         }
 
+        private void fillUserInformation()
+        {
+            List<List<string>> staffInformation = DataAccess.getUserInformation(id);
 
+            txt_mySettings_firstName.Text = staffInformation[0][0].ToString() + " " + staffInformation[0][1].ToString();
+            txt_mySettings_lastName.Text = staffInformation[0][2].ToString();
+            txt_mySettings_email.Text = staffInformation[0][3].ToString();
+            txt_mySettings_password.Text = staffInformation[0][4].ToString();
+
+            txt_mySettings_employmentNumber.Text = staffInformation[0][5].ToString();
+            txt_mySettings_personalNumber.Text = staffInformation[0][6].ToString().Substring(0, 10);
+
+            if (staffInformation[0][7].ToString().Equals("1"))
+            {
+                txt_mySettings_position.Text = "Konsult";
+            }
+            else if (staffInformation[0][7].ToString().Equals("2"))
+            {
+                txt_mySettings_position.Text = "Chef";
+            }
+            else if (staffInformation[0][7].ToString().Equals("3"))
+            {
+                txt_mySettings_position.Text = "Ekonom";
+            }
+            else if (staffInformation[0][7].ToString().Equals("4"))
+            {
+                txt_mySettings_position.Text = "Administratör";
+            }
+
+        }
 
     
 
