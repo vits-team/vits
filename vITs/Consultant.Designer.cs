@@ -1072,8 +1072,8 @@
             this.Controls.Add(this.nav_mytravels);
             this.Controls.Add(this.nav_travel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_trip);
+            this.Controls.Add(this.panel_mySettings);
             this.Controls.Add(this.panel_home);
             this.Controls.Add(this.panel_prepayment);
             this.Controls.Add(this.panel_assignments);

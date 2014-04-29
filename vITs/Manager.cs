@@ -1329,6 +1329,26 @@ namespace vITs
             }
 
         }
+
+        private void txt_trip_vacationDays_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_trip_vacationDays.Text = ""; 
+        }
+
+        private void txt_trip_recieptType_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_trip_recieptType.Text = ""; 
+        }
+
+        private void txt_trip_recieptNumber_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_trip_recieptNumber.Text = ""; 
+        }
+
+        private void txt_trip_recieptAmount_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_trip_recieptAmount.Text = ""; 
+        }
         
 
       
